@@ -2,4 +2,4 @@
 
 # Deliverable 1
 
-[add images]
+![loginpage_deliverable_one](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/0ad3500c-0ae4-4f70-ba1e-743fc1ef1f8e)
