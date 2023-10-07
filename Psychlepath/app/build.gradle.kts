@@ -35,6 +35,12 @@ android {
 }
 
 dependencies {
+    configurations.all {
+        resolutionStrategy {
+            force("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+            force("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21")
+        }
+    }
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
