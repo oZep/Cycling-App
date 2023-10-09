@@ -22,6 +22,7 @@ public class Login extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonLogin;
+    Button buttonLogin_A;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
@@ -48,6 +49,7 @@ public class Login extends AppCompatActivity {
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);
+        buttonLogin_A = findViewById(R.id.btn_login_a);
         progressBar =findViewById(R.id.progressBar);
         textView =findViewById(R.id.registerNow);
 
@@ -77,7 +79,7 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
                 return;
             }
-            mAuth.signInWithEmailAndPassword(email, password)
+            mAuth.signInWithEmailAndPassword(email, password, true)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(Task<AuthResult> task) {
@@ -87,6 +89,7 @@ public class Login extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                                 //Intent to open the main activity
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                intent.putExtra("WELCOME_TEXT", "Welcome User");
                                 startActivity(intent);
                                 finish();
                             } else {
@@ -96,6 +99,45 @@ public class Login extends AppCompatActivity {
                             }
                         }
                     });
+            }
+
+        });
+
+        buttonLogin_A.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                progressBar.setVisibility(View.VISIBLE);
+                String email, password;
+                email = String.valueOf(editTextEmail.getText());
+                password = String.valueOf(editTextPassword.getText());
+
+                if(TextUtils.isEmpty(email)){
+                    Toast.makeText(Login.this, "Enter an email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(password)){
+                    Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                mAuth.signInWithEmailAndPassword(email, password, false)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(Task<AuthResult> task) {
+                                progressBar.setVisibility(View.GONE);
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Authentication successful.",
+                                            Toast.LENGTH_SHORT).show();
+                                    //Intent to open the main activity
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    intent.putExtra("WELCOME_TEXT", "Welcome Admin");
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(Login.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
             }
 
         });
