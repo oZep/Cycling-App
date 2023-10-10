@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SEGProject"
         tools:targetApi="31">
         <activity
+            android:name=".AdminLoginScreen"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
