@@ -55,7 +55,7 @@ public class Registration extends AppCompatActivity {
         textView =findViewById(R.id.loginNow);
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), com.example.frontendstuff.Login.class);
+                Intent intent = new Intent(getApplicationContext(), com.example.segproject.Login.class);
                 startActivity(intent);
                 finish();
 
