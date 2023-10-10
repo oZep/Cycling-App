@@ -89,7 +89,8 @@
                 android:padding="20dp"
                 android:text="Register as User"
                 android:textSize="20sp"
-                android:textStyle="bold">
+                android:textStyle="bold"
+                android:textColor="#FFFF">
 
             </Button>
 

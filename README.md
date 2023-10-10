@@ -16,3 +16,8 @@
 
 - ![loginPageEmulated](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/e7cf2c9b-43cd-47f8-93c0-70b7446b4a0e)
 
+# Welome Page Shown to User
+
+- ![image](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/83ca4b24-4829-4bf8-9ab2-e2838853d838)
+
+
