@@ -1,4 +1,4 @@
-package com.example.segproject.ui;
+package com.example.segproject;
 
 public class MainActivity {
 
