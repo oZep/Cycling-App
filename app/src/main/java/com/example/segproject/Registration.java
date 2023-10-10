@@ -55,7 +55,11 @@ public class Registration extends AppCompatActivity {
         textView =findViewById(R.id.loginNow);
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
+<<<<<<< HEAD
                 Intent intent = new Intent(getApplicationContext(), com.example.segproject.AdminLoginScreen.class);
+=======
+                Intent intent = new Intent(getApplicationContext(), com.example.segproject.Login.class);
+>>>>>>> bac10cc (color change)
                 startActivity(intent);
                 finish();
 
