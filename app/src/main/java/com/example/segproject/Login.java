@@ -1,4 +1,4 @@
-package com.example.frontendstuff;
+package com.example.segproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activtity_login);
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
                 return;
             }
-            mAuth.signInWithEmailAndPassword(email, password, true)
+            mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(Task<AuthResult> task) {
@@ -118,7 +118,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                mAuth.signInWithEmailAndPassword(email, password, false)
+                mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(Task<AuthResult> task) {
