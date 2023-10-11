@@ -128,7 +128,7 @@ public class Registration extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registration.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                 }
             }
 
