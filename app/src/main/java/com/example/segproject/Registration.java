@@ -1,9 +1,5 @@
 package com.example.segproject;
 
-<<<<<<< HEAD
-public class Registration {
-    
-=======
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -59,7 +55,7 @@ public class Registration extends AppCompatActivity {
         textView =findViewById(R.id.loginNow);
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), com.example.segproject.Login.class);
+                Intent intent = new Intent(getApplicationContext(), com.example.segproject.AdminLoginScreen.class);
                 startActivity(intent);
                 finish();
 
@@ -141,5 +137,4 @@ public class Registration extends AppCompatActivity {
 
         });
     }
->>>>>>> ab8cec7661d3fb09a1fe44c553c3c17b8454b7de
 }
