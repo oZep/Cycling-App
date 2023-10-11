@@ -3,7 +3,7 @@ package com.example.segproject;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 public class MainActivity extends AppCompatActivity {
-    public boolean login(String name, String pass, boolean Admin) {
+    public static boolean login(String name, String pass, boolean Admin) {
         if (name.equals("username") && pass.equals("password") && !Admin) {
             return true;
         }
@@ -12,4 +12,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+
 }

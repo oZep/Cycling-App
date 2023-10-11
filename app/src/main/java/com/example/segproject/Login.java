@@ -31,13 +31,10 @@ public class Login extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
             //Intent to open the main activity
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 
@@ -45,7 +42,6 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activtity_login);
-        mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);
@@ -79,8 +75,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                if(MainActivity.login(email, password, false)) {
                             @Override
                             public void onComplete(Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
