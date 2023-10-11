@@ -118,21 +118,18 @@ public class Registration extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    progressBar.setVisibility(View.GONE);
-                                    Toast.makeText(Registration.this, "Admin Account created",
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(Registration.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                if (MainActivity.login(email, password, false)) {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
+                    //Intent to open the main activity
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("WELCOME_TEXT", "Welcome User");
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
