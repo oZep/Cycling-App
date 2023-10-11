@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 <<<<<<< HEAD
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools">
 =======
+=======
+>>>>>>> d2a4c12 (Added admin login screen, UI adjustment)
     xmlns:tools="http://schemas.android.com/tools" >
 
 >>>>>>> ab8cec7661d3fb09a1fe44c553c3c17b8454b7de
@@ -16,9 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SEGProject"
         tools:targetApi="31" >
+<<<<<<< HEAD
         <activity
             android:name=".AdminLoginScreen"
             android:exported="false" />
+=======
+>>>>>>> d2a4c12 (Added admin login screen, UI adjustment)
         <activity
             android:name=".AdminLoginScreen"
             android:exported="false" />

@@ -2,9 +2,12 @@ package com.example.segproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 0f097f0 (Added admin login screen, UI adjustment)
+=======
+>>>>>>> d2a4c12 (Added admin login screen, UI adjustment)
 import android.os.Bundle;
 
 public class AdminLoginScreen extends AppCompatActivity {
