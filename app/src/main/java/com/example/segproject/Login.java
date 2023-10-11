@@ -31,10 +31,13 @@ public class Login extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
             //Intent to open the main activity
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-        finish();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 
@@ -42,6 +45,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activtity_login);
+        mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);
@@ -61,42 +65,39 @@ public class Login extends AppCompatActivity {
         });
 
         buttonLogin.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                progressBar.setVisibility(View.VISIBLE);
-                String email, password;
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
+        public void onClick(View view){
+            progressBar.setVisibility(View.VISIBLE);
+            String email, password;
+            email = String.valueOf(editTextEmail.getText());
+            password = String.valueOf(editTextPassword.getText());
 
-                if(TextUtils.isEmpty(email)){
-                    Toast.makeText(Login.this, "Enter an email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(password)){
-                    Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(MainActivity.login(email, password, false)) {
-                            @Override
-                            public void onComplete(Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Authentication successful.",
-                                            Toast.LENGTH_SHORT).show();
-                                    //Intent to open the main activity
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.putExtra("WELCOME_TEXT", "Welcome User");
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Login.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-
-                                }
-                            }
-                        });
+            if(TextUtils.isEmpty(email)){
+                Toast.makeText(Login.this, "Enter an email", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(TextUtils.isEmpty(password)){
+                Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
+                return;
             }
 
-        });
+            if (email.equals("username") && password.equals("password")) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(), "Authentication successful.",
+                        Toast.LENGTH_SHORT).show();
+                //Intent to open the main activity
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("WELCOME_TEXT", "Welcome User");
+                startActivity(intent);
+                finish();
+                }
+            else {
+                    Toast.makeText(Login.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+
+                        }
+
+                };
+            });
 
         buttonLogin_A.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -109,33 +110,28 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter an email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(password)){
+                if(TextUtils.isEmpty(password)) {
                     Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Authentication successful.",
-                                            Toast.LENGTH_SHORT).show();
-                                    //Intent to open the main activity
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.putExtra("WELCOME_TEXT", "Welcome Admin");
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Login.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
 
-                                }
-                            }
-                        });
-            }
+                if (email.equals("username") && password.equals("password")) {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(), "Authentication successful.",
+                                Toast.LENGTH_SHORT).show();
+                        //Intent to open the main activity
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("WELCOME_TEXT", "Welcome User");
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(Login.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
 
-        });
+                    }
 
-    }
-}
+                };
+            });
+            }}
+

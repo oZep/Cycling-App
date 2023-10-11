@@ -13,10 +13,14 @@
 # Registration and Login Page Demonstrated Below
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - ![localprojLATEST](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/538fae5a-dfe0-4586-9b05-8d7215d64a07)
 =======
 - ![image](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/e5d955dc-34a0-408e-bc79-355f1998b1e3)
 >>>>>>> b08c2ae (updated functionality gif)
+=======
+- ![localprojLATEST](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/538fae5a-dfe0-4586-9b05-8d7215d64a07)
+>>>>>>> ab8cec7 (Functionality gif)
 
 - ![loginPageEmulated](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/e7cf2c9b-43cd-47f8-93c0-70b7446b4a0e)
 

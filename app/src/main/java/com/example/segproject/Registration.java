@@ -55,11 +55,7 @@ public class Registration extends AppCompatActivity {
         textView =findViewById(R.id.loginNow);
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-<<<<<<< HEAD
-                Intent intent = new Intent(getApplicationContext(), com.example.segproject.AdminLoginScreen.class);
-=======
                 Intent intent = new Intent(getApplicationContext(), com.example.segproject.Login.class);
->>>>>>> bac10cc (color change)
                 startActivity(intent);
                 finish();
 
@@ -121,21 +117,15 @@ public class Registration extends AppCompatActivity {
                     Toast.makeText(Registration.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                if (MainActivity.login(email, password, false)) {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
-                    //Intent to open the main activity
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("WELCOME_TEXT", "Welcome User");
-                    startActivity(intent);
-                    finish();
-                }
-                else {
-                    Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-        });
-    }
-}
+                                if (email.equals("username") && password.equals("password")) {
+                                    progressBar.setVisibility(View.GONE);
+                                    Toast.makeText(Registration.this, "Admin Account created",
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(Registration.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }}
