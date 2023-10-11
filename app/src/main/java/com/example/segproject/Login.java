@@ -76,24 +76,17 @@ public class Login extends AppCompatActivity {
                     return;
                 }
                 if(MainActivity.login(email, password, false)) {
-                            @Override
-                            public void onComplete(Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Authentication successful.",
-                                            Toast.LENGTH_SHORT).show();
-                                    //Intent to open the main activity
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.putExtra("WELCOME_TEXT", "Welcome User");
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Login.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-
-                                }
-                            }
-                        });
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
+                    //Intent to open the main activity
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("WELCOME_TEXT", "Welcome User");
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
