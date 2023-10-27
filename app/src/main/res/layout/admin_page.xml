@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -20,14 +21,37 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="Welcome User!" />
+            android:text="Welcome Admin!" />
 
-        <EditText
-            android:id="@+id/editTextPrice"
+        <CheckBox
+            android:id="@+id/checkBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter price"
-            android:minHeight="48dp" />
+            android:text="Time Trail" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hill Climb" />
+
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Road Stage Race" />
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Road Race" />
+
+        <CheckBox
+            android:id="@+id/checkBox5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Group Rides" />
 
     </LinearLayout>
 
@@ -38,7 +62,7 @@
         android:layout_below="@id/editTextPrice"
         android:layout_centerVertical="true"
         android:layout_marginTop="20dp"
-        android:text="Search"
+        android:text="Create Activity"
         tools:ignore="NotSibling" />
 
     <TextView
@@ -46,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/addButton"
-        android:text="Activities"
+        android:text="Current Club Activities"
         android:textAlignment="center" />
 
     <ListView
