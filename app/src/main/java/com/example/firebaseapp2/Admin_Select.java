@@ -39,7 +39,9 @@ public class Admin_Select extends AppCompatActivity {
     Button buttonAddProduct;
     ListView listViewProducts;
 
-    List<Product> products;
+    List<Bike_Activity> bike_activitys;
+
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +57,7 @@ public class Admin_Select extends AppCompatActivity {
         RoadRace = (CheckBox) findViewById(R.id.checkBox4);
         GroupRides = (CheckBox) findViewById(R.id.checkBox5);
 
-        products = new ArrayList<>();
+        bike_activitys = new ArrayList<>();
 
         //adding an onclicklistener to button
         buttonAddProduct.setOnClickListener(new View.OnClickListener() {
@@ -68,8 +70,8 @@ public class Admin_Select extends AppCompatActivity {
         listViewProducts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Product product = products.get(i);
-                showUpdateDeleteDialog(product.getId(), product.getProductName());
+                Bike_Activity activity = bike_activitys.get(i);
+                showUpdateDeleteDialog(activity.getId(), activity.getActivityName(), activity.getLocation(), activity.getLevel());
                 return true;
             }
         });
@@ -82,7 +84,7 @@ public class Admin_Select extends AppCompatActivity {
     }
 
 
-    private void showUpdateDeleteDialog(final String productId, String productName) {
+    private void showUpdateDeleteDialog(final String productId, String productName, String location, int intensity) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -102,10 +104,10 @@ public class Admin_Select extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String location = editTextLocation.getText().toString().trim();
-                double intensity = Double.parseDouble(String.valueOf(editTextIntensity.getText().toString()));
+                int intensity = Integer.parseInt(String.valueOf(editTextIntensity.getText().toString()));
                 if (!TextUtils.isEmpty(location)) {
                     //FIX
-                    //updateProduct(productId, location, intensity);
+                    updateProduct(productId, productName, intensity, location);
                     b.dismiss();
                 }
             }
@@ -120,21 +122,21 @@ public class Admin_Select extends AppCompatActivity {
         });
     }
 
-    private void updateProduct(String id, String name, double intensity, String location) {
-        DatabaseReference dr = FirebaseDatabase.getInstance().getReference("products").child(id);
+    private void updateProduct(String id, String name, int intensity, String location) {
+        DatabaseReference dr = FirebaseDatabase.getInstance().getReference("events").child(id);
 
         // FIX
-        //Product p = new Product(id, name, intensity, location);
-        //dr.setValue(p);
+        Bike_Activity p = new Bike_Activity(id, name, intensity, location);
+        dr.setValue(p);
 
-        Toast.makeText(getApplicationContext(), "Product Updated", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Event Updated", Toast.LENGTH_LONG).show();
     }
 
     private void deleteProduct(String id) {
-        DatabaseReference dr = FirebaseDatabase.getInstance().getReference("products").child(id);
+        DatabaseReference dr = FirebaseDatabase.getInstance().getReference("events").child(id);
 
         dr.removeValue();
-        Toast.makeText(getApplicationContext(), "Product Deleted", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Event Deleted", Toast.LENGTH_LONG).show();
     }
 
 
@@ -160,20 +162,20 @@ public class Admin_Select extends AppCompatActivity {
             name = "ERROR activity not selected";
         }
 
-        double Level = Double.parseDouble(String.valueOf(editTextIntensity.getText().toString()));
-        String Location = String.valueOf(editTextLocation.getText().toString());
+        int level = Integer.parseInt(String.valueOf(editTextIntensity.getText().toString()));
+        String location = String.valueOf(editTextLocation.getText().toString());
 
         if (!TextUtils.isEmpty(name)) {
             //FIX
-            //String id = databaseProducts.push().getKey();
-            //Product p = new Product(id, name, level, location);
+            String id = databaseReference.push().getKey();
+            Bike_Activity p = new Bike_Activity(id, name, level, location);
 
-            //databaseProducts.child(id).setValue(p);
+            databaseReference.child(id).setValue(p);
 
             editTextIntensity.setText("");
             editTextLocation.setText("");
 
-            Toast.makeText(this, "Product added", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Events added", Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG).show();
