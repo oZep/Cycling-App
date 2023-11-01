@@ -2,6 +2,7 @@ package com.example.firebaseapp2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.AlertDialog;
 
@@ -28,99 +29,87 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText editTextName;
-    EditText editTextPrice;
-    Button buttonAddProduct;
-    ListView listViewProducts;
-
-    List<Product> products;
+    EditText emailBox;
+    EditText passwordBox;
+    Button adminLogin;
+    Button userLogin;
+    Button register;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        emailBox = (EditText) findViewById(R.id.email);
+        passwordBox = (EditText) findViewById(R.id.password);
+        adminLogin = (Button) findViewById(R.id.adminLogin);
+        userLogin = (Button) findViewById(R.id.userLogin);
+        register = (Button) findViewById(R.id.register);
 
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextPrice = (EditText) findViewById(R.id.editTextPrice);
-        listViewProducts = (ListView) findViewById(R.id.listViewProducts);
-        buttonAddProduct = (Button) findViewById(R.id.addButton);
-
-        products = new ArrayList<>();
-
-        //adding an onclicklistener to button
-        buttonAddProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addProduct();
-            }
-        });
-
-        listViewProducts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Product product = products.get(i);
-                showUpdateDeleteDialog(product.getId(), product.getProductName());
-                return true;
-            }
-        });
-    }
-
+        adminLogin.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        adminLogin(emailBox.getText().toString(), passwordBox.getText().toString());
+                    }
+                }
+        );
+        userLogin.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        userLogin(emailBox.getText().toString(), passwordBox.getText().toString());
+                    }
+                }
+        );
+        register.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        startActivity(new Intent(getApplicationContext(), Registration.class));
+                        finish();
+                    }
+                }
+        );
+  }
 
     @Override
     protected void onStart() {
         super.onStart();
     }
 
-
-    private void showUpdateDeleteDialog(final String productId, String productName) {
-
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.update_dialog, null);
-        dialogBuilder.setView(dialogView);
-
-        final EditText editTextName = (EditText) dialogView.findViewById(R.id.editTextName);
-        final EditText editTextPrice  = (EditText) dialogView.findViewById(R.id.editTextPrice);
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdateProduct);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDeleteProduct);
-
-        dialogBuilder.setTitle(productName);
-        final AlertDialog b = dialogBuilder.create();
-        b.show();
-
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = editTextName.getText().toString().trim();
-                double price = Double.parseDouble(String.valueOf(editTextPrice.getText().toString()));
-                if (!TextUtils.isEmpty(name)) {
-                    updateProduct(productId, name, price);
-                    b.dismiss();
-                }
-            }
-        });
-
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deleteProduct(productId);
-                b.dismiss();
-            }
-        });
+    public void adminLogin(String email, String password) {
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Enter your email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Enter your password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (email.equals("email") && password.equals("password")) {
+            startActivity(new Intent(getApplicationContext(), AdminPage.class));
+            finish();
+        }
+        else {
+            Toast.makeText(this, "Incorrect login credentials", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void updateProduct(String id, String name, double price) {
-
-        Toast.makeText(getApplicationContext(), "NOT IMPLEMENTED YET", Toast.LENGTH_LONG).show();
-    }
-
-    private void deleteProduct(String id) {
-
-        Toast.makeText(getApplicationContext(), "NOT IMPLEMENTED YET", Toast.LENGTH_LONG).show();
-    }
-
-    private void addProduct() {
-
-        Toast.makeText(this, "NOT IMPLEMENTED YET", Toast.LENGTH_LONG).show();
+    public void userLogin(String email, String password) {
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Enter your email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Enter your password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (email.equals("email") && password.equals("password")) {
+            startActivity(new Intent(getApplicationContext(), AdminPage.class));
+            finish();
+        }
+        else {
+            Toast.makeText(this, "Incorrect login credentials", Toast.LENGTH_SHORT).show();
+        }
     }
 }
