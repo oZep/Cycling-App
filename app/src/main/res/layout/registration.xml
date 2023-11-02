@@ -5,16 +5,16 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/emailSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Email" />
 
     <EditText
-        android:id="@+id/editTextPrice"
+        android:id="@+id/passwordSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextName"
+        android:layout_below="@id/emailSignUp"
         android:hint="Enter Password" />
 
     <LinearLayout
@@ -23,18 +23,18 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/buttonUpdateProduct"
+            android:id="@+id/userSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sign in as User" />
+            android:text="Sign up as User" />
 
         <Button
-            android:id="@+id/buttonDeleteProduct"
+            android:id="@+id/adminSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sign in as Admin" />
+            android:text="Sign up as Admin" />
 
     </LinearLayout>
 
