@@ -13,6 +13,7 @@
     <EditText
         android:id="@+id/passwordSignUp"
         android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/emailSignUp"
         android:hint="Enter Password" />
