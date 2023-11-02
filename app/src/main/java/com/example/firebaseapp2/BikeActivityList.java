@@ -9,14 +9,14 @@ package com.example.firebaseapp2;
 
         import java.util.List;
 
-public class Bike_ActivityList extends ArrayAdapter<Bike_Activity> {
+public class BikeActivityList extends ArrayAdapter<BikeActivity> {
     private Activity context;
-    List<Bike_Activity> bike_activity;
+    List<BikeActivity> bikeActivities;
 
-    public Bike_ActivityList(Activity context, List<Bike_Activity> bike_activity) {
-        super(context, R.layout.product_list, bike_activity);
+    public BikeActivityList(Activity context, List<BikeActivity> bikeActivities) {
+        super(context, R.layout.product_list, bikeActivities);
         this.context = context;
-        this.bike_activity = bike_activity;
+        this.bikeActivities = bikeActivities;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class Bike_ActivityList extends ArrayAdapter<Bike_Activity> {
         TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
         TextView textViewPrice = (TextView) listViewItem.findViewById(R.id.textViewPrice);
 
-        Bike_Activity product = bike_activity.get(position);
+        BikeActivity product = bikeActivities.get(position);
         textViewName.setText(product.getActivityName());
         textViewPrice.setText(String.valueOf(product.getLevel()));
         return listViewItem;
