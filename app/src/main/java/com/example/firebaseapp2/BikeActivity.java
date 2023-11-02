@@ -1,13 +1,13 @@
 package com.example.firebaseapp2;
 
-public class Bike_Activity {
+public class BikeActivity {
     private String _id;
     private String _activityname;
 
     private String _location;
     private int _level;
 
-    public Bike_Activity(String id, String activityname, int level, String location) {
+    public BikeActivity(String id, String activityname, int level, String location) {
         _id = id;
         _activityname = activityname;
         _location = location;
@@ -26,14 +26,16 @@ public class Bike_Activity {
         return _id;
     }
 
-    public String getLocation() {return _location;}
+    public String getLocation() {
+        return _location;
+    }
     public void setActivityName(String activityname) {
         _activityname = activityname;
     }
     public String getActivityName() {
         return _activityname;
     }
-    public void setLevel(double level) {
+    public void setLevel(int level) {
         _level = level;
     }
     public int getLevel() {
