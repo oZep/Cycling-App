@@ -37,6 +37,7 @@ public class AdminPage extends AppCompatActivity {
     List<BikeActivity> bikeActivities;
 
     DatabaseReference databaseReference;
+    FirebaseDatabase databaseFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,10 @@ public class AdminPage extends AppCompatActivity {
                 addProduct();
             }
         });
+
+        databaseFirebase = FirebaseDatabase.getInstance();
+        databaseReference = databaseFirebase.getReference("https://pscychopath-c05cd-default-rtdb.firebaseio.com/");
+
 
         listViewProducts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
