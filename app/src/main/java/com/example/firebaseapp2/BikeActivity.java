@@ -1,28 +1,29 @@
 package com.example.firebaseapp2;
 
 public class BikeActivity {
-    private String _id;
+    private int _id;
     private String _activityname;
 
     private String _location;
     private int _level;
 
-    public BikeActivity(String id, String activityname, int level, String location) {
+    public BikeActivity(int id, String activityname, int level, String location) {
         _id = id;
         _activityname = activityname;
         _location = location;
         _level = level;
     }
-    public void Activity(String activityname, int level, String location) {
+    public BikeActivity(){}
+    public void Activity(String activityname, int level, String location, int sku) {
         _activityname = activityname;
         _level = level;
         _location = location;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         _id = id;
     }
-    public String getId() {
+    public int getId() {
         return _id;
     }
 
@@ -38,7 +39,6 @@ public class BikeActivity {
     public void setLevel(int level) {
         _level = level;
     }
-    public int getLevel() {
-        return _level;
-    }
+    public int getLevel() {return _level;}
+
 }

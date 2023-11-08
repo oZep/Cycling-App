@@ -6,6 +6,7 @@ import java.util.Map;
 public class UserAccount {
     protected String username;
     protected String email;
+    protected int _id;
     protected String password;
     public UserAccount(String u, String e, String p) {
         username = u;
@@ -25,4 +26,20 @@ public class UserAccount {
         result.put("password", password);
         return result;
     }
+
+    public void setID(int id) {
+        _id = id;
+    }
+    public int getID() {
+        return _id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
 }

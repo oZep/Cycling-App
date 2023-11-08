@@ -2,6 +2,7 @@ package com.example.firebaseapp2;
 
         import androidx.appcompat.app.AppCompatActivity;
 
+        import android.database.sqlite.SQLiteDatabase;
         import android.os.Bundle;
         import android.app.AlertDialog;
 
@@ -16,8 +17,6 @@ package com.example.firebaseapp2;
         import android.widget.ListView;
         import android.widget.Toast;
 
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
 
         import java.util.ArrayList;
         import java.util.List;
@@ -36,8 +35,6 @@ public class AdminPage extends AppCompatActivity {
 
     List<BikeActivity> bikeActivities;
 
-    DatabaseReference databaseReference;
-    FirebaseDatabase databaseFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +64,8 @@ public class AdminPage extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 BikeActivity activity = bikeActivities.get(i);
-                showUpdateDeleteDialog(activity.getId(), activity.getActivityName(), activity.getLocation(), activity.getLevel());
+                // TODO: Make update delete Dialog
+                // showUpdateDeleteDialog(activity.getId(), activity.getActivityName(), activity.getLocation(), activity.getLevel());
                 return true;
             }
         });
@@ -80,7 +78,9 @@ public class AdminPage extends AppCompatActivity {
     }
 
 
-    private void showUpdateDeleteDialog(final String productId, String productName, String location, int intensity) {
+    /*
+    private void showUpdateDeleteDialog(final int productId, String productName, String location, int intensity) {
+
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -109,16 +109,18 @@ public class AdminPage extends AppCompatActivity {
             }
         });
 
+
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteProduct(view);
+                deleteProduct(productName);
                 b.dismiss();
             }
         });
     }
+    */
 
-    private void updateProduct(String id, String name, int intensity, String location) {
+    private void updateProduct(int id, String name, int intensity, String location) {
         BikeActivity p = new BikeActivity(id, name, intensity, location);
         MyDBHandler dbHandler = new MyDBHandler(this);
         dbHandler.addProduct(p);
@@ -126,18 +128,16 @@ public class AdminPage extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Event Updated", Toast.LENGTH_LONG).show();
     }
 
-    private void deleteProduct(View view) {
+    private void deleteProduct(String ActivityName) {
 
         MyDBHandler dbHandler = new MyDBHandler(this);
-        boolean result = dbHandler.deleteProduct(productBox.getText().toString());
+        boolean result = dbHandler.deleteProduct(ActivityName);
 
         if (result) {
-            idView.setText("Activity Deleted");
-            productBox.setText("");
-            skuBox.setText("");
+            Toast.makeText(this, "Activity Deleted", Toast.LENGTH_LONG).show();
         }
         else
-            idView.setText("No Match Found");
+            Toast.makeText(this, "No Match Found", Toast.LENGTH_LONG).show();
 
     }
 
@@ -169,9 +169,9 @@ public class AdminPage extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(name)) {
             //FIX
-            BikeActivity p = new BikeActivity(id, name, level, location);
-
             MyDBHandler dbHandler = new MyDBHandler(this);
+            SQLiteDatabase data = dbHandler.getDB();
+            BikeActivity p = new BikeActivity(dbHandler.getSize(data), name, level, location);
             dbHandler.addProduct(p);
 
             editTextIntensity.setText("");

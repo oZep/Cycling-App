@@ -13,10 +13,12 @@ public class MyAccountHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "accountDB.db";
     public static final String TABLE_ACCOUNTS = "account";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_USERNAME = "accountname";
-    public static final String COLUMN_PASSWORD = "passwordname";
-    public static final Bool COLUMN_TYPE = null;
-    public static final String COLUMN_SKU = "SKU";
+    public static final String COLUMN_ACCOUNT = "account";
+
+    public static final String COLUMN_USERNAME = "user";
+    public static final String COLUMN_PASSWORD = "pass";
+
+    public static final String COLUMN_TYPE = "User";
 
     public MyAccountHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,8 +28,8 @@ public class MyAccountHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PRODUCTS_TABLE = "CREATE TABLE " +
                 TABLE_ACCOUNTS + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_PRODUCTNAME
-                + " TEXT," + COLUMN_SKU + " INTEGER" + ")";
+                + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_ACCOUNT
+                + " TEXT" + ")";
         db.execSQL(CREATE_PRODUCTS_TABLE);
     }
 
@@ -40,55 +42,51 @@ public class MyAccountHandler extends SQLiteOpenHelper {
     }
 
 
-    public void addUserAccount(String Username, String Passowrd) {
+    public void addUserAccount(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_USERNAME, Username. getActivityName());
-        values.put(COLUMN_PASSWORD, Password. getActivityName());
-        values.put(COLUMN_TYPE, True. getActivityName());
-        values.put(COLUMN_SKU, Username.getSku());
+        values.put(COLUMN_TYPE, "User");
+        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_PASSWORD, password);
 
         db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
     }
 
-    public void addAdminAccount(String Username, String Passowrd) {
+    public void addAdminAccount(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_USERNAME, Username. getActivityName());
-        values.put(COLUMN_PASSWORD, Password. getActivityName());
-        values.put(COLUMN_TYPE, False. getActivityName());
-        values.put(COLUMN_SKU, Username.getSku());
+        values.put(COLUMN_TYPE, "Admin");
+        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_PASSWORD, password);
 
         db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
     }
 
-    public Product findProduct(String username) {
+    public Boolean findProduct(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "Select * FROM " + TABLE_ACCOUNTS + " WHERE " + COLUMN_USERNAME
-                + " = \"" + accountname + "\"";
+        String query = "Select * FROM " + TABLE_ACCOUNTS + " WHERE " + COLUMN_ACCOUNT
+                + " = \"" + username + "\"";
 
         Cursor cursor = db.rawQuery(query, null);
+        Boolean found = false;
 
         if (cursor.moveToFirst()) {
-            username.setID(Integer.parseInt(cursor.getString(0)));
-            username.setActivityName(cursor.getString(1));
-            username.setSku(Integer.parseInt(cursor.getString(2)));
-            cursor.close();
+            found = true;
 
         } else {
-            username = null;
+            found = false;
         }
         db.close();
-        return username;
+        return found;
     }
 
     public boolean deleteProduct(String username) {
         boolean result = false;
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "Select * FROM " + TABLE_ACCOUNTS + " WHERE " + COLUMN_USERNAME +
-                " = \"" + accountname + "\"";
+        String query = "Select * FROM " + TABLE_ACCOUNTS + " WHERE " + COLUMN_ACCOUNT +
+                " = \"" + username + "\"";
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
