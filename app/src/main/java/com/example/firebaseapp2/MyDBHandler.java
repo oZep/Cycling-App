@@ -39,7 +39,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public void addProduct(BikeActivity product) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PRODUCTNAME, product.getProductName());
+        values.put(COLUMN_PRODUCTNAME, product. getActivityName());
         values.put(COLUMN_SKU, product.getSku());
 
         db.insert(TABLE_PRODUCTS, null, values);
@@ -55,7 +55,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         BikeActivity product = new BikeActivity();
         if (cursor.moveToFirst()) {
             product.setID(Integer.parseInt(cursor.getString(0)));
-            product.setProductName(cursor.getString(1));
+            product.setActivityName(cursor.getString(1));
             product.setSku(Integer.parseInt(cursor.getString(2)));
             cursor.close();
 

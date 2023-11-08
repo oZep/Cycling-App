@@ -63,10 +63,6 @@ public class AdminPage extends AppCompatActivity {
             }
         });
 
-        databaseFirebase = FirebaseDatabase.getInstance();
-        databaseReference = databaseFirebase.getReference("https://pscychopath-c05cd-default-rtdb.firebaseio.com/");
-
-
         listViewProducts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -116,27 +112,33 @@ public class AdminPage extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteProduct(productId);
+                deleteProduct(view);
                 b.dismiss();
             }
         });
     }
 
     private void updateProduct(String id, String name, int intensity, String location) {
-        DatabaseReference dr = FirebaseDatabase.getInstance().getReference("events").child(id);
-
-        // FIX
         BikeActivity p = new BikeActivity(id, name, intensity, location);
-        dr.setValue(p);
+        MyDBHandler dbHandler = new MyDBHandler(this);
+        dbHandler.addProduct(p);
 
         Toast.makeText(getApplicationContext(), "Event Updated", Toast.LENGTH_LONG).show();
     }
 
-    private void deleteProduct(String id) {
-        DatabaseReference dr = FirebaseDatabase.getInstance().getReference("events").child(id);
+    private void deleteProduct(View view) {
 
-        dr.removeValue();
-        Toast.makeText(getApplicationContext(), "Event Deleted", Toast.LENGTH_LONG).show();
+        MyDBHandler dbHandler = new MyDBHandler(this);
+        boolean result = dbHandler.deleteProduct(productBox.getText().toString());
+
+        if (result) {
+            idView.setText("Activity Deleted");
+            productBox.setText("");
+            skuBox.setText("");
+        }
+        else
+            idView.setText("No Match Found");
+
     }
 
 
@@ -167,10 +169,10 @@ public class AdminPage extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(name)) {
             //FIX
-            String id = databaseReference.push().getKey();
             BikeActivity p = new BikeActivity(id, name, level, location);
 
-            databaseReference.child(id).setValue(p);
+            MyDBHandler dbHandler = new MyDBHandler(this);
+            dbHandler.addProduct(p);
 
             editTextIntensity.setText("");
             editTextLocation.setText("");
