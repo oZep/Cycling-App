@@ -17,23 +17,31 @@
         tools:layout_editor_absoluteY="0dp">
 
 
-        <TextView
-            android:layout_width="89dp"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:gravity="center"
+        <ImageView
+            android:layout_width="118dp"
+            android:layout_height="86dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:src="@drawable/baseline_directions_bike_24"
+            app:tint="#FF5733" />
+
+        <TextView
+            android:layout_width="127dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Login"
             android:textSize="30sp"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:padding="16dp"
+            android:padding="10dp"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
-                android:padding="16dp"
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint='Email'
@@ -52,7 +60,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
-                android:padding="16dp"
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint='Password'
@@ -69,34 +77,6 @@
             android:layout_height="wrap_content"
             android:gravity="center">
 
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="165dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#FF5733"
-                android:gravity="center"
-                android:padding="20dp"
-                android:textColor="#FFFF"
-                android:text="Login as User"
-                android:textSize="20sp"
-                android:textStyle="bold">
-
-            </Button>
-
-            <Button
-                android:id="@+id/btn_login_a"
-                android:layout_width="165dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#FF5733"
-                android:gravity="center"
-                android:textColor="#FFFF"
-                android:padding="20dp"
-                android:text="Login as Club Admin"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
             <ProgressBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,30 +84,58 @@
                 android:visibility="gone"
                 android:padding="10dp"/>
 
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF5733"
+                android:gravity="center"
+                android:padding="20dp"
+                android:textColor="#FFFF"
+                android:text="Login as a User"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_login_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FF5733"
+                android:gravity="center"
+                android:onClick="setOnClickListener"
+                android:padding="20dp"
+                android:text="Login as Club Admin"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:textStyle="bold">
+
+            </Button>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/registerNow"
+                android:text="Need to register an account?"
+                android:layout_gravity="center"
+                android:textSize="17sp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:text="Forgot Password?">
+
+            </TextView>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/registerNow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:text="Need to register an account?"
-            android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Forgot Password?"
-            android:textSize="17sp">
-
-        </TextView>
 
 
     </LinearLayout>

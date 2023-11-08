@@ -16,6 +16,11 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
+        <ImageView
+            android:layout_width="103dp"
+            android:layout_height="92dp"
+            android:src="@drawable/baseline_directions_bike_24"
+            app:tint="#FF5733"></ImageView>
 
         <TextView
             android:layout_width="196dp"
@@ -80,7 +85,7 @@
 
             <Button
                 android:id="@+id/btn_login"
-                android:layout_width="165dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#FF5733"
@@ -88,15 +93,15 @@
                 android:onClick="setOnClickListener"
                 android:padding="20dp"
                 android:text="Register as User"
+                android:textColor="#FFFF"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#FFFF">
+                android:textStyle="bold">
 
             </Button>
 
             <Button
                 android:id="@+id/btn_reg_a"
-                android:layout_width="165dp"
+                android:layout_width="235dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#FF5733"

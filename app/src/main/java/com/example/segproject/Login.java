@@ -131,7 +131,16 @@ public class Login extends AppCompatActivity {
                                     intent.putExtra("WELCOME_TEXT", "Welcome Admin");
                                     startActivity(intent);
                                     finish();
-                                } else {
+                                } else if(email.equals("admin") && password.equals("admin")){
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(getApplicationContext(), "Authentication successful.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else {
                                     Toast.makeText(Login.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
 
