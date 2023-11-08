@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class MyDBHandler extends SQLiteOpenHelper {
@@ -81,12 +83,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
-    public int getSize(SQLiteDatabase db) {
-        String query = "SELECT COUNT(*) FROM " + TABLE_ACTIVITIES+";";
+    public int getSize(SQLiteDatabase db) throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM " + TABLE_ACTIVITIES+";";
         Cursor cursor = db.rawQuery(query, null);
-        int size = Integer.parseInt(cursor.getString(0));
-        cursor.close();
-        return size;
+        return cursor.getInt(Math.abs(cursor.getColumnIndex("total")));
     }
 
     public SQLiteDatabase getDB() {
