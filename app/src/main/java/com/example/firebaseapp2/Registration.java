@@ -17,7 +17,7 @@ public class Registration extends AppCompatActivity {
     EditText passwordBox;
     Button userRegister;
     Button adminRegister;
-    DatabaseReference databaseReference;
+    MyAccountHandler dbAccount = new MyAccountHandler(this);
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
@@ -25,7 +25,7 @@ public class Registration extends AppCompatActivity {
         passwordBox = (EditText) findViewById(R.id.passwordSignUp);
         adminRegister = (Button) findViewById(R.id.adminSignUp);
         userRegister = (Button) findViewById(R.id.userSignUp);
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        MyDBHandler dbHandler = new MyDBHandler(this);
 
         adminRegister.setOnClickListener(
                 new View.OnClickListener() {
@@ -44,19 +44,15 @@ public class Registration extends AppCompatActivity {
     }
 
     private void adminRegister(String email, String password) {
-        String key = databaseReference.child("accounts/admins").push().getKey();
         HashMap<String, Object> acc = (HashMap<String, Object>) (new AdminAccount(email, password)).toMap();
         HashMap<String, Object> childUpdates = new HashMap<String, Object>();
-        childUpdates.put("/accounts/admins" + key, acc);
-        databaseReference.updateChildren(childUpdates);
+        dbAccount.addAdminAccount(email, password);
     }
 
     private void userRegister(String email, String password) {
-        String key = databaseReference.child("accounts/participants").push().getKey();
         HashMap<String, Object> acc = (HashMap<String, Object>) (new ParticipantAccount(email, password)).toMap();
         HashMap<String, Object> childUpdates = new HashMap<String, Object>();
-        childUpdates.put("/accounts/participants" + key, acc);
-        databaseReference.updateChildren(childUpdates);
+        dbAccount.addUserAccount(email, password);
     }
 
 }

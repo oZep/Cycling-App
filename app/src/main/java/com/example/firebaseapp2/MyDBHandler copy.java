@@ -10,10 +10,10 @@ import android.database.Cursor;
 
 public class MyDBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "productDB.db";
-    public static final String TABLE_PRODUCTS = "products";
+    private static final String DATABASE_NAME = "activityDB.db";
+    public static final String TABLE_PRODUCTS = "activity";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_PRODUCTNAME = "productname";
+    public static final String COLUMN_PRODUCTNAME = "activityname";
     public static final String COLUMN_SKU = "SKU";
 
     public MyDBHandler(Context context) {
