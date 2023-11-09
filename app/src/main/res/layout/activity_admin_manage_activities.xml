@@ -113,13 +113,25 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:layout_width="196dp"
+        android:id="@+id/goToHomepageAdmin"
+        android:backgroundTint="#4ba0ff"
+        android:textColor="#FFFF"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Return to Login"
         android:padding="15dp"
+        android:text="Return to Admin Homepage"
         android:textSize="15sp"
-        android:textStyle="bold"
-        android:id="@+id/goBackButton"/>
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/goBackButton"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        android:text="Return to Login"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
