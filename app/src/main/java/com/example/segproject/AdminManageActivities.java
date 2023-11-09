@@ -11,6 +11,7 @@ public class AdminManageActivities extends AppCompatActivity {
 
     Button goBackButton;
     Button goBackToHomepage;
+    Button goToAddEventPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,7 @@ public class AdminManageActivities extends AppCompatActivity {
         setContentView(R.layout.activity_admin_manage_activities);
         goBackButton = findViewById(R.id.goBackButton);
         goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
+        goToAddEventPage = findViewById(R.id.addEvent_btn);
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -30,6 +32,14 @@ public class AdminManageActivities extends AppCompatActivity {
         goBackToHomepage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        goToAddEventPage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminHandleAddEvent.class);
                 startActivity(intent);
                 finish();
             }
