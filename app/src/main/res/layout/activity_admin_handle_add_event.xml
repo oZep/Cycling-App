@@ -27,6 +27,14 @@
             android:layout_gravity="center"
             android:id="@+id/goBackButton"
             android:text="Go back to Admin Controls"
+            android:padding="10dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/viewEventsButton"
+            android:text="View Events"
             android:padding="10dp">
 
         </Button>
@@ -36,7 +44,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -185,6 +193,8 @@
                 android:layout_weight="1"
                 android:onClick="newProduct"
                 android:text="Add Event" />
+
+
 
 
         </LinearLayout>

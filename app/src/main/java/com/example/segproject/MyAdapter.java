@@ -31,12 +31,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.name_id.setText(String.valueOf(name_id.get(position)));
+        holder.email_id.setText(String.valueOf(email_id.get(position)));
+        holder.age_id.setText(String.valueOf(age_id.get(position)));
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return name_id.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -44,6 +47,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            name_id = itemView.findViewById(R.id.textname);
+            email_id = itemView.findViewById(R.id.textemail);
+            age_id = itemView.findViewById(R.id.textage);
+
+
         }
     }
 }

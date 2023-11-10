@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class AdminHandleAddEvent extends AppCompatActivity {
 
-    Button goBackButton, addEvent;
+    Button goBackButton, addEvent, viewEvent;
     AdminEventDBHandler db;
     EditText name, email, age;
 
@@ -23,6 +23,7 @@ public class AdminHandleAddEvent extends AppCompatActivity {
 
         goBackButton = findViewById(R.id.goBackButton);
         addEvent = findViewById(R.id.addEvent);
+        viewEvent = findViewById(R.id.viewEventsButton);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         age = findViewById(R.id.age);
@@ -46,6 +47,14 @@ public class AdminHandleAddEvent extends AppCompatActivity {
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AdminManageActivities.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        viewEvent.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminViewEvents.class);
                 startActivity(intent);
                 finish();
             }
