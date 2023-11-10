@@ -36,6 +36,8 @@ public class AdminEventDBHandler extends SQLiteOpenHelper {
             return false;
         } else return true;
     }
+
+    //TODO add something for deleting the data
     public Cursor getData(){
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select * from Userdetails", null );
