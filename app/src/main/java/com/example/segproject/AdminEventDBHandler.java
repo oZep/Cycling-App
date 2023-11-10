@@ -43,5 +43,12 @@ public class AdminEventDBHandler extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from Userdetails", null );
         return cursor;
     }
+
+    public boolean deleteUserData(String name) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        long result = DB.delete("Userdetails", "name=?", new String[]{name});
+        return result != -1;
+    }
 }
+
 

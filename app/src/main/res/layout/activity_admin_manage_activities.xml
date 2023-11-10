@@ -90,6 +90,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:padding="15dp"
+                android:id="@+id/deleteEvent_btn"
                 android:text="Delete Event"
                 android:textSize="15sp"
                 android:textStyle="bold" />
