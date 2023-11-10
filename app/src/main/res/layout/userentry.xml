@@ -6,82 +6,87 @@
     app:cardElevation="12dp"
     app:cardCornerRadius="10dp"
     android:layout_margin="16dp"
-    android:backgroundTint="#efe">
+    android:backgroundTint="#efefef">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="255dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:orientation="vertical"
->
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:"
-                android:textStyle="bold"
-                android:textSize="24sp">
+                android:text="Event name:"
+                android:textSize="24sp"
+                android:textStyle="bold">
 
             </TextView>
+
             <TextView
                 android:id="@+id/textname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="24sp">
+                android:textSize="24sp"
+                android:textStyle="bold">
 
             </TextView>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email:"
-                android:textStyle="bold"
-                android:textSize="24sp">
+                android:text="Type:"
+                android:textSize="24sp"
+                android:textStyle="bold">
 
             </TextView>
+
             <TextView
                 android:id="@+id/textemail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="24sp">
+                android:textSize="24sp"
+                android:textStyle="bold">
 
             </TextView>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Age:"
-                android:textStyle="bold"
-                android:textSize="24sp">
+                android:text="Date:"
+                android:textSize="24sp"
+                android:textStyle="bold">
 
             </TextView>
+
             <TextView
                 android:id="@+id/textage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="24sp">
+                android:textSize="24sp"
+                android:textStyle="bold">
 
             </TextView>
 
