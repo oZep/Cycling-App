@@ -133,7 +133,7 @@ public class Login extends AppCompatActivity {
                                     Toast.makeText(Login.this, "Authentication successful.",
                                             Toast.LENGTH_SHORT).show();
                                     //Intent to open the admin page
-                                    Intent intent = new Intent(getApplicationContext(), AdminManageAccounts.class);
+                                    Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
                                     startActivity(intent);
                                     finish();
 

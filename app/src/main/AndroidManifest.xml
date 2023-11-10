@@ -13,6 +13,12 @@
         android:theme="@style/Theme.SEGProject"
         tools:targetApi="31">
         <activity
+            android:name=".AdminViewEvents"
+            android:exported="false" />
+        <activity
+            android:name=".AdminHandleAddEvent"
+            android:exported="false" />
+        <activity
             android:name=".AdminManageActivities"
             android:exported="false" />
         <activity
@@ -20,6 +26,9 @@
             android:exported="false" />
         <activity
             android:name=".AdminLoginScreen"
+            android:exported="false" />
+        <activity
+            android:name=".Registration"
             android:exported="false" />
         <activity
             android:name=".Login"

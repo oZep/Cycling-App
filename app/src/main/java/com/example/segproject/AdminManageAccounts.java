@@ -29,9 +29,13 @@ import java.util.ArrayList;
 public class AdminManageAccounts extends AppCompatActivity {
 
     Button goBackButton;
+<<<<<<< HEAD
     FirebaseAuth mAuth;
 
     ListView accountList;
+=======
+    Button goBackToHomepage;
+>>>>>>> fca05e270d1a4680a8472d406f9dbc421b88bf1c
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,11 @@ public class AdminManageAccounts extends AppCompatActivity {
         setContentView(R.layout.activity_admin_manage_accounts);
         mAuth = FirebaseAuth.getInstance();
         goBackButton = findViewById(R.id.goBackButton);
+<<<<<<< HEAD
         accountList = findViewById(R.id.accountList);
+=======
+        goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
+>>>>>>> fca05e270d1a4680a8472d406f9dbc421b88bf1c
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -49,6 +57,7 @@ public class AdminManageAccounts extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
         ListUsersPage users = null;
         try {
             users = mAuth.listUsers(null);
@@ -79,4 +88,14 @@ public class AdminManageAccounts extends AppCompatActivity {
             }
     });
 }
+=======
+        goBackToHomepage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+>>>>>>> fca05e270d1a4680a8472d406f9dbc421b88bf1c
 }
