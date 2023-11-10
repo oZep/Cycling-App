@@ -46,7 +46,7 @@ public class AdminEventDBHandler extends SQLiteOpenHelper {
 
     public boolean deleteUserData(String name) {
         SQLiteDatabase DB = this.getWritableDatabase();
-        long result = DB.delete("Userdetails", "name=?", new String[]{name});
+        long result = DB.delete("Userdetails", "email=? OR name=? OR age=?", new String[]{name});
         return result != -1;
     }
 }

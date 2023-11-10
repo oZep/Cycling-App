@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ public class AdminViewEvents extends AppCompatActivity {
     ArrayList<String> name,email,age;
     AdminEventDBHandler db;
     MyAdapter adapter;
+    Button goBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,18 @@ public class AdminViewEvents extends AppCompatActivity {
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
         displayData();
+        goBackButton = findViewById(R.id.makeChanges_btn);
+
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminManageActivities.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
+
 
     private void displayData() {
         Cursor c = db.getData();
