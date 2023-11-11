@@ -10,7 +10,6 @@
     tools:context=".MainActivity"
     >
 
-
     <ImageView
         android:layout_width="167dp"
         android:layout_height="131dp"
