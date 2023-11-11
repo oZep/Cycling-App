@@ -12,9 +12,12 @@
 
 <img width="1031" alt="Screenshot_2023-11-10_at_9 23 11_PM" src="https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/9174bea9-e0dc-4796-abdc-86b70f148f1e">
 
-In order to test the **admin delete user** functionality, you must first register an account, then login in as an admin, and navigate to the account management, and long press on the account in order to delete it.
+## Event Type Handling: Add Event Type, Delete Event Type, View Event Types
+
+![eventHandlingDone](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/116132879/3235ac91-3e7a-4ef6-96c2-e79dd0b9220b)
 
 
+**NOTE** In order to test the **admin delete user** functionality, you must first register an account, then login in as an admin, and navigate to the account management, and long press on the account in order to delete it.
 
 
 ## Deliverable 1 
