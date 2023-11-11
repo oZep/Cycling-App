@@ -121,7 +121,6 @@
         android:layout_marginTop="15dp"
         android:padding="15dp"
         android:textSize="15sp"
-        android:textStyle="bold"
         android:id="@+id/goBackButton"/>
 
 </LinearLayout>
