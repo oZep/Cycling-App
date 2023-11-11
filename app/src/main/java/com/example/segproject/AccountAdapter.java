@@ -13,11 +13,11 @@ import androidx.annotation.NonNull;
 
 import java.util.List;
 
-public class AccountAdapter extends ArrayAdapter<Account> {
+public class AccountAdapter extends ArrayAdapter<UserAccount> {
     private Activity context;
-    List<Account> accounts;
+    List<UserAccount> accounts;
 
-    public AccountAdapter(@NonNull Activity context, List<Account> accounts) {
+    public AccountAdapter(@NonNull Activity context, List<UserAccount> accounts) {
         super(context, R.layout.activity_account_list, accounts);
         this.context = context;
         this.accounts = accounts;
@@ -31,7 +31,7 @@ public class AccountAdapter extends ArrayAdapter<Account> {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textAccountUser = (TextView) listViewItem.findViewById(R.id.textAccountUser);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textAccountEmail = (TextView) listViewItem.findViewById(R.id.textAccountEmail);
 
-        Account account = accounts.get(position);
+        UserAccount account = accounts.get(position);
         textAccountUser.setText(account.getEmail());
         textAccountEmail.setText(String.valueOf(account.getUsername()));
         return listViewItem;
