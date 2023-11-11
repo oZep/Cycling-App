@@ -22,4 +22,4 @@
 
 
 ## Deliverable 2
-In order to test the **admin delete user** functionality, you must first register an account, then login in as an admin, and navigate to the account management.
+In order to test the **admin delete user** functionality, you must first register an account, then login in as an admin, and navigate to the account management, and long press on the account in order to delete it.
