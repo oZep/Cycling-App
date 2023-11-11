@@ -36,7 +36,7 @@ public class AdminHandleAddEvent extends AppCompatActivity {
 
                 Boolean checkInsertData = db.insertUserData(nameTXT, emailTXT, ageTXT);
                 if(checkInsertData){
-                    Toast.makeText(AdminHandleAddEvent.this,"yay", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminHandleAddEvent.this,"Event created successfully", Toast.LENGTH_SHORT).show();
                 }
 
 

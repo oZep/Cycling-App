@@ -16,12 +16,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+
             android:layout_width="140dp"
             android:layout_height="90dp"
             android:layout_gravity="center"
             android:layout_marginTop="75dp"
             android:src="@drawable/baseline_pedal_bike_24"></ImageView>
         <Button
+            android:backgroundTint="#ff4b4b"
+            android:textColor="#FFF"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -35,7 +39,11 @@
             android:layout_gravity="center"
             android:id="@+id/viewEventsButton"
             android:text="View Events"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:backgroundTint="#ff4b4b"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            >
 
         </Button>
 
@@ -189,6 +197,9 @@
                 android:id="@+id/addEvent"
                 android:layout_width="152dp"
                 android:layout_height="66dp"
+                android:backgroundTint="#ff4b4b"
+                android:textColor="#FFF"
+                android:textStyle="bold"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"

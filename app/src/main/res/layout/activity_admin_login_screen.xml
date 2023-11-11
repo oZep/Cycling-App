@@ -26,6 +26,7 @@
         android:gravity="center"
         android:text="Welcome, Club Admin"
         android:textSize="30sp"
+
         android:textStyle="bold" />
 
 
@@ -111,6 +112,9 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:backgroundTint="#4ba0ff"
+        android:textStyle="bold"
+        android:textColor="#FFFF"
         android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -118,7 +122,6 @@
         android:layout_marginTop="15dp"
         android:padding="15dp"
         android:textSize="15sp"
-        android:textStyle="bold"
         android:id="@+id/goBackButton"/>
 
 </LinearLayout>

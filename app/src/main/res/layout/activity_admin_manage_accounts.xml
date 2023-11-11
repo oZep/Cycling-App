@@ -58,11 +58,73 @@
 
             android:textStyle="bold" />
 
+
+        <GridLayout
+            android:layout_width="290dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:columnCount="2"
+
+            android:padding="19dp"
+            android:rowCount="2">
+
+            <Button
+                android:backgroundTint="#ff4b4b"
+                android:textColor="#FFF"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:text="Add Event"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:backgroundTint="#ff4b4b"
+                android:textColor="#FFF"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:text="Delete Event"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:backgroundTint="#ff4b4b"
+                android:textColor="#FFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:text="Edit Event"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:backgroundTint="#ff4b4b"
+                android:textColor="#FFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:text="View Events"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </GridLayout>
+
+=======
+
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/goToHomepageAdmin"
-        android:backgroundTint="#4ba0ff"
+        android:backgroundTint="#ab4bff"
         android:textColor="#FFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,9 +139,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Return to Login"
+        android:backgroundTint="#4ba0ff"
+        android:textStyle="bold"
+        android:textColor="#FFFF"
         android:padding="15dp"
         android:textSize="15sp"
-        android:textStyle="bold"
         android:id="@+id/goBackButton"/>
 
     <ListView
