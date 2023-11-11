@@ -111,6 +111,9 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:backgroundTint="#4ba0ff"
+        android:textStyle="bold"
+        android:textColor="#FFFF"
         android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

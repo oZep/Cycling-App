@@ -137,10 +137,10 @@
         android:layout_gravity="center"
         android:text="Return to Login"
         android:backgroundTint="#4ba0ff"
+        android:textStyle="bold"
         android:textColor="#FFFF"
         android:padding="15dp"
         android:textSize="15sp"
-        android:textStyle="bold"
         android:id="@+id/goBackButton"/>
 
     <ListView
