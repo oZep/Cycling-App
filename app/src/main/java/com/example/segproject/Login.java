@@ -28,14 +28,14 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new AccountDBHandler(this);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activtity_login);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);
         progressBar =findViewById(R.id.progressBar);
         textView =findViewById(R.id.registerNow);
         buttonLoginOwner = findViewById(R.id.btn_login_a);
-        buttonLoginAdmin = findViewById(R.id.login_as_admin);
+        buttonLoginAdmin = findViewById(R.id.btn_login_a);
 
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
