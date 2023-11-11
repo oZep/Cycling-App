@@ -68,6 +68,8 @@
             android:rowCount="2">
 
             <Button
+                android:backgroundTint="#ff4b4b"
+                android:textColor="#FFF"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -78,6 +80,8 @@
                 android:textStyle="bold" />
 
             <Button
+                android:backgroundTint="#ff4b4b"
+                android:textColor="#FFF"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -88,6 +92,8 @@
                 android:textStyle="bold" />
 
             <Button
+                android:backgroundTint="#ff4b4b"
+                android:textColor="#FFF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -98,6 +104,8 @@
                 android:textStyle="bold" />
 
             <Button
+                android:backgroundTint="#ff4b4b"
+                android:textColor="#FFF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -113,7 +121,7 @@
 
     <Button
         android:id="@+id/goToHomepageAdmin"
-        android:backgroundTint="#4ba0ff"
+        android:backgroundTint="#ab4bff"
         android:textColor="#FFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -128,6 +136,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Return to Login"
+        android:backgroundTint="#4ba0ff"
+        android:textColor="#FFFF"
         android:padding="15dp"
         android:textSize="15sp"
         android:textStyle="bold"
