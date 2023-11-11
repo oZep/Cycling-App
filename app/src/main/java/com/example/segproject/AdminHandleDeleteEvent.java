@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class AdminHandleDeleteEvent extends AppCompatActivity {
     AdminEventDBHandler db = new AdminEventDBHandler(this);
@@ -52,10 +51,7 @@ public class AdminHandleDeleteEvent extends AppCompatActivity {
         boolean result = db.deleteUserData(name);
 
         if (result) {
-            nameToDelete.setText(" ");
-            Toast.makeText(AdminHandleDeleteEvent.this, "Deletion succesful.",
-                    Toast.LENGTH_SHORT).show();
-
+            nameToDelete.setText(" :Deleted");
         }
     }
 

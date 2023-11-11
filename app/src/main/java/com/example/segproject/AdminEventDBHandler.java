@@ -49,6 +49,7 @@ public class AdminEventDBHandler extends SQLiteOpenHelper {
         long result = DB.delete("Userdetails", "email=? OR name=? OR age=?", new String[]{name});
         return result != -1;
     }
+
 }
 
 

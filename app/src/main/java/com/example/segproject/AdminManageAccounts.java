@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import java.util.Iterator;
+
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,38 +19,28 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-//import com.google.firebase.auth.ExportedUserRecord;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
-//import com.google.firebase.auth.ListUsersPage;
-//import com.google.firebase.auth.UserRecord;
 
 import java.util.ArrayList;
 
 
 public class AdminManageAccounts extends AppCompatActivity {
 
-    Button goBackButton, goToHomepageAdmin;
-
-//    FirebaseAuth mAuth;
+    Button goBackButton;
 
     ListView accountList;
 
-    Button goBackToHomepage;
+    static AccountDBHandler db;
 
+    Button goBackToHomepage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_manage_accounts);
-//        mAuth = FirebaseAuth.getInstance();
         goBackButton = findViewById(R.id.goBackButton);
-        goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
-
         accountList = findViewById(R.id.accountList);
-
         goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
-
+        db = new AccountDBHandler(this);
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -58,54 +50,40 @@ public class AdminManageAccounts extends AppCompatActivity {
             }
         });
 
-        goToHomepageAdmin.setOnClickListener(new View.OnClickListener() {
+        Cursor c = db.getData();
+        ArrayList<String> arr= new ArrayList<>();
+
+        if(c.getCount() == 0){
+            Toast.makeText(AdminManageAccounts.this, "No entries", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
+            while(c.moveToNext()){
+                arr.add(c.getString(0));
+            }
+        }
+
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr); accountList.setAdapter(adapter);
+        accountList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                    String account = (String) parent.getItemAtPosition(position);
+                    try {
+                        db.deleteUserData(account);
+                        adapter.remove(account);
+                        Toast.makeText(AdminManageAccounts.this, "User Deleted", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(AdminManageAccounts.this, "Error Deleting User", Toast.LENGTH_SHORT).show();
+                    }
+            }
+        });
+
+        goBackToHomepage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
                 startActivity(intent);
                 finish();
             }
         });
-//
-//
-//        ListUsersPage users = null;
-//        try {
-//            users = mAuth.listUsers(null);
-//        } catch (FirebaseAuthException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        ArrayList<ExportedUserRecord> arr= new ArrayList<>();
-//        while (users != null) {
-//            Iterator<ExportedUserRecord> iter = users.getValues().iterator();
-//            while (iter.hasNext()) {
-//                arr.add(iter.next());
-//            }
-//            users = users.getNextPage();
-//        }
-//
-//    ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr); accountList.setAdapter(adapter);
-//        accountList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-//                    UserRecord account = (UserRecord) parent.getItemAtPosition(position);
-//                    String uid = account.getUid();
-//                    try {
-//                        mAuth.deleteUser(uid);
-//                        Toast.makeText(AdminManageAccounts.this, "User Deleted", Toast.LENGTH_SHORT).show();
-//                    } catch (Exception e) {
-//                        Toast.makeText(AdminManageAccounts.this, "Error Deleting User", Toast.LENGTH_SHORT).show();
-//                    }
-//            }
-//    });
-//}
-//
-//        goBackToHomepage.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//    }
-
     }
 }
