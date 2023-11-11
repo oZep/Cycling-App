@@ -12,19 +12,17 @@
 
 
     <ImageView
-        android:layout_width="143dp"
-        android:layout_height="124dp"
+        android:layout_width="148dp"
+        android:layout_height="141dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/baseline_how_to_reg_24"
+        android:src="@drawable/baseline_groups_24"
         app:tint="#FF5733" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="Welcome, Club Admin"
+        android:text="Account Editor"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -34,8 +32,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="Use the options below to make changes"
+        android:text="Use the options below to edit \n Group permissions"
         android:textSize="15sp" />
+
+
 
 
 
@@ -47,62 +47,63 @@
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textStyle="bold"
-            android:text="What would you like to do?"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textSize="20sp" />
+            android:text="What do you want to do?"
+            android:textSize="24sp"
 
+            android:textStyle="bold" />
 
         <GridLayout
-            android:layout_width="266dp"
-            android:layout_height="249dp"
+            android:layout_width="290dp"
+            android:layout_height="250dp"
             android:layout_gravity="center"
             android:columnCount="2"
 
             android:padding="19dp"
             android:rowCount="2">
 
-
-            <ImageView
-                android:layout_width="105dp"
-                android:layout_height="102dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/baseline_manage_accounts_24">
-
-            </ImageView>
-
-            <ImageView
-                android:layout_width="105dp"
-                android:layout_height="102dp"
-                android:layout_marginTop="10dp"
-
-                android:src="@drawable/baseline_pedal_bike_24">
-
-            </ImageView>
-
             <Button
-                android:layout_width="110dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
+                android:layout_marginTop="30dp"
                 android:padding="15dp"
-                android:text="Edit Accounts"
-                android:id="@+id/goToAccountEditor"
+                android:text="Add Event"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
             <Button
-                android:layout_width="104dp"
-                android:layout_height="71dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:id="@+id/goToEventEditor"
-                android:text="Edit Events"
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:text="Delete Event"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:text="Edit Event"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:text="View Events"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -111,14 +112,30 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/goToHomepageAdmin"
+        android:backgroundTint="#4ba0ff"
+        android:textColor="#FFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        android:text="Return to Admin Homepage"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <Button
         android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Return to Login"
-        android:layout_marginTop="15dp"
         android:padding="15dp"
         android:textSize="15sp"
         android:textStyle="bold"
         android:id="@+id/goBackButton"/>
+
+    <ListView
+        android:id="@+id/accountList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
