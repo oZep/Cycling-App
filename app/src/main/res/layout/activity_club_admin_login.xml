@@ -1,9 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClubAdminLogin">
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="143dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/baseline_how_to_reg_24"
+        app:tint="#FF5733" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Welcome, Cycling Club Admin"
+        android:textSize="25sp"
+
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Use the options below to make changes"
+        android:textSize="15sp" />
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="What would you like to do?"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp" />
+
+
+        <GridLayout
+            android:layout_width="283dp"
+            android:layout_height="256dp"
+            android:layout_gravity="center"
+            android:columnCount="2"
+
+            android:padding="19dp"
+            android:rowCount="2">
+
+
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="102dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/baseline_manage_accounts_24">
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="102dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+
+                android:src="@drawable/baseline_pedal_bike_24">
+
+            </ImageView>
+
+            <Button
+                android:id="@+id/goToAccountEditor"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+                android:padding="15dp"
+                android:textColor="#FFFF"
+                android:backgroundTint="#4ba0ff"
+                android:text="Edit Profile"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/goToEventEditor"
+                android:layout_width="118dp"
+                android:layout_height="71dp"
+                android:layout_gravity="center"
+                android:text="View Event Types"
+                android:textColor="#FFFF"
+                android:backgroundTint="#4ba0ff"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </GridLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:textStyle="bold"
+        android:textColor="#FFFF"
+        android:backgroundTint="#4ba0ff"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Return to Login"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:textSize="15sp"
+        android:id="@+id/goBackButton"/>
+
+</LinearLayout>
