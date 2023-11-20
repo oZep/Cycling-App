@@ -6,60 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".ClubAdminProfilePage">
 
+
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:id="@+id/profileLayout"
+        android:layout_width="374dp"
+        android:layout_height="135dp"
+        android:layout_gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.026">
 
         <ImageView
-            android:layout_width="143dp"
-            android:layout_height="124dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/baseline_person_pin_24"
             app:tint="#FF5733" />
 
 
         <TextView
+            android:id="@+id/newEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Profile Page for Club \n Club Details"
+            android:layout_marginTop="30dp"
+            android:text="Profile Page for:"
             android:textSize="25sp"
             android:textStyle="bold" />
 
 
+
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="376dp"
-        android:layout_height="139dp"
-        android:layout_gravity="center_vertical"
+        android:layout_width="213dp"
+        android:layout_height="134dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.685"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756">
-
-        <ImageView
-            android:layout_width="143dp"
-            android:layout_height="124dp"
-            android:src="@drawable/baseline_person_pin_24"
-            app:tint="#FF5733" />
-
+        app:layout_constraintVertical_bias="0.134">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="20dp"
-            android:text="Club Details"
+            android:text="CLUB NAME"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -67,23 +64,22 @@
 
     <LinearLayout
         android:id="@+id/activity_main"
-        android:layout_width="384dp"
-        android:layout_height="276dp"
+        android:layout_width="361dp"
+        android:layout_height="303dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.305">
+        app:layout_constraintVertical_bias="0.475">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="50dp"
             android:text="Profile Editor"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -174,6 +170,46 @@
 
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="344dp"
+        android:layout_height="123dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.871">
+
+
+        <Button
+            android:id="@+id/goBackButton"
+            android:layout_width="170dp"
+
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#4ba0ff"
+            android:padding="15dp"
+            android:text="Return to Login"
+            android:textColor="#FFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="170dp"
+
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#4ba0ff"
+            android:padding="15dp"
+            android:text="Return to Main"
+            android:textColor="#FFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
