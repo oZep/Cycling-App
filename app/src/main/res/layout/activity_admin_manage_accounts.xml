@@ -117,8 +117,7 @@
                 android:textStyle="bold" />
 
         </GridLayout>
-
-=======
+        
 
     </androidx.cardview.widget.CardView>
 

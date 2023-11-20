@@ -17,6 +17,7 @@ public class Login extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonLogin;
+    Button buttonLoginClubOwner;
     Button buttonLoginAdmin;
     Button buttonLoginOwner;
     static AccountDBHandler db;
@@ -36,6 +37,7 @@ public class Login extends AppCompatActivity {
         textView =findViewById(R.id.registerNow);
         buttonLoginOwner = findViewById(R.id.btn_login_a);
         buttonLoginAdmin = findViewById(R.id.btn_login_a);
+        buttonLoginClubOwner = findViewById(R.id.btn_login_cbowner);
 
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -67,6 +69,41 @@ public class Login extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+                else {
+                    Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        buttonLoginClubOwner.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                String email, password;
+                email = String.valueOf(editTextEmail.getText());
+                password = String.valueOf(editTextPassword.getText());
+
+                if(TextUtils.isEmpty(email)){
+                    Toast.makeText(Login.this, "Enter an email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(password)){
+                    Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (login(email, password, true)) {
+                    Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
+                    //Intent to open the main activity
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                if(email.equals("gccadmin") && password.equals("GCCROCKS!")){
+                    Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
+                    //Intent to open the welcome page for a club admin
+                    Intent intent = new Intent(getApplicationContext(), ClubAdminLogin.class);
+                    startActivity(intent);
+                    finish();
+
+            }
                 else {
                     Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                 }

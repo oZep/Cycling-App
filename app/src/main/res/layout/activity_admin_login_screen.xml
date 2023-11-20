@@ -88,21 +88,21 @@
             </ImageView>
 
             <Button
-                android:layout_width="110dp"
+                android:id="@+id/goToAccountEditor"
+                android:layout_width="124dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
 
+                android:layout_gravity="center"
                 android:padding="15dp"
                 android:text="Edit Accounts"
-                android:id="@+id/goToAccountEditor"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
             <Button
-                android:layout_width="104dp"
+                android:id="@+id/goToEventEditor"
+                android:layout_width="wrap_content"
                 android:layout_height="71dp"
                 android:layout_gravity="center"
-                android:id="@+id/goToEventEditor"
                 android:text="Edit Events"
                 android:textSize="15sp"
                 android:textStyle="bold" />

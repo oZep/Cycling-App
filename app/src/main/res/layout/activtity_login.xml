@@ -105,6 +105,21 @@
                 android:gravity="center"
                 android:onClick="setOnClickListener"
                 android:padding="20dp"
+                android:text="Login as Admin"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:textStyle="bold">
+
+            </Button>
+            <Button
+                android:id="@+id/btn_login_cbowner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FF5733"
+                android:gravity="center"
+                android:onClick="setOnClickListener"
+                android:padding="20dp"
                 android:text="Login as Club Owner"
                 android:textColor="#FFFF"
                 android:textSize="20sp"

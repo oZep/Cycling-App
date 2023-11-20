@@ -89,7 +89,7 @@
             </ImageView>
 
             <Button
-                android:id="@+id/goToAccountEditor"
+                android:id="@+id/btn_profile_editor"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
 
@@ -102,7 +102,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/goToEventEditor"
+                android:id="@+id/btn_view_event_types"
                 android:layout_width="118dp"
                 android:layout_height="71dp"
                 android:layout_gravity="center"
