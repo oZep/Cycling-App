@@ -22,6 +22,7 @@ public class Login extends AppCompatActivity {
     static AccountDBHandler db;
     ProgressBar progressBar;
     TextView textView;
+    Admin admin;
 
 
     @Override
@@ -36,6 +37,7 @@ public class Login extends AppCompatActivity {
         textView =findViewById(R.id.registerNow);
         buttonLoginOwner = findViewById(R.id.btn_login_a);
         buttonLoginAdmin = findViewById(R.id.btn_login_a);
+        admin = Admin.getInstance();
 
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -112,7 +114,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (email.equals("admin") && password.equals("admin")) {
+                if (email.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
                     Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
                     //Intent to open the main activity
                     Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
