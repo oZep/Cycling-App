@@ -69,16 +69,16 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:gravity="center">
+            android:layout_height="190dp"
+            android:gravity="center"
+            android:padding="10dp">
 
             <ProgressBar
+                android:id="@+id/progressBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/progressBar"
-                android:visibility="gone"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:visibility="gone">
 
 
             </ProgressBar>
