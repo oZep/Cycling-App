@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="Welcome, Admin"
-        android:textSize="30sp"
+        android:text="Welcome, Cycling Club Admin"
+        android:textSize="25sp"
 
         android:textStyle="bold" />
 
@@ -61,8 +61,8 @@
 
 
         <GridLayout
-            android:layout_width="266dp"
-            android:layout_height="249dp"
+            android:layout_width="283dp"
+            android:layout_height="256dp"
             android:layout_gravity="center"
             android:columnCount="2"
 
@@ -81,29 +81,34 @@
             <ImageView
                 android:layout_width="105dp"
                 android:layout_height="102dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
 
                 android:src="@drawable/baseline_pedal_bike_24">
 
             </ImageView>
 
             <Button
-                android:id="@+id/goToAccountEditor"
-                android:layout_width="124dp"
+                android:id="@+id/btn_profile_editor"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
 
                 android:layout_gravity="center"
                 android:padding="15dp"
-                android:text="Edit Accounts"
+                android:textColor="#FFFF"
+                android:backgroundTint="#4ba0ff"
+                android:text="Edit Profile"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/goToEventEditor"
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_view_event_types"
+                android:layout_width="118dp"
                 android:layout_height="71dp"
                 android:layout_gravity="center"
-                android:text="Edit Events"
+                android:text="View Event Types"
+                android:textColor="#FFFF"
+                android:backgroundTint="#4ba0ff"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -112,9 +117,9 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:backgroundTint="#4ba0ff"
         android:textStyle="bold"
         android:textColor="#FFFF"
+        android:backgroundTint="#4ba0ff"
         android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -31,15 +31,15 @@ public class AdminManageAccounts extends AppCompatActivity {
 
     static AccountDBHandler db;
 
-    Button goBackToHomepage;
+    Button goBackToHomepage, goBackToAdminHomepage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_manage_accounts);
         goBackButton = findViewById(R.id.goBackButton);
+        goBackToAdminHomepage = findViewById(R.id.goToHomepageAdmin);
         accountList = findViewById(R.id.accountList);
-        goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
         db = new AccountDBHandler(this);
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
@@ -78,12 +78,16 @@ public class AdminManageAccounts extends AppCompatActivity {
             }
         });
 
-        goBackToHomepage.setOnClickListener(new View.OnClickListener() {
+
+        goBackToAdminHomepage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
                 startActivity(intent);
                 finish();
             }
         });
+
+
+
     }
 }
