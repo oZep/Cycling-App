@@ -8,13 +8,15 @@ public class Event {
     private Date date;
     private int maxParticipants;
     private String name;
+    private Club club;
 
-    public Event(String n, EventType et, Date d, String l, int max) {
+    public Event(String n, EventType et, Club c, Date d, String l, int max) {
         type = et;
         name = n;
         location = l;
         date = d;
         maxParticipants = max;
+        club = c;
     }
 
     public void setName(String n) {
@@ -47,6 +49,8 @@ public class Event {
     public int getMaxParticipants() {
         return maxParticipants;
     }
-
+    public Club getClub() {
+        return club;
+    }
 
 }

@@ -16,7 +16,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEvents TEXT)");
+        db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEventTypes TEXT, clubEvents TEXT)");
     }
 
     @Override
@@ -30,14 +30,22 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         contentValues.put("username", u.getUsername());
         contentValues.put("clubName", u.getClubName());
         StringBuilder eventTypes = new StringBuilder();
-        ArrayList<EventType> eArr = u.getEventTypes();
-        for (int i = 0; i < eArr.size(); i++) {
-            eventTypes.append(eArr.get(i).getName());
-            if (i < eArr.size() - 1) {
+        ArrayList<EventType> etArr = u.getEventTypes();
+        for (int i = 0; i < etArr.size(); i++) {
+            eventTypes.append(etArr.get(i).getName());
+            if (i < etArr.size() - 1) {
                 eventTypes.append(" ");
             }
         }
-        contentValues.put("clubEvents", eventTypes.toString());
+        contentValues.put("clubEventTypes", eventTypes.toString());
+        StringBuilder events = new StringBuilder();
+        ArrayList<Event> eArr = u.getEvents();
+        for (int i =0 ; i < eArr.size(); i++) {
+            events.append(eArr.get(i).getName());
+            if (i < eArr.size() - 1) {
+                events.append(" ");
+            }
+        }
         long result = db.insert("ClubAccounts", null, contentValues);
         return result != -1;
     }
