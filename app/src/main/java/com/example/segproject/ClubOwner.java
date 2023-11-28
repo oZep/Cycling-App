@@ -5,16 +5,16 @@ public class ClubOwner extends UserAccount{
     private String contact;
     private String phoneNum;
 
-    public ClubOwner(String e, String p, String sm, String c, String pn) {
-        email = e;
+    public ClubOwner(String u, String p, String sm, String c, String pn) {
+        username = u;
         password = p;
         socialMedia = sm;
         contact = c;
         phoneNum = pn;
     }
 
-    public ClubOwner(String e, String p, String sm, String pn) {
-        email = e;
+    public ClubOwner(String u, String p, String sm, String pn) {
+        username = u;
         password = p;
         socialMedia = sm;
         phoneNum = pn;
