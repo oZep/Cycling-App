@@ -50,7 +50,7 @@ public class AdminHandleAddEvent extends AppCompatActivity {
                 } else {
                     EventType et = new EventType(levelTXT, minAgeTXT, nameTXT);
 
-                    boolean checkInsertData = db.insertUserData(et);
+                    boolean checkInsertData = db.insertEventType(et);
                     if(checkInsertData){
                         Toast.makeText(AdminHandleAddEvent.this,"Event created successfully", Toast.LENGTH_SHORT).show();
                     }

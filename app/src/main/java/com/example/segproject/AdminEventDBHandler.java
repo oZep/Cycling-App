@@ -15,7 +15,7 @@ public class AdminEventDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table UserDetails(name TEXT primary key, email TEXT, age TEXT)");
+        DB.execSQL("create Table UserDetails(name TEXT primary key, level INTEGER, age INTEGER)");
 
     }
 
@@ -25,12 +25,12 @@ public class AdminEventDBHandler extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertUserData(String name, String email, String age) {
+    public boolean insertEventType(EventType et) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("email", email);
-        contentValues.put("age", age);
+        contentValues.put("name", et.getName());
+        contentValues.put("email", et.getLevel());
+        contentValues.put("age", et.getMinAge());
         long result = DB.insert("Userdetails", null, contentValues);
         if (result == -1) {
             return false;
@@ -44,9 +44,9 @@ public class AdminEventDBHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public boolean deleteUserData(String name) {
+    public boolean deleteEventType(String name) {
         SQLiteDatabase DB = this.getWritableDatabase();
-        long result = DB.delete("Userdetails", "email=? OR name=? OR age=?", new String[]{name});
+        long result = DB.delete("Userdetails", "name=?", new String[]{name});
         return result != -1;
     }
 
