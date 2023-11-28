@@ -16,7 +16,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table ClubAccounts(email TEXT primary key, clubName TEXT, clubEvents TEXT)");
+        db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEvents TEXT)");
     }
 
     @Override
@@ -48,21 +48,23 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public UserAccount getClub(String username) {
+    public Club getClub(String username, AdminEventDBHandler ETDBHandler) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from Accounts WHERE username = \"" + username + "\"", null );
+        Cursor cursor = db.rawQuery("Select * from ClubAccounts WHERE username = \"" + username + "\"", null );
         if (!cursor.moveToFirst()) {
             return null;
         }
-        UserAccount result;
-        result = cursor.getInt(3) == 0 ? new Participant(cursor.getString(0), cursor.getString(1)) :
-                new ClubOwner(cursor.getString(0), cursor.getString(1), cursor.getString(3), cursor.getString(4), cursor.getString(5));
-        return result;
+        String[] ets = cursor.getString(2).split(" ");
+        ArrayList<EventType> types = new ArrayList<EventType>();
+        for (String i : ets) {
+            types.add(ETDBHandler.getEventType(i));
+        }
+        Club result = new Club(cursor.getString(0), cursor.getString(1), types);
     }
 
-    public boolean deleteClubData(String email) {
+    public boolean deleteClubData(String username) {
         SQLiteDatabase DB = this.getWritableDatabase();
-        long result = DB.delete("Accounts", "email=?", new String[]{email});
+        long result = DB.delete("ClubAccounts", "username=?", new String[]{username});
         return result != -1;
     }
 }
