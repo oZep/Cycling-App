@@ -20,7 +20,6 @@ public class Registration extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
-    Button buttonReg_A;
     static AccountDBHandler db;
     ProgressBar progressBar;
     TextView textView;
@@ -34,7 +33,6 @@ public class Registration extends AppCompatActivity {
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_login);
-        buttonReg_A = findViewById(R.id.btn_reg_a);
         progressBar =findViewById(R.id.progressBar);
         textView =findViewById(R.id.loginNow);
         textView.setOnClickListener(new View.OnClickListener(){

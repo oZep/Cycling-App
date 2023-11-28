@@ -17,7 +17,6 @@ import com.google.android.material.textfield.TextInputEditText;
 public class RegistrationClub extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword, editTextPhone, editTextSocialLink, editTextContact;
-    Button buttonReg;
     Button buttonReg_A;
     static AccountDBHandler db;
     ProgressBar progressBar;
@@ -34,7 +33,6 @@ public class RegistrationClub extends AppCompatActivity {
         editTextPhone = findViewById(R.id.phoneNumber);
         editTextSocialLink = findViewById(R.id.socialLink);
         editTextContact = findViewById(R.id.contact);
-        buttonReg = findViewById(R.id.btn_login);
         buttonReg_A = findViewById(R.id.btn_reg_a);
         progressBar =findViewById(R.id.progressBar);
         textView =findViewById(R.id.loginNow);
@@ -54,13 +52,13 @@ public class RegistrationClub extends AppCompatActivity {
         buttonReg_A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email, password;
+                String email, password, phone, social, contact;
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
 
                 phone = String.valueOf(editTextPhone.getText());
-                social = Stirng.valueOf(editTextSocialLink.getText());
-                contact - String.valueOf(editTextContact.getText());
+                social = String.valueOf(editTextSocialLink.getText());
+                contact = String.valueOf(editTextContact.getText());
 
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(RegistrationClub.this, "Enter an email", Toast.LENGTH_SHORT).show();
