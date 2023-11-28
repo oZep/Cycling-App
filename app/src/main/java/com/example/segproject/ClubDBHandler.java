@@ -32,7 +32,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         StringBuilder eventTypes = new StringBuilder();
         ArrayList<EventType> eArr = u.getEventTypes();
         for (int i = 0; i < eArr.size(); i++) {
-            eventTypes.append(eArr.get(i).getName);
+            eventTypes.append(eArr.get(i).getName());
             if (i < eArr.size() - 1) {
                 eventTypes.append(" ");
             }

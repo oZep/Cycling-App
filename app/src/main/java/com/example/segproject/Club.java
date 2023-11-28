@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Club {
 
     String username, clubName;
-    ArrayList<String> events;
+    ArrayList<EventType> eventTypes;
 
-    public Club(String username, String clubName, ArrayList<String> events) {
+    public Club(String username, String clubName, ArrayList<EventType> et) {
         this.username = username;
         this.clubName = clubName;
-        this.events = events;
+        this.eventTypes = et;
     }
 
     public void setClubName(String clubName) {
@@ -21,8 +21,8 @@ public class Club {
         this.username = username;
     }
 
-    public void setEvents(ArrayList<String> events) {
-        this.events = events;
+    public void setEvents(ArrayList<EventType> et) {
+        this.eventTypes = et;
     }
     public String getClubName() {
         return clubName;
@@ -30,7 +30,7 @@ public class Club {
     public String getUsername() {
         return username;
     }
-    public ArrayList<String> getEvents() {
-        return events;
+    public ArrayList<EventType> getEventTypes() {
+        return eventTypes;
     }
 }
