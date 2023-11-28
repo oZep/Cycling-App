@@ -4,8 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
-public class ClubDBHandler {
+import java.util.ArrayList;
+
+public class ClubDBHandler extends SQLiteOpenHelper {
 
     public ClubDBHandler(Context context) {
         super(context, "ClubAccounts.db", null, 1);
@@ -25,8 +28,16 @@ public class ClubDBHandler {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", u.getUsername());
-        contentValues.put("clubName", u.getName());
-        contentValues.put("clubEvents", u.getEvents());
+        contentValues.put("clubName", u.getClubName());
+        StringBuilder eventTypes = new StringBuilder();
+        ArrayList<EventType> eArr = u.getEventTypes();
+        for (int i = 0; i < eArr.size(); i++) {
+            eventTypes.append(eArr.get(i).getName);
+            if (i < eArr.size() - 1) {
+                eventTypes.append(" ");
+            }
+        }
+        contentValues.put("clubEvents", eventTypes.toString());
         long result = db.insert("Accounts", null, contentValues);
         if (result == -1) {
             return false;
@@ -56,6 +67,4 @@ public class ClubDBHandler {
         long result = DB.delete("Accounts", "email=?", new String[]{email});
         return result != -1;
     }
-}
-
 }

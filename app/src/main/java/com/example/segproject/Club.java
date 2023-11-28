@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Club {
 
     String username, clubName;
-    ArrayList<Events> events;
+    ArrayList<String> events;
 
-    public Club(String username, String clubName, ArrayList<Events> events) {
+    public Club(String username, String clubName, ArrayList<String> events) {
         this.username = username;
         this.clubName = clubName;
         this.events = events;
@@ -21,7 +21,7 @@ public class Club {
         this.username = username;
     }
 
-    public void setEvents(ArrayList<Events> events) {
+    public void setEvents(ArrayList<String> events) {
         this.events = events;
     }
     public String getClubName() {
@@ -30,7 +30,7 @@ public class Club {
     public String getUsername() {
         return username;
     }
-    public ArrayList<Events> getEvents() {
+    public ArrayList<String> getEvents() {
         return events;
     }
 }

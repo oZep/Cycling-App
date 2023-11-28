@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,7 @@ public class AdminHandleAddEvent extends AppCompatActivity {
 
     Button goBackButton, addEvent, viewEvent;
     AdminEventDBHandler db;
-    EditText name, email, age;
+    EditText name, level, minAge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +25,35 @@ public class AdminHandleAddEvent extends AppCompatActivity {
         goBackButton = findViewById(R.id.goBackButton);
         addEvent = findViewById(R.id.addEvent);
         viewEvent = findViewById(R.id.viewEventsButton);
-        name = findViewById(R.id.name);
-        email = findViewById(R.id.email);
-        age = findViewById(R.id.TableRow);
+        name = findViewById(R.id.eventName);
+        level = findViewById(R.id.eventLevel);
+        minAge = findViewById(R.id.age);
+
 
         addEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String nameTXT = name.getText().toString();
-                String emailTXT = email.getText().toString();
-                String ageTXT = age.getText().toString();
+                int levelTXT = Integer.parseInt(level.getText().toString());
+                int minAgeTXT = Integer.parseInt(minAge.getText().toString());
 
-                Boolean checkInsertData = db.insertUserData(nameTXT, emailTXT, ageTXT);
+                if(TextUtils.isEmpty(nameTXT)){
+                    Toast.makeText(AdminHandleAddEvent.this, "Enter a Event Type Name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(level.getText().toString())){
+                    Toast.makeText(AdminHandleAddEvent.this, "Enter a Event Type Level", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(minAge.getText().toString())){
+                    Toast.makeText(AdminHandleAddEvent.this, "Enter a Minimum Age", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    EventType et = new EventType(nameTXT, levelTXT, minAgeTXT);
+                }
+
+                EventType et = new EventType(nameTXT, levelTXT, minAgeTXT);
+
+                Boolean checkInsertData = db.insertUserData(nameTXT, levelTXT, minAgeTXT);
                 if(checkInsertData){
                     Toast.makeText(AdminHandleAddEvent.this,"Event created successfully", Toast.LENGTH_SHORT).show();
                 }
