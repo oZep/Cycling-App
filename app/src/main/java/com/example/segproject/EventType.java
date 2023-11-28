@@ -1,17 +1,17 @@
 package com.example.segproject;
 
 public class EventType {
-    int[] ageRange;
+    int minAge;
     int level;
     String name;
-    public EventType(int[] ar, int l, String n) {
-        ageRange = ar;
+    public EventType(int a, int l, String n) {
+        minAge = a;
         level = l;
         name = n;
     }
 
-    public int[] getAgeRange() {
-        return ageRange;
+    public int getMinAge() {
+        return minAge;
     }
 
     public int getLevel() {
