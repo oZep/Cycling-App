@@ -74,30 +74,5 @@ public class Registration extends AppCompatActivity {
             }
 
         });
-
-        buttonReg_A.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email, password;
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
-
-                if(TextUtils.isEmpty(email)){
-                    Toast.makeText(Registration.this, "Enter an email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(password)){
-                    Toast.makeText(Registration.this, "Enter a password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                UserAccount user;
-                user = new ClubOwner(email, password);
-                db.insertUserData(user);
-                Toast.makeText(Registration.this, "Club Owner Account created", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 }

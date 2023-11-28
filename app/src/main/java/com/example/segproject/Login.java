@@ -23,6 +23,7 @@ public class Login extends AppCompatActivity {
     static AccountDBHandler db;
     ProgressBar progressBar;
     TextView textView;
+    TextView textView_admin;
     Admin admin;
 
 
@@ -36,13 +37,21 @@ public class Login extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btn_login);
         progressBar =findViewById(R.id.progressBar);
         textView =findViewById(R.id.registerNow);
+        textView_admin =findViewById(R.id.registerNow2);
         buttonLoginOwner = findViewById(R.id.btn_login_a);
         buttonLoginAdmin = findViewById(R.id.btn_login_a);
         buttonLoginClubOwner = findViewById(R.id.btn_login_cbowner);
-        admin = Admin.getInstance();
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), Registration.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+        textView_admin.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), RegistrationClub.class);
                 startActivity(intent);
                 finish();
 
