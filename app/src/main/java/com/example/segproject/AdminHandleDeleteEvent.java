@@ -48,7 +48,7 @@ public class AdminHandleDeleteEvent extends AppCompatActivity {
     public void removeProduct() {
         String name = nameToDelete.getText().toString(); // Get the name from the EditText
 
-        boolean result = db.deleteUserData(name);
+        boolean result = db.deleteEventType(name);
 
         if (result) {
             nameToDelete.setText(" :Deleted");
