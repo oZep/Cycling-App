@@ -51,6 +51,7 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email, password;
+                
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
 
