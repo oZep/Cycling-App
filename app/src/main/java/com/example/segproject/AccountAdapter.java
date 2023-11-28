@@ -32,7 +32,7 @@ public class AccountAdapter extends ArrayAdapter<UserAccount> {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textAccountEmail = (TextView) listViewItem.findViewById(R.id.textAccountEmail);
 
         UserAccount account = accounts.get(position);
-        textAccountUser.setText(account.getEmail());
+        textAccountUser.setText(account.getUsername());
         textAccountEmail.setText(String.valueOf(account.getUsername()));
         return listViewItem;
     }

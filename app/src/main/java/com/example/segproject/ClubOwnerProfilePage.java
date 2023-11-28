@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ClubAdminProfilePage extends AppCompatActivity {
+public class ClubOwnerProfilePage extends AppCompatActivity {
     Button goToLogin, goToMain;
     TextView Username, Contact, Phone, Socials, clubNamed;
 
@@ -27,7 +27,7 @@ public class ClubAdminProfilePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_club_admin_profile_page);
+        setContentView(R.layout.activity_club_owner_profile_page);
         goToLogin = findViewById(R.id.btn_return_to_login);
         goToMain = findViewById(R.id.btn_return_to_main);
         Username = findViewById(R.id.Username);
@@ -80,6 +80,7 @@ public class ClubAdminProfilePage extends AppCompatActivity {
                 // TODO: Added clubName to club object (create it) and add that to the db
 
                 Intent intent = new Intent(getApplicationContext(), ClubAdminLogin.class);
+
                 startActivity(intent);
                 finish();
             }

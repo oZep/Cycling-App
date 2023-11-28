@@ -3,12 +3,12 @@ package com.example.segproject;
 public class Admin{
     private String username;
     private String password;
-    private Admin admin = new Admin();
+    private static Admin admin = new Admin();
     private Admin() {
         username = "admin";
         password = "admin";
     }
-    public Admin getInstance() {
+    public static Admin getInstance() {
         return admin;
     }
 
