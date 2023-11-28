@@ -68,7 +68,6 @@ public class RegistrationClub extends AppCompatActivity {
                     Toast.makeText(RegistrationClub.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(phone)){
                     Toast.makeText(RegistrationClub.this, "Enter a phone number", Toast.LENGTH_SHORT).show();
                     return;
                 }
