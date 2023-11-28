@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="325dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -15,14 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-
-            android:layout_width="140dp"
-            android:layout_height="90dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="75dp"
-            android:src="@drawable/baseline_pedal_bike_24"></ImageView>
 
         <Button
             android:id="@+id/goBackButton"
@@ -53,19 +46,19 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
+        android:layout_width="309dp"
+        android:layout_height="681dp"
+        android:layout_marginTop="179dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2">
 
 
         <LinearLayout
             android:id="@+id/activity_main"
-            android:layout_width="300dp"
-            android:layout_height="380dp"
+            android:layout_width="302dp"
+            android:layout_height="547dp"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +72,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Event Type Editor"
+                android:text="Event Editor"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -95,45 +88,64 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/eventTypes"
+                        android:layout_width="317dp"
+                        android:layout_height="match_parent" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
                     <EditText
                         android:id="@+id/eventName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="text"
-                        android:text="Event Type Name" />
+                        android:text="Change Event Name" />
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <EditText
-                        android:id="@+id/eventLevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:text="Event Type Level"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                </TableRow>
-
-
-                <TableRow
-                    android:id="@+id/TableRow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/age"
+                        android:id="@+id/location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="text"
-                        android:text="Minimum Age"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                        android:text="Change Location" />
                 </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/numParticipants"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Change Max Participants" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Change Date" />
+                </TableRow>
+
 
             </TableLayout>
 
@@ -167,13 +179,13 @@
             <Button
                 android:id="@+id/addEvent"
                 android:layout_width="100dp"
-                android:layout_height="90dp"
+                android:layout_height="67dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="#ff4b4b"
                 android:onClick="newProduct"
-                android:text="Add Event Type"
+                android:text="Finish Event"
                 android:textColor="#FFF"
                 android:textStyle="bold" />
 
