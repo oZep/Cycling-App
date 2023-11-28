@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ClubAdminLogin extends AppCompatActivity {
+public class ClubOwnerLogin extends AppCompatActivity {
     Button goBackButton, goToProfilePage, goToViewEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_club_admin_login);
+        setContentView(R.layout.activity_club_owner_login);
         goBackButton = findViewById(R.id.goBackButton);
         goToProfilePage = findViewById(R.id.btn_profile_editor);
         goToViewEvents = findViewById(R.id.btn_view_event_types);
@@ -28,7 +28,7 @@ public class ClubAdminLogin extends AppCompatActivity {
 
         goToViewEvents.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ClubAdminEstablishEventType.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerEstablishEventType.class);
                 startActivity(intent);
                 finish();
             }
@@ -36,7 +36,7 @@ public class ClubAdminLogin extends AppCompatActivity {
 
         goToProfilePage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ClubAdminProfilePage.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerProfilePage.class);
                 startActivity(intent);
                 finish();
             }
