@@ -13,7 +13,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table Accounts(email TEXT primary key, username TEXT, password TEXT, isClubOwner INTEGER)");
+        db.execSQL("create Table Accounts(email TEXT primary key, password TEXT, isClubOwner INTEGER, socialMedia TEXT, contact TEXT, phoneNum TEXT)");
     }
 
     @Override
@@ -24,11 +24,14 @@ public class AccountDBHandler extends SQLiteOpenHelper {
     public boolean insertUserData(UserAccount u) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("email", u.getEmail());
         contentValues.put("username", u.getUsername());
         contentValues.put("password", u.getPassword());
         if (u instanceof ClubOwner) {
+            ClubOwner c = (ClubOwner) u;
             contentValues.put("isClubOwner", 1);
+            contentValues.put("socialMedia", c.getSocialMedia());
+            contentValues.put("contact", c.getContact());
+            contentValues.put("phoneNum", c.getPhoneNum());
         }
         else {
             contentValues.put("isClubOwner", 0);
@@ -45,15 +48,15 @@ public class AccountDBHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public UserAccount getUser(String email) {
+    public UserAccount getUser(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from Accounts WHERE email = \"" + email + "\"", null );
+        Cursor cursor = db.rawQuery("Select * from Accounts WHERE username = \"" + username + "\"", null );
         if (!cursor.moveToFirst()) {
             return null;
         }
         UserAccount result;
-        result = cursor.getInt(3) == 0 ? new Participant(cursor.getString(1), cursor.getString(0), cursor.getString(2)) :
-                new ClubOwner(cursor.getString(1), cursor.getString(0), cursor.getString(2));
+        result = cursor.getInt(3) == 0 ? new Participant(cursor.getString(0), cursor.getString(1)) :
+                new ClubOwner(cursor.getString(0), cursor.getString(1), cursor.getString(3), cursor.getString(4), cursor.getString(5));
         return result;
     }
 
