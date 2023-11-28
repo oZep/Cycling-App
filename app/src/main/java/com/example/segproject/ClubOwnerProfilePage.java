@@ -17,7 +17,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
     AccountDBHandler dbHandler;
     ClubOwner userAccount;
     String usernamefill, contactfill, phonefill, socialsfill;
-    public ClubAdminProfilePage(String username, String contact, String phone, String socials) {
+    public ClubOwnerProfilePage(String username, String contact, String phone, String socials) {
         this.usernamefill = username;
         this.contactfill = contact;
         this.phonefill = phone;
@@ -53,7 +53,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 clubName = String.valueOf(clubNamed.getText());
 
                 if(TextUtils.isEmpty(clubName)){
-                    Toast.makeText(ClubAdminProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -73,13 +73,13 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 clubName = String.valueOf(clubNamed.getText());
 
                 if(TextUtils.isEmpty(clubName)){
-                    Toast.makeText(ClubAdminProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // TODO: Added clubName to club object (create it) and add that to the db
 
-                Intent intent = new Intent(getApplicationContext(), ClubAdminLogin.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerLogin.class);
 
                 startActivity(intent);
                 finish();
