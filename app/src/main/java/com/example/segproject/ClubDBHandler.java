@@ -60,6 +60,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
             types.add(ETDBHandler.getEventType(i));
         }
         Club result = new Club(cursor.getString(0), cursor.getString(1), types);
+        return result;
     }
 
     public boolean deleteClubData(String username) {
