@@ -37,9 +37,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
             contentValues.put("isClubOwner", 0);
         }
         long result = db.insert("Accounts", null, contentValues);
-        if (result == -1) {
-            return false;
-        } else return true;
+        return result == -1;
     }
 
     public Cursor getData(){

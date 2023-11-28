@@ -39,9 +39,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         }
         contentValues.put("clubEvents", eventTypes.toString());
         long result = db.insert("Accounts", null, contentValues);
-        if (result == -1) {
-            return false;
-        } else return true;
+        return result != -1;
     }
 
     public Cursor getData(){

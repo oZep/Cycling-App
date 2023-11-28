@@ -48,16 +48,13 @@ public class AdminHandleAddEvent extends AppCompatActivity {
                     Toast.makeText(AdminHandleAddEvent.this, "Enter a Minimum Age", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    EventType et = new EventType(nameTXT, levelTXT, minAgeTXT);
+                    EventType et = new EventType(levelTXT, minAgeTXT, nameTXT);
+
+                    boolean checkInsertData = db.insertUserData(et);
+                    if(checkInsertData){
+                        Toast.makeText(AdminHandleAddEvent.this,"Event created successfully", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
-                EventType et = new EventType(nameTXT, levelTXT, minAgeTXT);
-
-                Boolean checkInsertData = db.insertUserData(nameTXT, levelTXT, minAgeTXT);
-                if(checkInsertData){
-                    Toast.makeText(AdminHandleAddEvent.this,"Event created successfully", Toast.LENGTH_SHORT).show();
-                }
-
 
             }
         });
