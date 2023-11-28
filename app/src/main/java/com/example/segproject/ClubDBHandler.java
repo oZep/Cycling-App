@@ -21,7 +21,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int ii) {
-        db.execSQL("drop Table if exists Accounts");
+        db.execSQL("drop Table if exists ClubAccounts");
     }
 
     public boolean insertUserData(Club u) {
