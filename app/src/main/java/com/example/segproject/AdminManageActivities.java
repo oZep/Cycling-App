@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class AdminManageActivities extends AppCompatActivity {
-    Button goBackButton, goBackToHomepage, goToAddEventPage, viewEvents, deleteEvent;
+    Button goBackButton, goBackToHomepage, goToAddEventPage, viewEvents, deleteEvent, editEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class AdminManageActivities extends AppCompatActivity {
         goToAddEventPage = findViewById(R.id.addEvent_btn);
         viewEvents = findViewById(R.id.viewEvents_btn);
         deleteEvent = findViewById(R.id.deleteEvent_btn);
+        editEvents = findViewById(R.id.editEvent);
 
 
 
@@ -59,6 +60,14 @@ public class AdminManageActivities extends AppCompatActivity {
         deleteEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AdminHandleDeleteEvent.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        editEvents.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminHandleEditEvent.class);
                 startActivity(intent);
                 finish();
             }

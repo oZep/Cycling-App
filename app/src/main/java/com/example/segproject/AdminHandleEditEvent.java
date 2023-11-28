@@ -1,2 +1,4 @@
-package com.example.segproject;public class AdminHandleEditEvent {
+package com.example.segproject;
+
+public class AdminHandleEditEvent {
 }

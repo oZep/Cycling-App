@@ -95,16 +95,17 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/editEvent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:padding="15dp"
-                android:textColor="#FFF"
                 android:backgroundTint="#ff4b4b"
+                android:padding="15dp"
                 android:text="Edit Event"
-                android:textStyle="bold"
-                android:textSize="15sp" />
+                android:textColor="#FFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <Button
                 android:layout_width="wrap_content"
