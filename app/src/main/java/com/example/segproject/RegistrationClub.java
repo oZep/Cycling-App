@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 
 public class RegistrationClub extends AppCompatActivity {
 
@@ -68,8 +71,12 @@ public class RegistrationClub extends AppCompatActivity {
                     Toast.makeText(RegistrationClub.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(TextUtils.isEmpty(phone)){
                     Toast.makeText(RegistrationClub.this, "Enter a phone number", Toast.LENGTH_SHORT).show();
                     return;
+                }
+                if((phone.length() <= 10 && Pattern.compile("^[1-9]\\d*$").matcher(phone).find() )){
+                    Toast.makeText(RegistrationClub.this, "Enter a phone number", Toast.LENGTH_SHORT).show();
                 }
                 if(TextUtils.isEmpty(social)){
                     Toast.makeText(RegistrationClub.this, "Enter a social link", Toast.LENGTH_SHORT).show();
