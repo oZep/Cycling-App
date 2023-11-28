@@ -59,8 +59,8 @@ public class AccountDBHandler extends SQLiteOpenHelper {
     }
 
     public boolean deleteUserData(String email) {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        long result = DB.delete("Accounts", "email=?", new String[]{email});
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete("Accounts", "email=?", new String[]{email});
         return result != -1;
     }
 }

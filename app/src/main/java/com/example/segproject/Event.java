@@ -9,7 +9,7 @@ public class Event {
     private int maxParticipants;
     private String name;
 
-    public Event(String n, EventType et, String l, Date d, int max) {
+    public Event(String n, EventType et, Date d, String l, int max) {
         type = et;
         name = n;
         location = l;

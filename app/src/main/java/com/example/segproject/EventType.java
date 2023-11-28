@@ -4,7 +4,7 @@ public class EventType {
     int minAge;
     int level;
     String name;
-    public EventType(int a, int l, String n) {
+    public EventType(String n, int l, int a) {
         minAge = a;
         level = l;
         name = n;
