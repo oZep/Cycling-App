@@ -128,6 +128,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
                     //Intent to open the main activity
                     Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
+                    intent.putExtra("Username", email);
                     startActivity(intent);
                     finish();
                 }

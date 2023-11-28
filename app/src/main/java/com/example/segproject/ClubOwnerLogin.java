@@ -16,6 +16,8 @@ public class ClubOwnerLogin extends AppCompatActivity {
         goBackButton = findViewById(R.id.goBackButton);
         goToProfilePage = findViewById(R.id.btn_profile_editor);
         goToViewEvents = findViewById(R.id.btn_view_event_types);
+        Intent intent = getIntent();
+        String Username = intent.getStringExtra("Username");
         super.onCreate(savedInstanceState);
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +38,9 @@ public class ClubOwnerLogin extends AppCompatActivity {
 
         goToProfilePage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ClubOwnerProfilePage.class);
+                Intent intent = new Intent(getApplicationContext(), ClubAdminProfilePage.class);
+                intent.putExtra("Username", Username);
+
                 startActivity(intent);
                 finish();
             }

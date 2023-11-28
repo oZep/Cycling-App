@@ -26,7 +26,7 @@ public class AdminHandleAddEvent extends AppCompatActivity {
         viewEvent = findViewById(R.id.viewEventsButton);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
-        age = findViewById(R.id.age);
+        age = findViewById(R.id.TableRow);
 
         addEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

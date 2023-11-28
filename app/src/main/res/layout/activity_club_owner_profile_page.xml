@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clubName3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ClubOwnerProfilePage">
@@ -49,15 +50,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.202">
 
-        <TextView
+        <EditText
+            android:id="@+id/clubName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="CLUB NAME"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
+            android:ems="10"
+            android:inputType="text"
+            android:text="Enter Club Name" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <LinearLayout
@@ -91,77 +90,61 @@
             android:stretchColumns="2">
 
             <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:text="Account ID:"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:text="ID assigned upon event creation" />
-
-            </TableRow>
-
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:text="Club Name:"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/clubName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:text="Club Details"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/clubDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <TextView
+                    android:id="@+id/Username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="Name of Club Owner:"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="Username:" />
 
-                <EditText
-                    android:id="@+id/clubOwnerName"
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:id="@+id/Contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="2" />
+                    android:layout_column="1"
+                    android:text="Contact:"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:id="@+id/Phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Phone:"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:id="@+id/Socials"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Socials:"
+                    android:textStyle="bold" />
+
             </TableRow>
 
         </TableLayout>
@@ -195,8 +178,8 @@
             android:textStyle="bold" />
 
         <Button
-            android:layout_width="170dp"
             android:id="@+id/btn_return_to_main"
+            android:layout_width="170dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
