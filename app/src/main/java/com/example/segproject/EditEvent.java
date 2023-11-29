@@ -17,6 +17,7 @@ public class EditEvent extends AppCompatActivity {
 
     Button goBackButton, finishEvent, viewEvent;
     AdminEventDBHandler db;
+    EventDBHandler edb;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
@@ -111,8 +112,9 @@ public class EditEvent extends AppCompatActivity {
                 // TODO: add the new event and delete the old
                 Calendar c = Calendar.getInstance();
                 c.set(y, m, d);
-                Event et = new Event(eventNamed, db.getEventType(eventTyped), club, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
-
+                Event e = new Event(eventNamed, db.getEventType(eventTyped), club, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
+                edb.deleteEvent(eventNamed);
+                edb.insertEvent(e);
                 Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
             }
         });
