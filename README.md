@@ -14,7 +14,8 @@ Repo Link: https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_1
 
 
 ## Updated UML CLass Diagram
-![image](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/42ad6e6b-0696-4276-91e1-d3c64c0524a6)
+![image](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/c0682951-e1a9-40a3-850c-d08951ca6054)
+
 
 
 ## Club Owner Profile Creation, User Info Validation, Event Handling: Creation, Deletion, Event Editing, Event Type Addition

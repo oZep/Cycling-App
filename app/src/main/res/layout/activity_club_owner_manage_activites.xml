@@ -99,18 +99,6 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/goToHomepageAdmin"
-        android:backgroundTint="#ab4bff"
-        android:textColor="#FFFF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="15dp"
-        android:text="Return to Admin Homepage"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <Button
         android:id="@+id/goBackButton"
         android:layout_width="232dp"
         android:layout_height="wrap_content"

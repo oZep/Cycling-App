@@ -101,7 +101,7 @@ public class Login extends AppCompatActivity {
                 if (login(email, password, true)) {
                     Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
                     //Intent to open the main activity
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
                     startActivity(intent);
                     finish();
                 }

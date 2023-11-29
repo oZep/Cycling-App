@@ -42,7 +42,7 @@ public class EventPopup extends AppCompatActivity {
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivites.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
                 startActivity(intent);
                 finish();
             }
