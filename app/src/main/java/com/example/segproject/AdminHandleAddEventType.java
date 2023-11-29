@@ -68,12 +68,11 @@ public class AdminHandleAddEventType extends AppCompatActivity {
                     Toast.makeText(AdminHandleAddEventType.this, "An Event Type already has this name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                EventType et = new EventType( nameTXT, l, a);
+                EventType et = new EventType(nameTXT, l, a);
                 boolean checkInsertData = db.insertEventType(et);
                 if(checkInsertData){
                     Toast.makeText(AdminHandleAddEventType.this,"Event created successfully", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

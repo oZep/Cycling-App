@@ -32,9 +32,7 @@ public class AdminEventDBHandler extends SQLiteOpenHelper {
         contentValues.put("email", et.getLevel());
         contentValues.put("age", et.getMinAge());
         long result = DB.insert("EventTypes", null, contentValues);
-        if (result == -1) {
-            return false;
-        } else return true;
+        return result != -1;
     }
 
     public Cursor getData(){
