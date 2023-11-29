@@ -13,14 +13,14 @@ import android.widget.Toast;
 public class AdminHandleAddEventType extends AppCompatActivity {
 
     Button goBackButton, addEvent, viewEvent;
-    AdminEventDBHandler db;
+    EventTypeDBHandler db;
     EditText name, level, minAge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_handle_add_event_type);
-        db = new AdminEventDBHandler(this);
+        db = new EventTypeDBHandler(this);
 
         goBackButton = findViewById(R.id.goBackButton);
         addEvent = findViewById(R.id.addEvent);
