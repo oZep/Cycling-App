@@ -29,7 +29,7 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
 
         deleteEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DeleteEvent.class);
+                Intent intent = new Intent(getApplicationContext(), DeleteEventPage.class);
                 intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
@@ -53,7 +53,7 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
 
         goToAddEventPage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddEvent.class);
+                Intent intent = new Intent(getApplicationContext(), AddEventPage.class);
                 startActivity(intent);
                 finish();
             }
@@ -61,7 +61,7 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
 
         deleteEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DeleteEvent.class);
+                Intent intent = new Intent(getApplicationContext(), DeleteEventPage.class);
                 intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
@@ -80,4 +80,4 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
 }
 
 
-}
+
