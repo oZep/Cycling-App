@@ -51,4 +51,10 @@ public class EventDBHandler extends SQLiteOpenHelper {
         Event result = new Event(cursor.getString(0), ETBDHandler.getEventType(cursor.getString(1)), CBDHandler.getClub(cursor.getString(2), ETBDHandler), new Date(cursor.getLong(3)), cursor.getString(4), cursor.getInt(5));
         return result;
     }
+
+    public boolean deleteEvent(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete("Events", "name=?", new String[]{name});
+        return result != -1;
+    }
 }
