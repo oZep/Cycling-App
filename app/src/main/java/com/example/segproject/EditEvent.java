@@ -19,19 +19,19 @@ public class EditEvent extends AppCompatActivity {
     AdminEventDBHandler db;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
-            byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
-            if (m < 0 || m > 11 || y < 2023 || d < 1) {
-                return false;
+        byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
+        if (m < 0 || m > 11 || y < 2023 || d < 1) {
+            return false;
+        }
+        for (byte i : moreDays) {
+            if (m == i) {
+                return d < 32;
             }
-            for (byte i : moreDays) {
-                if (m == i) {
-                    return d < 32;
-                }
-            }
-            if (m == 1) {
-                return d < 29 || (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0) && d == 29);
-            }
-            return d < 31;
+        }
+        if (m == 1) {
+            return d < 29 || (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0) && d == 29);
+        }
+        return d < 31;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,8 +115,6 @@ public class EditEvent extends AppCompatActivity {
                 Event et = new Event(eventNamed, db.getEventType(eventTyped), club, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
 
                 Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
-
-
             }
         });
 
@@ -137,5 +135,4 @@ public class EditEvent extends AppCompatActivity {
             }
         });
     }
-}
 }
