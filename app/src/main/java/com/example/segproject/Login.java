@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new AccountDBHandler(this);
-        setContentView(R.layout.activtity_login);
+        setContentView(R.layout.activity_login);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);

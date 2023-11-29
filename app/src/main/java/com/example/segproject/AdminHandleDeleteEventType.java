@@ -15,7 +15,7 @@ public class AdminHandleDeleteEventType extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_handle_delete_eventtype);
+        setContentView(R.layout.activity_admin_handle_delete_event_type);
         nameToDelete = findViewById(R.id.nameToDelete);
         goBackButton = findViewById(R.id.goBackButton);
         deleteEvent = findViewById(R.id.deleteEvent_btn);
@@ -31,7 +31,7 @@ public class AdminHandleDeleteEventType extends AppCompatActivity {
 
         viewEvents.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminViewEvents.class);
+                Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);
                 startActivity(intent);
                 finish();
             }

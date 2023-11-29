@@ -25,7 +25,7 @@
             android:name=".AdminHandleDeleteEventType"
             android:exported="false" />
         <activity
-            android:name=".AdminViewEvents"
+            android:name=".AdminViewEventTypes"
             android:exported="false" />
         <activity
             android:name=".AdminHandleAddEventType"

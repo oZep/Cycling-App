@@ -19,7 +19,7 @@ public class AdminHandleAddEventType extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_handle_add_eventtype);
+        setContentView(R.layout.activity_admin_handle_add_event_type);
         db = new AdminEventDBHandler(this);
 
         goBackButton = findViewById(R.id.goBackButton);
@@ -88,7 +88,7 @@ public class AdminHandleAddEventType extends AppCompatActivity {
 
         viewEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminViewEvents.class);
+                Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);
                 startActivity(intent);
                 finish();
             }

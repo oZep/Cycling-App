@@ -25,7 +25,7 @@ public class AdminManageActivities extends AppCompatActivity {
 
         viewEvents.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminViewEvents.class);
+                Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);
                 startActivity(intent);
                 finish();
             }

@@ -36,7 +36,7 @@ public class EditEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clubowner_handle_edit_event);
+        setContentView(R.layout.activity_club_owner_handle_edit_event);
         db = new AdminEventDBHandler(this);
 
         goBackButton = findViewById(R.id.goBackButton);
@@ -67,7 +67,7 @@ public class EditEvent extends AppCompatActivity {
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
             String eventNamed = eventName.getText().toString();
-            EventType eventTyped = eventType.getText().toString();
+            String eventTyped = eventType.getText().toString();
             String location = eventLocation.getText().toString();
             String day2 = day.getText().toString();
             String month2 = month.getText().toString();
@@ -111,7 +111,7 @@ public class EditEvent extends AppCompatActivity {
                     // TODO: add the new event and delete the old
                     Calendar c = Calendar.getInstance();
                     c.set(y,m,d);
-                    Event et = new Event(eventNamed, eventType, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
+                    Event et = new Event(eventNamed, db.getEventType(eventTyped), club, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
 
                     Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
 
@@ -131,7 +131,7 @@ public class EditEvent extends AppCompatActivity {
 
         viewEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminViewEvents.class);
+                Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);
                 startActivity(intent);
                 finish();
             }
