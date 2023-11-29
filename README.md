@@ -2,13 +2,23 @@
 
 Repo Link: https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17
 
-# Deliverables 1,2
+# Deliverables 1,2,3
 
 ## Group Members and IDs
 - Isabelle Choi 300282805
 - Michelle Choi 300316843
 - Joey Issa 300219818
 - Ming Gao 300290294
+
+- ## Deliverable 3
+
+
+## Updated UML CLass Diagram
+![Screen Shot 2023-11-28 at 9 35 18 PM](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/c70ae47f-3a2b-450c-8b96-2f32f386682c)
+
+## Club Owner Profile Creation, User Info Validation, Event Handling: Creation, Deletion, Event Editing, Event Type Addition
+![d3initial](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/76994085-622f-498a-90e0-77311971e421)
+
 
 ## Deliverable 2
 
