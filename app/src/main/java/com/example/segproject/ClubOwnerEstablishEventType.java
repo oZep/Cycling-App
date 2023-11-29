@@ -29,7 +29,7 @@ public class ClubOwnerEstablishEventType extends AppCompatActivity {
         name = new ArrayList<String>();
         level = new ArrayList<Integer>();
         age = new ArrayList<Integer>();
-        e = findViewById(R.id.SomeEventType);
+        e = findViewById(R.id.checkBox);
         rv = findViewById(R.id.recyclerView);
         adapter = new MyAdapter(this, name, level, age);
         rv.setAdapter(adapter);
