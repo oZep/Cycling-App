@@ -57,13 +57,11 @@ public class EditEvent extends AppCompatActivity {
 
 
         // TODO: Fillin the info using what i did in another class, find the clubName in the database & fill out
-        db.getClub()
-        /*
-        eventName.setText(usernamefill);
-        eventType.setText(userAccount.getContact());
-        eventLocation.setText(userAccount.getPhoneNum());
-        eventParticipants.setText(userAccount.getSocialMedia());
-        */
+        Event event = edb.getEvent(eventN);
+        eventName.setText(event.getName());
+        eventType.setText(event.getEventType().getName());
+        eventLocation.setText(event.getLocation());
+        eventParticipants.setText(event.getMaxParticipants());
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
             String eventNamed = eventName.getText().toString();
@@ -111,7 +109,7 @@ public class EditEvent extends AppCompatActivity {
                 // TODO: add the new event and delete the old
                 Calendar c = Calendar.getInstance();
                 c.set(y, m, d);
-                Event e = new Event(eventNamed, db.getEventType(eventTyped), club, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
+                Event e = new Event(eventNamed, db.getEventType(eventTyped), event.getClub(), c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
                 edb.deleteEvent(eventNamed);
                 edb.insertEvent(e);
                 Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
