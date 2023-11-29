@@ -53,7 +53,6 @@ public class EditEvent extends AppCompatActivity {
         Intent intent = getIntent();
         String eventNames = intent.getStringExtra("eventName");
         String clubName = intent.getStringExtra("clubName");
-        super.onCreate(savedInstanceState);
 
 
 
