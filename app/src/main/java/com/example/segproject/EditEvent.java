@@ -21,7 +21,7 @@ public class EditEvent extends AppCompatActivity {
 
     ClubDBHandler cdb;
 
-
+    String eventN;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
@@ -57,7 +57,7 @@ public class EditEvent extends AppCompatActivity {
         year = findViewById(R.id.year);
 
         Intent intent = getIntent();
-        String eventN = intent.getStringExtra("eventN");
+        eventN = intent.getStringExtra("eventN");
 
 
 
@@ -124,7 +124,9 @@ public class EditEvent extends AppCompatActivity {
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminManageActivities.class);
+                String clubName = event.getClub().getClubName();
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
+                intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
             }
@@ -132,7 +134,9 @@ public class EditEvent extends AppCompatActivity {
 
         viewEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);
+                String clubName = event.getClub().getClubName();
+                Intent intent = new Intent(getApplicationContext(), EventList.class);
+                intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
             }

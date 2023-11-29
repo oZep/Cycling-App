@@ -7,20 +7,17 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ClubOwnerManageActivites extends AppCompatActivity {
-    Button goBackButton, goBackToHomepage, goToAddEventPage, viewEvents, deleteEvent, editEvents;
+public class ClubOwnerManageActivities extends AppCompatActivity {
+    Button goBackButton, goBackToHomepage, goToAddEventPage, viewEvents;
     String clubName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_club_owner_manage_activites);
+        setContentView(R.layout.activity_club_owner_manage_activities);
         goBackButton = findViewById(R.id.goBackButton);
-        goToAddEventPage = findViewById(R.id.addevent);
-        viewEvents = findViewById(R.id.viewEvents_btn);
 
         Intent intent = getIntent();
         clubName = intent.getStringExtra("clubName");
-
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -50,15 +47,6 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EventAdapter.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        editEvents.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), EditEvent.class);
-                intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
             }

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,56 +17,39 @@ public class EventList extends AppCompatActivity {
 
     static EventDBHandler db;
 
-    Button goBackButton;
+    ListView eventList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = new EventDBHandler();
-        setContentView(R.layout.activity_event_list_view);
-        goBackButton = findViewById(R.id.goBackButton3);
+        db = new EventDBHandler(this);
+        setContentView(R.layout.activity_event_list);
+        Cursor c = db.getData();
+        ArrayList<String> arr = new ArrayList<>();
 
-        goBackButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivites.class);
+        if (c.getCount() == 0) {
+            Toast.makeText(EventList.this, "No entries", Toast.LENGTH_SHORT).show();
+            return;
+        } else
+
+        {
+            while (c.moveToNext()) {
+                arr.add(c.getString(0));
+            }
+        }
+
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
+        eventList.setAdapter(adapter);
+        eventList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick (AdapterView < ? > parent,final View view, int position, long id){
+                String eventName = (String) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getApplicationContext(), EventPopup.class);
+                intent.putExtra("eventN", eventName);
                 startActivity(intent);
                 finish();
             }
         });
     }
-
-    Cursor c = db.getData();
-    ArrayList<String> arr = new ArrayList<>();
-
-    if(c.getCount()==0)
-
-    {
-        Toast.makeText(EventList.this, "No entries", Toast.LENGTH_SHORT).show();
-        return;
-    } else
-
-    {
-        while (c.moveToNext()) {
-            arr.add(c.getString(0));
-        }
-    }
-
-
-    ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
-        accountList.setAdapter(adapter);
-        accountList.setOnItemClickListener(new AdapterView.OnItemClickListener()
-
-    {
-        public void onItemClick (AdapterView < ? > parent,final View view, int position, long id){
-        String account = (String) parent.getItemAtPosition(position);
-        try {
-            db.deleteUserData(account);
-            adapter.remove(account);
-            Toast.makeText(AdminManageAccounts.this, "User Deleted", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(AdminManageAccounts.this, "Error Deleting User", Toast.LENGTH_SHORT).show();
-        }
-    }
-    });
 }
 

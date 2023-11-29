@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EventPopup extends AppCompatActivity {
     Button goBackButton, goBackToHomepage, deleteEvent, editEvents;
+    String eventN;
+    EventDBHandler db;
+    EventTypeDBHandler etdb;
+    ClubDBHandler cdb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +23,19 @@ public class EventPopup extends AppCompatActivity {
         goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
         deleteEvent = findViewById(R.id.deleteEvent_btn);
         editEvents = findViewById(R.id.editEvent);
+        db = new EventDBHandler(this);
+        etdb = new EventTypeDBHandler(this);
+        cdb = new ClubDBHandler(this);
         Intent intent = getIntent();
-        String eventN = intent.getStringExtra("eventN");
+        eventN = intent.getStringExtra("eventN");
 
 
         deleteEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DeleteEventPage.class);
-                intent.putExtra("eventN", eventN);
+                String clubName = db.getEvent(eventN, etdb, cdb).getClub().getClubName();
+                db.deleteEvent(eventN);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
+                intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
             }
@@ -50,7 +60,7 @@ public class EventPopup extends AppCompatActivity {
 
         goBackToHomepage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
                 finish();
             }
