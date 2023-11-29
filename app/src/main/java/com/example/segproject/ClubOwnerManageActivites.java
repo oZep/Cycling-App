@@ -13,7 +13,7 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_manage_activities);
+        setContentView(R.layout.activity_clubowner_manage_activites);
         goBackButton = findViewById(R.id.goBackButton);
         goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
         goToAddEventPage = findViewById(R.id.addevent);
