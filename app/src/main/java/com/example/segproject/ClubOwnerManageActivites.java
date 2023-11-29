@@ -18,23 +18,11 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
         goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
         goToAddEventPage = findViewById(R.id.addevent);
         viewEvents = findViewById(R.id.viewEvents_btn);
-        deleteEvent = findViewById(R.id.deleteEvent_btn);
-        editEvents = findViewById(R.id.editEvent);
+
 
         Intent intent = getIntent();
         clubName = intent.getStringExtra("clubName");
 
-
-
-
-        deleteEvent.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DeleteEventPage.class);
-                intent.putExtra("clubName", clubName);
-                startActivity(intent);
-                finish();
-            }
-        });
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ClubOwnerLogin.class);
@@ -54,15 +42,6 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
         goToAddEventPage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddEventPage.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        deleteEvent.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DeleteEventPage.class);
-                intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
             }

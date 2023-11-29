@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textEventType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -27,9 +27,10 @@
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
-            android:text="Initialized"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:text="event types" />
 
     </LinearLayout>
 
@@ -41,15 +42,14 @@
         app:layout_constraintTop_toBottomOf="@+id/EventTypes"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
         android:layout_width="308dp"
         android:layout_height="480dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
+        app:layout_constraintHorizontal_bias="0.227"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565">
+        app:layout_constraintVertical_bias="0.337">
 
     </androidx.recyclerview.widget.RecyclerView>
 
