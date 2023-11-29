@@ -19,19 +19,19 @@ public class EditEvent extends AppCompatActivity {
     AdminEventDBHandler db;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
-            byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
-            if (m < 0 || m > 11 || y < 2023 || d < 1) {
-                return false;
+        byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
+        if (m < 0 || m > 11 || y < 2023 || d < 1) {
+            return false;
+        }
+        for (byte i : moreDays) {
+            if (m == i) {
+                return d < 32;
             }
-            for (byte i : moreDays) {
-                if (m == i) {
-                    return d < 32;
-                }
-            }
-            if (m == 1) {
-                return d < 29 || (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0) && d == 29);
-            }
-            return d < 31;
+        }
+        if (m == 1) {
+            return d < 29 || (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0) && d == 29);
+        }
+        return d < 31;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,6 @@ public class EditEvent extends AppCompatActivity {
 
         Intent intent = getIntent();
         String eventNames = intent.getStringExtra("eventName");
-        super.onCreate(savedInstanceState);
 
 
 
@@ -93,27 +92,27 @@ public class EditEvent extends AppCompatActivity {
                 if(TextUtils.isEmpty(day2) && TextUtils.isEmpty(month2) && TextUtils.isEmpty(year2)) {
                     Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
                     return;
-                } else {
-                    int y = 0, m = 0, d = 0;
-                    try {
-                        y = Integer.parseInt(year2);
-                        m = Integer.parseInt(month2);
-                        d = Integer.parseInt(day2);
-                        if (validDate(y,m,d)) {
-                            Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                    }
-                    catch (NumberFormatException e) {
-                        Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+                }
+                int y = 0, m = 0, d = 0;
+                try {
+                    y = Integer.parseInt(year2);
+                    m = Integer.parseInt(month2);
+                    d = Integer.parseInt(day2);
+                }
+                catch (NumberFormatException e) {
+                    Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!validDate(y, m, d)) {
+                    Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                     // TODO: add the new event and delete the old
-                    Calendar c = Calendar.getInstance();
-                    c.set(y,m,d);
-                    Event et = new Event(eventNamed, db.getEventType(eventTyped), club, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
+                Calendar c = Calendar.getInstance();
+                c.set(y, m, d);
+                Event et = new Event(eventNamed, db.getEventType(eventTyped), club, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
 
-                    Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
 
                 }
 
