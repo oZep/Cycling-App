@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-a
+    a
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="325dp"
@@ -72,7 +72,7 @@ a
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Event Editor"
+                android:text="Delete Events"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -101,37 +101,10 @@ a
                     <EditText
                         android:id="@+id/eventName"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="104dp"
                         android:ems="10"
                         android:inputType="text"
-                        android:text="Change Event Name" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <EditText
-                        android:id="@+id/location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:text="Change Location" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <EditText
-                        android:id="@+id/numParticipants"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:text="Change Max Participants" />
-
+                        android:text=" Event Name" />
                 </TableRow>
 
                 <TableRow
@@ -141,77 +114,26 @@ a
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <EditText
-                            android:id="@+id/day"
-                            android:layout_width="93dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="day" />
-
-                        <EditText
-                            android:id="@+id/month"
-                            android:layout_width="87dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="month" />
-
-                        <EditText
-                            android:id="@+id/year"
-                            android:layout_width="107dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="year" />
+                        <Button
+                            android:id="@+id/addEvent"
+                            android:layout_width="175dp"
+                            android:layout_height="76dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#ff4b4b"
+                            android:onClick="newProduct"
+                            android:text="Delete Event"
+                            android:textColor="#FFF"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </TableRow>
 
 
             </TableLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tableLayout"
-                android:layout_centerHorizontal="true"
-                android:orientation="horizontal">
-
-
-                <!--                <Button-->
-                <!--                    android:id="@+id/find"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_weight="1"-->
-                <!--                    android:onClick="lookupProduct"-->
-                <!--                    android:text="Find" />-->
-
-
-                <!--                <Button-->
-                <!--                    android:id="@+id/delete"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_weight="1"-->
-                <!--                    android:onClick="removeProduct"-->
-                <!--                    android:text="Delete" />-->
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/addEvent"
-                android:layout_width="100dp"
-                android:layout_height="67dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:backgroundTint="#ff4b4b"
-                android:onClick="newProduct"
-                android:text="Finish Event"
-                android:textColor="#FFF"
-                android:textStyle="bold" />
 
 
         </LinearLayout>

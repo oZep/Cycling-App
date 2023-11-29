@@ -69,26 +69,28 @@
             android:rowCount="2">
 
             <Button
-                android:backgroundTint="#ff4b4b"
-                android:textColor="#FFF"
+                android:id="@+id/addEvent"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
+                android:backgroundTint="#ff4b4b"
                 android:padding="15dp"
                 android:text="Add Event"
+                android:textColor="#FFF"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
             <Button
-                android:backgroundTint="#ff4b4b"
-                android:textColor="#FFF"
+                android:id="@+id/deleteEventbutton"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
+                android:backgroundTint="#ff4b4b"
                 android:padding="15dp"
                 android:text="Delete Event"
+                android:textColor="#FFF"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 

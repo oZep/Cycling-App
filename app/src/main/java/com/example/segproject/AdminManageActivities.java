@@ -16,7 +16,7 @@ public class AdminManageActivities extends AppCompatActivity {
         setContentView(R.layout.activity_admin_manage_activities);
         goBackButton = findViewById(R.id.goBackButton);
         goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
-        goToAddEventPage = findViewById(R.id.addEvent_btn);
+        goToAddEventPage = findViewById(R.id.addevent);
         viewEvents = findViewById(R.id.viewEvents_btn);
         deleteEvent = findViewById(R.id.deleteEvent_btn);
         editEvents = findViewById(R.id.editEvent);
@@ -32,7 +32,26 @@ public class AdminManageActivities extends AppCompatActivity {
         });
 
 
+        //event adder button
+        Button  addevent = findViewById(R.id.addevent);
 
+        addevent.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+        Button deleteEvent = (Button) findViewById(R.id.deleteEvent_btn);
+        deleteEvent.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Login.class);
