@@ -23,12 +23,6 @@
                 android:layout_height="wrap_content"
                 android:text="Username" />
 
-            <TextView
-                android:id="@+id/textAccountEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email" />
-
             <ListView
                 android:layout_width="409dp"
                 android:layout_height="match_parent"

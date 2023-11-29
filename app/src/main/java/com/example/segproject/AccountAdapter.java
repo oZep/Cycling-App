@@ -29,11 +29,9 @@ public class AccountAdapter extends ArrayAdapter<UserAccount> {
         View listViewItem = inflater.inflate(R.layout.activity_account_list, null, true);
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textAccountUser = (TextView) listViewItem.findViewById(R.id.textAccountUser);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textAccountEmail = (TextView) listViewItem.findViewById(R.id.textAccountEmail);
 
         UserAccount account = accounts.get(position);
         textAccountUser.setText(account.getUsername());
-        textAccountEmail.setText(String.valueOf(account.getUsername()));
         return listViewItem;
     }
 }
