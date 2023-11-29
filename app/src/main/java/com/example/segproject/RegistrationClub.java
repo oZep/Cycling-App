@@ -90,7 +90,8 @@ public class RegistrationClub extends AppCompatActivity {
                 user = new ClubOwner(email, password, social, contact, phone);
                 db.insertUserData(user);
                 Toast.makeText(RegistrationClub.this, "Club Owner Account created", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ClubOwnerEstablishEventType.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerProfilePage.class);
+                intent.putExtra("clubOwner", email);
                 startActivity(intent);
                 finish();
             }

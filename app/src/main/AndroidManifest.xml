@@ -46,6 +46,9 @@
             android:name=".EventPopup"
             android:exported="false" />
         <activity
+            android:name=".EventList"
+            android:exported="false" />
+        <activity
             android:name=".EditEvent"
             android:exported="false" />
         <activity

@@ -13,14 +13,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventTypeAdapter extends ArrayAdapter<EventType> {
 
     private Activity context;
-    private List<EventType> eventTypes;
+    private List<String> eventTypes;
     private boolean[] checked;
-    public EventTypeAdapter(@NonNull Activity context, List<EventType> l, boolean[] b) {
+    public EventTypeAdapter(@NonNull Activity context, List<String> l, boolean[] b) {
         super(context, R.layout.activity_club_owner_establish_event_type);
         this.context = context;
         eventTypes = l;
@@ -33,8 +34,8 @@ public class EventTypeAdapter extends ArrayAdapter<EventType> {
         CompoundButton cb = (CompoundButton) convertView.findViewById(R.id.checkBox);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textEventType = (TextView) listViewItem.findViewById(R.id.textEventType);
 
-        EventType eventType = eventTypes.get(position);
-        textEventType.setText(eventType.getName());
+        String eventType = eventTypes.get(position);
+        textEventType.setText(eventType);
         cb.setChecked(checked[position]);
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -44,5 +45,15 @@ public class EventTypeAdapter extends ArrayAdapter<EventType> {
         });
 
         return listViewItem;
+    }
+
+    public ArrayList<String> getChecked() {
+        ArrayList<String> result = new ArrayList<String>();
+        for (int i = 0; i < eventTypes.size(); i++) {
+            if (checked[i]) {
+               result.add(eventTypes.get(i));
+            }
+        }
+        return result;
     }
 }
