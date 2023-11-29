@@ -16,7 +16,7 @@ public class AddEventPage  extends AppCompatActivity {
 
 
     Button goBackButton, finishEvent, viewEvent;
-    AdminEventDBHandler db;
+    EventTypeDBHandler db;
     EventDBHandler edb;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
@@ -43,7 +43,7 @@ public class AddEventPage  extends AppCompatActivity {
         String clubName = intent.getStringExtra("clubName");
 
 
-        db = new AdminEventDBHandler(this);
+        db = new EventTypeDBHandler(this);
 
         goBackButton = findViewById(R.id.goBackButton);
         finishEvent = findViewById(R.id.addEvent);
