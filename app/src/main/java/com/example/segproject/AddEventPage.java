@@ -14,10 +14,11 @@ import java.util.Calendar;
 
 public class AddEventPage  extends AppCompatActivity {
 
-
+    String clubName;
     Button goBackButton, finishEvent, viewEvent;
     EventTypeDBHandler db;
     EventDBHandler edb;
+    ClubDBHandler cdb;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
@@ -40,10 +41,12 @@ public class AddEventPage  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event_page);
         Intent intent = getIntent();
-        String clubName = intent.getStringExtra("clubName");
+        clubName = intent.getStringExtra("clubName");
 
 
         db = new EventTypeDBHandler(this);
+        cdb = new ClubDBHandler(this);
+        edb = new EventDBHandler(this);
 
         goBackButton = findViewById(R.id.goBackButton);
         finishEvent = findViewById(R.id.addEvent);
@@ -55,12 +58,6 @@ public class AddEventPage  extends AppCompatActivity {
         day = findViewById(R.id.day);
         month = findViewById(R.id.month);
         year = findViewById(R.id.year);
-
-        Event event = edb.getEvent(eventN);
-        eventName.setText(event.getName());
-        eventType.setText(event.getEventType().getName());
-        eventLocation.setText(event.getLocation());
-        eventParticipants.setText(event.getMaxParticipants());
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
             String eventNamed = eventName.getText().toString();
@@ -105,11 +102,9 @@ public class AddEventPage  extends AppCompatActivity {
                     Toast.makeText(AddEventPage.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // TODO: add the new event and delete the old
                 Calendar c = Calendar.getInstance();
                 c.set(y, m, d);
-                Event e = new Event(eventNamed, db.getEventType(eventTyped), event.getClub(), c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
-                edb.deleteEvent(eventNamed);
+                Event e = new Event(eventNamed, db.getEventType(eventTyped), cdb.getClub(clubName, db), c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
                 edb.insertEvent(e);
                 Toast.makeText(AddEventPage.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
             }
@@ -131,7 +126,5 @@ public class AddEventPage  extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }
-
