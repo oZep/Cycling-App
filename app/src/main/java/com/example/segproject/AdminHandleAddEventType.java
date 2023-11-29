@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AdminHandleAddEvent extends AppCompatActivity {
+public class AdminHandleAddEventType extends AppCompatActivity {
 
     Button goBackButton, addEvent, viewEvent;
     AdminEventDBHandler db;
@@ -19,7 +19,7 @@ public class AdminHandleAddEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_handle_add_event);
+        setContentView(R.layout.activity_admin_handle_add_eventtype);
         db = new AdminEventDBHandler(this);
 
         goBackButton = findViewById(R.id.goBackButton);
@@ -37,22 +37,22 @@ public class AdminHandleAddEvent extends AppCompatActivity {
                 int minAgeTXT = Integer.parseInt(minAge.getText().toString());
 
                 if(TextUtils.isEmpty(nameTXT)){
-                    Toast.makeText(AdminHandleAddEvent.this, "Enter a Event Type Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminHandleAddEventType.this, "Enter a Event Type Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(level.getText().toString())){
-                    Toast.makeText(AdminHandleAddEvent.this, "Enter a Event Type Level", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminHandleAddEventType.this, "Enter a Event Type Level", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(minAge.getText().toString())){
-                    Toast.makeText(AdminHandleAddEvent.this, "Enter a Minimum Age", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminHandleAddEventType.this, "Enter a Minimum Age", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     EventType et = new EventType( nameTXT, levelTXT, minAgeTXT);
 
                     boolean checkInsertData = db.insertEventType(et);
                     if(checkInsertData){
-                        Toast.makeText(AdminHandleAddEvent.this,"Event created successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminHandleAddEventType.this,"Event created successfully", Toast.LENGTH_SHORT).show();
                     }
                 }
 

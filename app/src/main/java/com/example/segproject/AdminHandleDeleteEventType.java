@@ -8,14 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class AdminHandleDeleteEvent extends AppCompatActivity {
+public class AdminHandleDeleteEventType extends AppCompatActivity {
     AdminEventDBHandler db = new AdminEventDBHandler(this);
     EditText nameToDelete;
     Button deleteEvent, goBackButton, viewEvents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_handle_delete_event);
+        setContentView(R.layout.activity_admin_handle_delete_eventtype);
         nameToDelete = findViewById(R.id.nameToDelete);
         goBackButton = findViewById(R.id.goBackButton);
         deleteEvent = findViewById(R.id.deleteEvent_btn);

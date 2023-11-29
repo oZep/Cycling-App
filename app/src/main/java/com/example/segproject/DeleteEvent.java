@@ -1,2 +1,4 @@
-package com.example.segproject;public class DeleteEvent {
+package com.example.segproject;
+
+public class DeleteEvent {
 }

@@ -51,7 +51,7 @@ public class AdminManageActivities extends AppCompatActivity {
 
         goToAddEventPage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminHandleAddEvent.class);
+                Intent intent = new Intent(getApplicationContext(), AdminHandleAddEventType.class);
                 startActivity(intent);
                 finish();
             }
@@ -59,7 +59,7 @@ public class AdminManageActivities extends AppCompatActivity {
 
         deleteEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminHandleDeleteEvent.class);
+                Intent intent = new Intent(getApplicationContext(), AdminHandleDeleteEventType.class);
                 startActivity(intent);
                 finish();
             }
@@ -67,7 +67,7 @@ public class AdminManageActivities extends AppCompatActivity {
 
         editEvents.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminHandleEditEvent.class);
+                Intent intent = new Intent(getApplicationContext(), EditEvent.class);
                 startActivity(intent);
                 finish();
             }

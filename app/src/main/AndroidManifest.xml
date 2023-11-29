@@ -22,13 +22,13 @@
             android:name=".ClubOwnerLogin"
             android:exported="false" />
         <activity
-            android:name=".AdminHandleDeleteEvent"
+            android:name=".AdminHandleDeleteEventType"
             android:exported="false" />
         <activity
             android:name=".AdminViewEvents"
             android:exported="false" />
         <activity
-            android:name=".AdminHandleAddEvent"
+            android:name=".AdminHandleAddEventType"
             android:exported="false" />
         <activity
             android:name=".AdminManageActivities"

@@ -38,7 +38,7 @@ public class ClubOwnerLogin extends AppCompatActivity {
 
         goToProfilePage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ClubAdminProfilePage.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerProfilePage.class);
                 intent.putExtra("Username", Username);
 
                 startActivity(intent);

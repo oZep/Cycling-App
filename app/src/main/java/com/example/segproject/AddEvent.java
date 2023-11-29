@@ -1,2 +1,4 @@
-package com.example.segproject;public class AddEvent {
+package com.example.segproject;
+
+public class AddEvent {
 }
