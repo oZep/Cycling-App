@@ -1,5 +1,6 @@
 package com.example.segproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -14,14 +15,23 @@ import java.util.ArrayList;
 public class EventList extends AppCompatActivity {
 
     static EventDBHandler db;
-    
-    ListView
+
+    Button goBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new EventDBHandler();
-        setContentView(R.layout.activity_event_list);
+        setContentView(R.layout.activity_event_list_view);
+        goBackButton = findViewById(R.id.goBackButton3);
+
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivites.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     Cursor c = db.getData();
