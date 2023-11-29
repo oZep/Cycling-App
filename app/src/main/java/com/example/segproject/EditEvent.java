@@ -17,6 +17,7 @@ public class EditEvent extends AppCompatActivity {
 
     Button goBackButton, finishEvent, viewEvent;
     AdminEventDBHandler db;
+    EventDBHandler db2;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
@@ -38,7 +39,6 @@ public class EditEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_owner_handle_edit_event);
         db = new AdminEventDBHandler(this);
-
         goBackButton = findViewById(R.id.goBackButton);
         finishEvent = findViewById(R.id.addEvent);
         viewEvent = findViewById(R.id.viewEventsButton);
@@ -52,7 +52,6 @@ public class EditEvent extends AppCompatActivity {
 
         Intent intent = getIntent();
         String eventNames = intent.getStringExtra("eventName");
-
 
 
         // TODO: Fillin the info using what i did in another class
