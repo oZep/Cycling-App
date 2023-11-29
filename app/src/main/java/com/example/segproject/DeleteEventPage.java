@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class activity_admin_event_deletion extends AppCompatActivity {
+public class DeleteEventPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
