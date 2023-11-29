@@ -17,7 +17,7 @@ public class AdminViewEventTypes extends AppCompatActivity {
     RecyclerView rv;
     ArrayList<String> name;
     ArrayList<Integer> level, age;
-    AdminEventDBHandler db;
+    EventTypeDBHandler db;
     MyAdapter adapter;
     Button goBackButton;
 
@@ -25,7 +25,7 @@ public class AdminViewEventTypes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_event_types);
-        db = new AdminEventDBHandler(this);
+        db = new EventTypeDBHandler(this);
         name = new ArrayList<String>();
         level = new ArrayList<Integer>();
         age = new ArrayList<Integer>();

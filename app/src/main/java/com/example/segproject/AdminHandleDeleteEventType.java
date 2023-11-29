@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class AdminHandleDeleteEventType extends AppCompatActivity {
-    AdminEventDBHandler db = new AdminEventDBHandler(this);
+    EventTypeDBHandler db = new EventTypeDBHandler(this);
     EditText nameToDelete;
     Button deleteEvent, goBackButton, viewEvents;
     @Override

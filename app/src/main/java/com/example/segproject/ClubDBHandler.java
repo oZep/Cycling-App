@@ -56,7 +56,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Club getClub(String username, AdminEventDBHandler ETDBHandler) {
+    public Club getClub(String username, EventTypeDBHandler ETDBHandler) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from ClubAccounts WHERE username = \"" + username + "\"", null );
         if (!cursor.moveToFirst()) {

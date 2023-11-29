@@ -16,7 +16,7 @@ public class ClubOwnerEstablishEventType extends AppCompatActivity {
     RecyclerView rv;
     ArrayList<String> name;
     ArrayList<Integer> level, age;
-    AdminEventDBHandler db;
+    EventTypeDBHandler db;
     MyAdapter adapter;
     Button goBackButton;
     CheckBox e;
@@ -25,7 +25,7 @@ public class ClubOwnerEstablishEventType extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_owner_establish_event_type);
-        db = new AdminEventDBHandler(this);
+        db = new EventTypeDBHandler(this);
         name = new ArrayList<String>();
         level = new ArrayList<Integer>();
         age = new ArrayList<Integer>();
