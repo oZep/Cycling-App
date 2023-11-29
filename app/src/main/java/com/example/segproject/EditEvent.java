@@ -53,17 +53,16 @@ public class EditEvent extends AppCompatActivity {
 
         Intent intent = getIntent();
         String eventNames = intent.getStringExtra("eventName");
-        String clubName = intent.getStringExtra("clubName");
 
 
 
         // TODO: Fillin the info using what i did in another class, find the clubName in the database & fill out
+        db.getClub()
         /*
         eventName.setText(usernamefill);
         eventType.setText(userAccount.getContact());
         eventLocation.setText(userAccount.getPhoneNum());
         eventParticipants.setText(userAccount.getSocialMedia());
-
         */
 
         finishEvent.setOnClickListener(new View.OnClickListener() {

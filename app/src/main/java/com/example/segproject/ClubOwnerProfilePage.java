@@ -79,7 +79,8 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
 
                 // TODO: Added clubName to club object (create it) and add that to the db
 
-                Intent intent = new Intent(getApplicationContext(), ClubOwnerLogin.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivites.class);
+                intent.putExtra("clubName", clubName);
 
                 startActivity(intent);
                 finish();
