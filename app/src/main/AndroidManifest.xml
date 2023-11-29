@@ -13,10 +13,10 @@
         android:theme="@style/Theme.SEGProject"
         tools:targetApi="31">
         <activity
-            android:name=".activity_admin_event_deletion"
+            android:name=".DeleteEventPage"
             android:exported="false" />
         <activity
-            android:name=".activity_admin_addevent_page"
+            android:name=".AddEventPage"
             android:exported="false" />
         <activity
             android:name=".ClubOwnerEstablishEventType"
