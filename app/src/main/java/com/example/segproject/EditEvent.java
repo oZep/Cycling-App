@@ -17,7 +17,6 @@ public class EditEvent extends AppCompatActivity {
 
     Button goBackButton, finishEvent, viewEvent;
     AdminEventDBHandler db;
-    ClubDBHandler cbd;
     EventDBHandler edb;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
