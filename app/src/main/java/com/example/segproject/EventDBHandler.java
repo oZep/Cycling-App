@@ -15,7 +15,7 @@ public class EventDBHandler extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table Events(name TEXT primary key, eventType TEXT, date INTEGER, location TEXT, maxParticipants INTEGER)");
+        db.execSQL("create Table Events(name TEXT primary key, eventType TEXT, club TEXT, date INTEGER, location TEXT, maxParticipants INTEGER)");
     }
 
     @Override
@@ -28,6 +28,7 @@ public class EventDBHandler extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", e.getName());
         contentValues.put("eventType", e.getEventType().getName());
+        contentValues.put("club", e.getClub().getClubName());
         contentValues.put("date", e.getDate().getTime());
         contentValues.put("location", e.getLocation());
         contentValues.put("maxParticipants", e.getMaxParticipants());
@@ -41,13 +42,13 @@ public class EventDBHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Event getEvent(String name, AdminEventDBHandler ETBDHandler) {
+    public Event getEvent(String name, AdminEventDBHandler ETBDHandler, ClubDBHandler CBDHandler) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from Events WHERE name = \"" + name + "\"", null );
         if (!cursor.moveToFirst()) {
             return null;
         }
-        Event result = new Event(cursor.getString(0), ETBDHandler.getEventType(cursor.getString(1)), new Date(cursor.getLong(2)), cursor.getString(3), cursor.getInt(4));
+        Event result = new Event(cursor.getString(0), ETBDHandler.getEventType(cursor.getString(1)), CBDHandler.getClub(cursor.getString(2), ETBDHandler), new Date(cursor.getLong(3)), cursor.getString(4), cursor.getInt(5));
         return result;
     }
 }
