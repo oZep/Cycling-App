@@ -20,13 +20,11 @@ public class AdminManageAccounts extends AppCompatActivity {
 
     Button goBackButton;
 
-    Button addevent;
-
     ListView accountList;
 
     static AccountDBHandler db;
 
-    Button goBackToHomepage, goBackToAdminHomepage;
+    Button goBackToAdminHomepage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
