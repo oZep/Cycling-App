@@ -131,7 +131,7 @@ public class AddEventPage  extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }
-    }
-}
+
