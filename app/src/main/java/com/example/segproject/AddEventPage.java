@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AddEvent extends AppCompatActivity {
+public class AddEventPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
