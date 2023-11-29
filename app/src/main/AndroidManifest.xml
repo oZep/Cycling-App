@@ -13,9 +13,6 @@
         android:theme="@style/Theme.SEGProject"
         tools:targetApi="31">
         <activity
-            android:name=".DeleteEventPage"
-            android:exported="false" />
-        <activity
             android:name=".AddEventPage"
             android:exported="false" />
         <activity
@@ -23,9 +20,6 @@
             android:exported="false" />
         <activity
             android:name=".ClubOwnerProfilePage"
-            android:exported="false" />
-        <activity
-            android:name=".ClubOwnerLogin"
             android:exported="false" />
         <activity
             android:name=".AdminHandleDeleteEventType"

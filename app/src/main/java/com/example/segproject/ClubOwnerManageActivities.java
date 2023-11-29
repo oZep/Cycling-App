@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ClubOwnerManageActivities extends AppCompatActivity {
-    Button goBackButton, goBackToHomepage, goToAddEventPage, viewEvents, deleteEvent, editEvents;
+    Button goBackButton, goToAddEventPage, viewEvents;
     String clubName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
