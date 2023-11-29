@@ -19,7 +19,6 @@ public class AdminManageActivities extends AppCompatActivity {
         goToAddEventPage = findViewById(R.id.addevent);
         viewEvents = findViewById(R.id.viewEvents_btn);
         deleteEvent = findViewById(R.id.deleteEvent_btn);
-        editEvents = findViewById(R.id.editEvent);
 
 
 
@@ -43,15 +42,6 @@ public class AdminManageActivities extends AppCompatActivity {
             }
         });
 
-
-        Button deleteEvent = (Button) findViewById(R.id.deleteEvent_btn);
-        deleteEvent.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Login.class);
