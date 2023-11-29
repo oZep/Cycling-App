@@ -94,29 +94,28 @@ public class EditEvent extends AppCompatActivity {
                 if(TextUtils.isEmpty(day2) && TextUtils.isEmpty(month2) && TextUtils.isEmpty(year2)) {
                     Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
                     return;
-                } else {
-                    int y = 0, m = 0, d = 0;
-                    try {
-                        y = Integer.parseInt(year2);
-                        m = Integer.parseInt(month2);
-                        d = Integer.parseInt(day2);
-                        if (validDate(y,m,d)) {
-                            Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                    }
-                    catch (NumberFormatException e) {
-                        Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    // TODO: add the new event and delete the old
-                    Calendar c = Calendar.getInstance();
-                    c.set(y,m,d);
-                    Event et = new Event(eventNamed, db.getEventType(eventTyped), club, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
-
-                    Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
-
                 }
+                int y = 0, m = 0, d = 0;
+                try {
+                    y = Integer.parseInt(year2);
+                    m = Integer.parseInt(month2);
+                    d = Integer.parseInt(day2);
+                }
+                catch (NumberFormatException e) {
+                    Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!validDate(y, m, d)) {
+                    Toast.makeText(EditEvent.this, "Enter a Proper Date", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                // TODO: add the new event and delete the old
+                Calendar c = Calendar.getInstance();
+                c.set(y, m, d);
+                Event et = new Event(eventNamed, db.getEventType(eventTyped), club, c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
+
+                Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
+
 
             }
         });
