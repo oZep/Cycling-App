@@ -33,8 +33,6 @@ public class AdminHandleAddEventType extends AppCompatActivity {
         addEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String nameTXT = name.getText().toString();
-                int levelTXT = Integer.parseInt(level.getText().toString());
-                int minAgeTXT = Integer.parseInt(minAge.getText().toString());
 
                 if(TextUtils.isEmpty(nameTXT)){
                     Toast.makeText(AdminHandleAddEventType.this, "Enter a Event Type Name", Toast.LENGTH_SHORT).show();
@@ -44,16 +42,36 @@ public class AdminHandleAddEventType extends AppCompatActivity {
                     Toast.makeText(AdminHandleAddEventType.this, "Enter a Event Type Level", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(minAge.getText().toString())){
+                if(TextUtils.isEmpty(minAge.getText().toString())) {
                     Toast.makeText(AdminHandleAddEventType.this, "Enter a Minimum Age", Toast.LENGTH_SHORT).show();
                     return;
-                } else {
-                    EventType et = new EventType( nameTXT, levelTXT, minAgeTXT);
-
-                    boolean checkInsertData = db.insertEventType(et);
-                    if(checkInsertData){
-                        Toast.makeText(AdminHandleAddEventType.this,"Event created successfully", Toast.LENGTH_SHORT).show();
-                    }
+                }
+                int l = 0;
+                int a = 0;
+                try {
+                    l = Integer.parseInt(level.getText().toString());
+                    a = Integer.parseInt(minAge.getText().toString());
+                }
+                catch (NumberFormatException e) {
+                    Toast.makeText(AdminHandleAddEventType.this, "Enter Integers for level and minimum age", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (a < 0) {
+                    Toast.makeText(AdminHandleAddEventType.this, "Minimum age must be positive", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (l < 0) {
+                    Toast.makeText(AdminHandleAddEventType.this, "Level must be positive", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (db.getEventType(nameTXT) != null) {
+                    Toast.makeText(AdminHandleAddEventType.this, "An Event Type already has this name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                EventType et = new EventType( nameTXT, l, a);
+                boolean checkInsertData = db.insertEventType(et);
+                if(checkInsertData){
+                    Toast.makeText(AdminHandleAddEventType.this,"Event created successfully", Toast.LENGTH_SHORT).show();
                 }
 
             }
