@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ClubOwnerManageActivites extends AppCompatActivity {
     Button goBackButton, goBackToHomepage, goToAddEventPage, viewEvents, deleteEvent, editEvents;
-
+    String clubName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,7 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
         editEvents = findViewById(R.id.editEvent);
 
         Intent intent = getIntent();
-        String clubName = intent.getStringExtra("clubName");
+        clubName = intent.getStringExtra("clubName");
 
 
 
@@ -37,7 +37,7 @@ public class ClubOwnerManageActivites extends AppCompatActivity {
         });
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Login.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerLogin.class);
                 startActivity(intent);
                 finish();
             }

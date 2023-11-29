@@ -13,7 +13,7 @@ public class EventPopup extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clubowner_manage_activites);
+        setContentView(R.layout.activity_event_popup);
         goBackButton = findViewById(R.id.goBackButton);
         goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
         deleteEvent = findViewById(R.id.deleteEvent_btn);
@@ -22,11 +22,10 @@ public class EventPopup extends AppCompatActivity {
         String eventN = intent.getStringExtra("eventN");
 
 
-
         deleteEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DeleteEventPage.class);
-                intent.putExtra("clubName", clubName);
+                intent.putExtra("eventN", eventN);
                 startActivity(intent);
                 finish();
             }
@@ -35,11 +34,28 @@ public class EventPopup extends AppCompatActivity {
         editEvents.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditEvent.class);
-                intent.putExtra("clubName", clubName);
+                intent.putExtra("eventN", eventN);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivites.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        goBackToHomepage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
 
+    }
 }
