@@ -19,6 +19,7 @@ public class EventList extends AppCompatActivity {
 
     ListView eventList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

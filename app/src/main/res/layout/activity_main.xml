@@ -2,21 +2,50 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/welcome_text"
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="244dp"
+        android:layout_height="59dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Search"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/eventType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="333dp"
-        android:gravity="center"
-        android:text="Welcome, you have signed in as a User"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="eventType"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/eventname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Name"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="65dp" />
+
+    <Button
+        android:id="@+id/clubname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Club Name"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="128dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="409dp"
+        android:layout_height="538dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="192dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
