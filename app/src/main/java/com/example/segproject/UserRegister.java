@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UserRegister extends AppCompatActivity {
 
-    Button goBackBtn, Register;
-    TextView Name, Age;
+    Button goBackBtn, register;
+    TextView name, age;
 
     ClubDBHandler cdb;
     EventTypeDBHandler db;
@@ -26,9 +26,9 @@ public class UserRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         goBackBtn = findViewById(R.id.goBack);
-        Name = findViewById(R.id.name);
-        Age = findViewById(R.id.age);
-        Register = findViewById(R.id.reg);
+        name = findViewById(R.id.name);
+        age = findViewById(R.id.age);
+        register = findViewById(R.id.reg);
         Intent intent = getIntent();
 
         db = new EventTypeDBHandler(this);
@@ -45,28 +45,39 @@ public class UserRegister extends AppCompatActivity {
             }
         });
 
-        Register.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                String name, age;
+                String sName, sAge;
 
-                name = String.valueOf(Name.getText());
-                age = String.valueOf(Age.getText());
+                sName = String.valueOf(name.getText());
+                sAge = String.valueOf(age.getText());
                 EventType q = db.getEventType(eventname);
                 int minAge = q.getMinAge();
 
 
-                if(TextUtils.isEmpty(name)){
-                    Toast.makeText(UserRegister.this, "Enter A Name", Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(sName)){
+                    Toast.makeText(UserRegister.this, "Enter a Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(age)){
+                if(TextUtils.isEmpty(sAge)){
                     Toast.makeText(UserRegister.this, "Enter your Age", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                if (Integer.parseInt(age) >= minAge) {
+                int iAge = 0;
+                try {
+                    iAge = Integer.parseInt(sAge);
+                }
+                catch (NumberFormatException e) {
+                    Toast.makeText(UserRegister.this, "Enter a valid age", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (iAge < minAge) {
                     Toast.makeText(UserRegister.this, "Sorry you are not old enough", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (iAge < 0) {
+                    Toast.makeText(UserRegister.this, "Enter a valid age", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
