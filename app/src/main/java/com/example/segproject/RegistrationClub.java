@@ -67,6 +67,10 @@ public class RegistrationClub extends AppCompatActivity {
                     Toast.makeText(RegistrationClub.this, "Enter an email", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (email.indexOf(' ') < -1) {
+                    Toast.makeText(RegistrationClub.this, "An email may not have spaces", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(RegistrationClub.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
@@ -76,7 +80,7 @@ public class RegistrationClub extends AppCompatActivity {
                     return;
                 }
                 if((phone.length() <= 10 && Pattern.compile("^[1-9]\\d*$").matcher(phone).find() )){
-                    Toast.makeText(RegistrationClub.this, "Enter a phone number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationClub.this, "Enter a valid phone number", Toast.LENGTH_SHORT).show();
                 }
                 if(TextUtils.isEmpty(social)){
                     Toast.makeText(RegistrationClub.this, "Enter a social link", Toast.LENGTH_SHORT).show();
