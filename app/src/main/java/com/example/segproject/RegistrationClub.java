@@ -47,8 +47,6 @@ public class RegistrationClub extends AppCompatActivity {
                 finish();
 
             }
-
-
         });
 
 
