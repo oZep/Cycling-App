@@ -1,5 +1,6 @@
 package com.example.segproject;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Event {
@@ -9,6 +10,7 @@ public class Event {
     private int maxParticipants;
     private String name;
     private Club club;
+    private ArrayList<Participant> participants;
 
     public Event(String n, EventType et, Club c, Date d, String l, int max) {
         type = et;
@@ -34,6 +36,9 @@ public class Event {
     public void setMaxParticipants(int max) {
         maxParticipants = max;
     }
+    public void addParticipant(Participant p) {
+        participants.add(p);
+    }
     public String getName() {
         return name;
     }
@@ -51,6 +56,9 @@ public class Event {
     }
     public Club getClub() {
         return club;
+    }
+    public ArrayList<Participant> getParticipants() {
+        return participants;
     }
 
 }

@@ -19,6 +19,7 @@ public class AddEventPage  extends AppCompatActivity {
     EventTypeDBHandler db;
     EventDBHandler edb;
     ClubDBHandler cdb;
+    AccountDBHandler adb;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
@@ -47,6 +48,7 @@ public class AddEventPage  extends AppCompatActivity {
         db = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
         edb = new EventDBHandler(this);
+        adb = new AccountDBHandler(this);
 
         goBackButton = findViewById(R.id.goBackButton);
         finishEvent = findViewById(R.id.addEvent);
@@ -104,7 +106,7 @@ public class AddEventPage  extends AppCompatActivity {
                 }
                 Calendar c = Calendar.getInstance();
                 c.set(y, m, d);
-                Event e = new Event(eventNamed.toLowerCase(), db.getEventType(eventTyped), cdb.getClub(clubName, db), c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
+                Event e = new Event(eventNamed.toLowerCase(), db.getEventType(eventTyped), cdb.getClub(clubName, db, edb, adb), c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
                 edb.insertEvent(e);
                 Toast.makeText(AddEventPage.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
             }

@@ -20,6 +20,7 @@ public class EditEvent extends AppCompatActivity {
     EventDBHandler edb;
 
     ClubDBHandler cdb;
+    AccountDBHandler adb;
 
     String eventN;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
@@ -44,6 +45,9 @@ public class EditEvent extends AppCompatActivity {
         setContentView(R.layout.activity_club_owner_handle_edit_event);
         db = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
+        edb = new EventDBHandler(this);
+        adb = new AccountDBHandler(this);
+
 
         goBackButton = findViewById(R.id.goBackButton);
         finishEvent = findViewById(R.id.addEvent);
@@ -62,7 +66,7 @@ public class EditEvent extends AppCompatActivity {
 
 
         // TODO: Fillin the info using what i did in another class, find the clubName in the database & fill out
-        Event event = edb.getEvent(eventN,db,cdb);
+        Event event = edb.getEvent(eventN, db, cdb, edb, adb);
         eventName.setText(event.getName());
         eventType.setText(event.getEventType().getName());
         eventLocation.setText(event.getLocation());

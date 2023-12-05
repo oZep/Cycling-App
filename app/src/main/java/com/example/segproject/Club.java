@@ -7,6 +7,9 @@ public class Club {
     String username, clubName;
     ArrayList<EventType> eventTypes;
     ArrayList<Event> events;
+    ArrayList<Participant> participants;
+    ArrayList<ClubReview> reviews;
+    double rating = 0.0;
 
     public Club(String username, String clubName, ArrayList<EventType> et) {
         this.username = username;
@@ -31,16 +34,47 @@ public class Club {
     public void setEventTypes(ArrayList<EventType> et) {
         this.eventTypes = et;
     }
+
+    public void addParticipant(Participant p) {
+        participants.add(p);
+    }
+
+    public void addReview(ClubReview r) {
+        rating = (rating * reviews.size() + r.getRating()) / (reviews.size() + 1.0);
+        reviews.add(r);
+    }
+
     public String getClubName() {
         return clubName;
     }
     public String getUsername() {
         return username;
     }
+    public double getRating() {
+        return rating;
+    }
     public ArrayList<EventType> getEventTypes() {
         return eventTypes;
     }
     public ArrayList<Event> getEvents() {
         return events;
+    }
+    public ArrayList<Participant> getParticipants() {
+        return participants;
+    }
+    public ArrayList<ClubReview> getReviews() {
+        return reviews;
+    }
+
+    public int hashCode() {
+        return clubName.hashCode();
+    }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof Club)) {
+            return false;
+        }
+        Club c = (Club) o;
+        return c.clubName.equals(clubName);
     }
 }
