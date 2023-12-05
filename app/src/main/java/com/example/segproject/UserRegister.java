@@ -60,7 +60,7 @@ public class UserRegister extends AppCompatActivity {
                     Toast.makeText(UserRegister.this, "Enter A Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(age){
+                if(TextUtils.isEmpty(age)){
                     Toast.makeText(UserRegister.this, "Enter your Age", Toast.LENGTH_SHORT).show();
                     return;
                 }
