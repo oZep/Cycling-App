@@ -70,7 +70,9 @@ public class UserRegister extends AppCompatActivity {
                     return;
                 }
 
-                Intent intent = new Intent(getApplicationContext(), Login.class);
+                Intent intent = new Intent(getApplicationContext(), RateClub.class);
+                // TODO: pass username to rate page
+                intent.putExtra("username", username);
                 startActivity(intent);
                 finish();
             }

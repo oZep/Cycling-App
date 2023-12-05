@@ -1,2 +1,4 @@
-package com.example.segproject;public class RateClub {
+package com.example.segproject;
+
+public class RateClub {
 }
