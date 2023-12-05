@@ -116,7 +116,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                     return;
                 }
 
-                Club club = new Club(clubOwner, clubName, eventTypes);
+                Club club = new Club(clubOwner.toLowerCase(), clubName.toLowerCase(), eventTypes);
                 cdb.insertUserData(club);
 
                 Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);

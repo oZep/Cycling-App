@@ -114,8 +114,8 @@ public class EditEvent extends AppCompatActivity {
                 // TODO: add the new event and delete the old
                 Calendar c = Calendar.getInstance();
                 c.set(y, m, d);
-                Event e = new Event(eventNamed, db.getEventType(eventTyped), event.getClub(), c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
-                edb.deleteEvent(eventNamed);
+                Event e = new Event(eventNamed.toLowerCase(), db.getEventType(eventTyped), event.getClub(), c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
+                edb.deleteEvent(eventNamed.toLowerCase());
                 edb.insertEvent(e);
                 Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
             }

@@ -64,11 +64,11 @@ public class Registration extends AppCompatActivity {
                     return;
                 }
                 UserAccount user;
-                if (db.getUser(email) != null) {
+                if (db.getUser(email.toLowerCase()) != null) {
                     Toast.makeText(Registration.this, "This email was already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                user = new Participant(email, password);
+                user = new Participant(email.toLowerCase(), password);
                 db.insertUserData(user);
                 Toast.makeText(Registration.this, "User Account created", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Login.class);

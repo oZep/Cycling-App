@@ -104,7 +104,7 @@ public class AddEventPage  extends AppCompatActivity {
                 }
                 Calendar c = Calendar.getInstance();
                 c.set(y, m, d);
-                Event e = new Event(eventNamed, db.getEventType(eventTyped), cdb.getClub(clubName, db), c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
+                Event e = new Event(eventNamed.toLowerCase(), db.getEventType(eventTyped), cdb.getClub(clubName, db), c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
                 edb.insertEvent(e);
                 Toast.makeText(AddEventPage.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
             }

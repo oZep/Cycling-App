@@ -10,12 +10,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Get the welcome text from the Intent
-        String welcomeText = getIntent().getStringExtra("WELCOME_TEXT");
+        // changing to search bar
 
-        // Update the UI element with the welcome text
-        TextView welcomeTextAny = findViewById(R.id.welcome_text);
-        welcomeTextAny.setText(welcomeText);
     }
 
 }

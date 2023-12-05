@@ -87,7 +87,7 @@ public class RegistrationClub extends AppCompatActivity {
                     Toast.makeText(RegistrationClub.this, "This email was already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                user = new ClubOwner(email, password, social, contact, phone);
+                user = new ClubOwner(email.toLowerCase(), password, social.toLowerCase(), contact.toLowerCase(), phone);
                 db.insertUserData(user);
                 Toast.makeText(RegistrationClub.this, "Club Owner Account created", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), ClubOwnerProfilePage.class);
