@@ -59,6 +59,10 @@ public class Registration extends AppCompatActivity {
                     Toast.makeText(Registration.this, "Enter an email", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (email.indexOf(' ') > -1) {
+                    Toast.makeText(Registration.this, "Emails may not contain spaces", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(Registration.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
