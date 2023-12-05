@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/search"
         android:layout_width="244dp"
         android:layout_height="59dp"
         android:ems="10"
@@ -46,6 +46,16 @@
         android:layout_width="409dp"
         android:layout_height="538dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="192dp" />
+        tools:layout_editor_absoluteY="192dp" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/goBack2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go Back To Login"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="637dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
