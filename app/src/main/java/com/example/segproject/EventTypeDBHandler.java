@@ -54,7 +54,6 @@ public class EventTypeDBHandler extends SQLiteOpenHelper {
         long result = DB.delete("EventTypes", "name=?", new String[]{name});
         return result != -1;
     }
-
 }
 
 

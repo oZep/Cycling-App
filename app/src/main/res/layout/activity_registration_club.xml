@@ -69,8 +69,8 @@
         android:layout_marginStart="17dp"
         android:layout_marginTop="388dp"
         android:ems="10"
+        android:hint="Social Link"
         android:inputType="text"
-        android:text="Social Link"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,8 +81,8 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="450dp"
         android:ems="10"
+        android:hint="Contact"
         android:inputType="text"
-        android:text="Contact"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

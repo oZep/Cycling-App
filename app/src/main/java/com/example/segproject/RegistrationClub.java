@@ -27,8 +27,6 @@ public class RegistrationClub extends AppCompatActivity {
     static ClubDBHandler cdb;
     static EventTypeDBHandler etdb;
     static EventDBHandler edb;
-    ProgressBar progressBar;
-    TextView textView;
 
 
     @Override
@@ -46,15 +44,6 @@ public class RegistrationClub extends AppCompatActivity {
         editTextContact = findViewById(R.id.contact);
         buttonReg_A = findViewById(R.id.btn_reg_a);
         goBack = findViewById(R.id.goBack);
-
-        textView.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
 
         buttonReg_A.setOnClickListener(new View.OnClickListener() {
             @Override
