@@ -9,14 +9,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class EventTypeDBHandler extends SQLiteOpenHelper {
     public EventTypeDBHandler(Context context) {
         super(context, "EventTypes.db", null, 1);
+        insertEventType(EventType.HILL_CLIMB);
+        insertEventType(EventType.TIME_TRIAL);
+        insertEventType(EventType.ROAD_STAGE_RACE);
     }
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
         DB.execSQL("create Table EventTypes(name TEXT primary key, level INTEGER, age INTEGER)");
-        insertEventType(EventType.HILL_CLIMB);
-        insertEventType(EventType.TIME_TRIAL);
-        insertEventType(EventType.ROAD_STAGE_RACE);
     }
 
     @Override

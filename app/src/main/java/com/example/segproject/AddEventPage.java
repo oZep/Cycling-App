@@ -61,14 +61,14 @@ public class AddEventPage  extends AppCompatActivity {
         year = findViewById(R.id.year);
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
-            String eventNamed = eventName.getText().toString().toLowerCase();
-            String location = eventLocation.getText().toString();
-            String day2 = day.getText().toString();
-            String month2 = month.getText().toString();
-            String year2 = year.getText().toString();
-            String part = eventParticipants.getText().toString();
-            Club club = cdb.getClub(clubName, etdb, edb, adb);
             public void onClick(View view) {
+                String eventNamed = eventName.getText().toString().toLowerCase();
+                String location = eventLocation.getText().toString();
+                String day2 = day.getText().toString();
+                String month2 = month.getText().toString();
+                String year2 = year.getText().toString();
+                String part = eventParticipants.getText().toString();
+                Club club = cdb.getClub(clubName, etdb, edb, adb);
                 if(TextUtils.isEmpty(eventNamed)){
                     Toast.makeText(AddEventPage.this, "Enter an Event Name", Toast.LENGTH_SHORT).show();
                     return;

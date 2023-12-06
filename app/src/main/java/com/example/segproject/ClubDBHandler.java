@@ -12,12 +12,12 @@ public class ClubDBHandler extends SQLiteOpenHelper {
 
     public ClubDBHandler(Context context) {
         super(context, "ClubAccounts.db", null, 1);
+        insertUserData(Club.GCC_CLUB);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEventType TEXT, clubEvents TEXT, participants TEXT, raters TEXT)");
-        insertUserData(Club.GCC_CLUB);
     }
 
     @Override
