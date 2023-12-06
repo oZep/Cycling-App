@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // TODO: Send clubname + eventname to Userregister + username  as an intent
                 Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                intent.putExtra("Username", username.toLowerCase());
+                intent.putExtra("username", username.toLowerCase());
                 startActivity(intent);
                 finish();
 
