@@ -50,7 +50,8 @@ public class AdminManageAccounts extends AppCompatActivity {
         if (c.getCount() == 0) {
             Toast.makeText(AdminManageAccounts.this, "No entries", Toast.LENGTH_SHORT).show();
             return;
-        } else {
+        }
+        else {
             while (c.moveToNext()) {
                 arr.add(c.getString(0));
             }

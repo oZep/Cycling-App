@@ -73,6 +73,9 @@ public class AdminHandleAddEventType extends AppCompatActivity {
                 if(checkInsertData){
                     Toast.makeText(AdminHandleAddEventType.this,"Event created successfully", Toast.LENGTH_SHORT).show();
                 }
+                Intent intent = new Intent(getApplicationContext(), AdminManageActivities.class);
+                startActivity(intent);
+                finish();
             }
         });
 
