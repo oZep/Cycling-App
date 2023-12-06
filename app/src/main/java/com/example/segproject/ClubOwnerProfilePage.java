@@ -55,10 +55,6 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
         phone.setText("Phone: " + userAccount.getPhoneNum());
         socials.setText("Socials: " + userAccount.getSocialMedia());
 
-
-
-
-
         Cursor c = etdb.getData();
         List<String> arr = new ArrayList<>();
 
