@@ -54,7 +54,7 @@ public class EditEvent extends AppCompatActivity {
         viewEvent = findViewById(R.id.viewEventsButton);
         eventName = findViewById(R.id.eventName);
         eventType = findViewById(R.id.eventTypes);
-        eventLocation = findViewById(R.id.location);
+        eventLocation = findViewById(R.id.minAge);
         eventParticipants = findViewById(R.id.level);
         day = findViewById(R.id.day);
         month = findViewById(R.id.month);

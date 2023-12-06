@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Calendar;
-
 public class EditEventType extends AppCompatActivity {
     Button goBackButton, finishEventType;
     EventTypeDBHandler db;
@@ -31,6 +29,7 @@ public class EditEventType extends AppCompatActivity {
 
         Intent intent = getIntent();
         eventTypeN = intent.getStringExtra("eventTypeN");
+        Toast.makeText(EditEventType.this, eventTypeN, Toast.LENGTH_SHORT).show();
 
 
 

@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/minAge"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    a
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="325dp"
@@ -86,13 +86,7 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/eventTypes"
-                        android:layout_width="317dp"
-                        android:layout_height="match_parent" />
-                </TableRow>
+                    android:layout_height="match_parent"/>
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -103,8 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="text"
-                        android:text="Change Event Name" />
+                        android:inputType="text" />
                 </TableRow>
 
                 <TableRow
@@ -112,12 +105,11 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/location"
+                        android:id="@+id/minAge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="text"
-                        android:text="Change Minimum Age" />
+                        android:inputType="text" />
                 </TableRow>
 
                 <TableRow
@@ -129,8 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="text"
-                        android:text="Change Level" />
+                        android:inputType="text" />
 
                 </TableRow>
 
