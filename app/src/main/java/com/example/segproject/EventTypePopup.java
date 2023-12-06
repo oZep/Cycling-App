@@ -17,7 +17,7 @@ public class EventTypePopup extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_popup);
+        setContentView(R.layout.activity_event_type_popup);
         goBackButton = findViewById(R.id.goBackButton);
         goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
         deleteEventType = findViewById(R.id.deleteEvent_btn);
