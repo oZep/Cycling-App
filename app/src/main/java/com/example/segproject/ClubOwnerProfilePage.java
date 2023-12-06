@@ -56,6 +56,10 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
         socials.setText("Socials: " + userAccount.getSocialMedia());
 
         Cursor c = etdb.getData();
+        if (c == null) {
+            Toast.makeText(ClubOwnerProfilePage.this, "C is Null", Toast.LENGTH_SHORT).show();
+            return;
+        }
         List<String> arr = new ArrayList<>();
 
         if (c.getCount() == 0) {
@@ -72,6 +76,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
 
         EventTypeAdapter adapter = new EventTypeAdapter(this, arr, checks);
         rc.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         goToLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
