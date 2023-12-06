@@ -1,13 +1,18 @@
 package com.example.segproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-public class RateClub {
-    
+import androidx.appcompat.app.AppCompatActivity;
+
+public class RateClub extends AppCompatActivity {
+
     String username;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        goBackBtn = findViewById(R.id.goBack);
-        name = findViewById(R.id.name);
+        setContentView(R.layout.activity_rate_club);
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
+    }
 }

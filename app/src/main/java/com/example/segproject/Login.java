@@ -75,6 +75,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
                     //Intent to open the main activity
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("username", email);
                     startActivity(intent);
                     finish();
                 }
@@ -87,7 +88,7 @@ public class Login extends AppCompatActivity {
         buttonLoginOwner.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 String email, password;
-                email = String.valueOf(editTextEmail.getText());
+                email = String.valueOf(editTextEmail.getText()).toLowerCase();
                 password = String.valueOf(editTextPassword.getText());
 
                 if(TextUtils.isEmpty(email)){
@@ -102,6 +103,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
                     //Intent to open the main activity
                     Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
+                    intent.putExtra("username", email);
                     startActivity(intent);
                     finish();
                 }

@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         searchName = findViewById(R.id.eventname);
         searchClub = findViewById(R.id.clubname);
         searchBar = findViewById(R.id.search);
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
         // changing to search bar
 
         goBackBtn.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +47,16 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Enter Something to Search By", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // TODO: Send clubname + eventname to Userregister as an intent
+
+
+                // change the recycler
+                // TODO: Send clubname + eventname to Userregister  + username as an intent
+                Intent intent = new Intent(getApplicationContext(), UserRegister.class);
+                intent.putExtra("Username", username.toLowerCase());
+                startActivity(intent);
+                finish();
+                // on click of element
+
             }
         });
 
@@ -57,7 +68,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Enter Something to Search By", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // TODO: Send clubname + eventname to Userregister as an intent
+
+                // TODO: Send clubname + eventname to Userregister  + username as an intent
+                Intent intent = new Intent(getApplicationContext(), UserRegister.class);
+                intent.putExtra("Username", username.toLowerCase());
+                startActivity(intent);
+                finish();
+
             }
         });
 
@@ -69,8 +86,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Enter Something to Search By", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // TODO: Send clubname + eventname to Userregister + username  as an intent
+                Intent intent = new Intent(getApplicationContext(), UserRegister.class);
+                intent.putExtra("Username", username.toLowerCase());
+                startActivity(intent);
+                finish();
 
-                // TODO: Send clubname + eventname to Userregister as an intent
             }
         });
 
