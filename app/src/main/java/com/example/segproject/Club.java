@@ -3,13 +3,14 @@ package com.example.segproject;
 import java.util.ArrayList;
 
 public class Club {
-
     String username, clubName;
     EventType eventType;
     ArrayList<Event> events;
     ArrayList<Participant> participants;
     ArrayList<ClubReview> reviews;
     double rating = 0.0;
+
+    public static final Club GCC_CLUB = new Club("gccadmin", "gccclub", EventType.HILL_CLIMB);
 
     public Club(String username, String clubName, EventType et) {
         this.username = username;

@@ -17,6 +17,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEventType TEXT, clubEvents TEXT, participants TEXT, raters TEXT)");
+        insertUserData(Club.GCC_CLUB);
     }
 
     @Override
