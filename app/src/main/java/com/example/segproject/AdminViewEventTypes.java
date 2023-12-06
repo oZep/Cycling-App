@@ -30,6 +30,7 @@ public class AdminViewEventTypes extends AppCompatActivity {
         Cursor c = db.getData();
         ArrayList<String> arr = new ArrayList<String>();
         eventTypeList = findViewById(R.id.activity_event_type_list);
+        goBackButton = findViewById(R.id.goBackButton3);
 
         if (c.getCount() == 0) {
             Toast.makeText(AdminViewEventTypes.this, "No entries", Toast.LENGTH_SHORT).show();
@@ -47,7 +48,7 @@ public class AdminViewEventTypes extends AppCompatActivity {
         eventTypeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick (AdapterView < ? > parent, final View view, int position, long id){
                 String eventTypeName = (String) parent.getItemAtPosition(position);
-                Intent intent = new Intent(getApplicationContext(), EventPopup.class);
+                Intent intent = new Intent(getApplicationContext(), EventTypePopup.class);
                 intent.putExtra("eventTypeN", eventTypeName);
                 startActivity(intent);
                 finish();
