@@ -20,12 +20,12 @@ public class EditEventType extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_club_owner_handle_edit_event);
+        setContentView(R.layout.activity_club_owner_handle_edit_event_type);
         db = new EventTypeDBHandler(this);
 
-        goBackButton = findViewById(R.id.goBackButtonEventTypes);
-        finishEventType = findViewById(R.id.addEventTypeBtn);
-        eventTypeName = findViewById(R.id.eventTypeName);
+        goBackButton = findViewById(R.id.goBackButton);
+        finishEventType = findViewById(R.id.addEvent);
+        eventTypeName = findViewById(R.id.eventName);
         minAge = findViewById(R.id.minAge);
         level = findViewById(R.id.level);
 

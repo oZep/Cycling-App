@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/eventName2"
+    android:id="@+id/minAge"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -125,7 +125,7 @@ a
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/numParticipants"
+                        android:id="@+id/level"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"

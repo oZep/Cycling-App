@@ -56,7 +56,7 @@ public class AddEventPage  extends AppCompatActivity {
         eventName = findViewById(R.id.eventName);
         eventType = findViewById(R.id.eventTypes);
         eventLocation = findViewById(R.id.location);
-        eventParticipants = findViewById(R.id.numParticipants);
+        eventParticipants = findViewById(R.id.level);
         day = findViewById(R.id.day);
         month = findViewById(R.id.month);
         year = findViewById(R.id.year);
