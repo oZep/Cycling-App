@@ -32,8 +32,8 @@ public class EditEventType extends AppCompatActivity {
         // TODO: Fillin the info using what i did in another class, find the clubName in the database & fill out
         EventType eventType = db.getEventType(eventTypeN);
         eventTypeName.setText(eventType.getName());
-        minAge.setText(Integer.toString(eventType.getMinAge()));
-        level.setText(Integer.toString(eventType.getLevel()));
+        minAge.setText(eventType.getMinAge());
+        level.setText(eventType.getLevel());
 
         finishEventType.setOnClickListener(new View.OnClickListener() {
             String eventTypeNamed = eventTypeName.getText().toString().toLowerCase();
