@@ -121,6 +121,14 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                     Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (cdb.getByClubName(clubName, etdb, edb, dbHandler) != null) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "This Club name is already taken", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (eventTypes.size() == 0) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "Choose at least one event type", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Club club = new Club(clubOwner.toLowerCase(), clubName.toLowerCase(), eventTypes);
                 cdb.insertUserData(club);
