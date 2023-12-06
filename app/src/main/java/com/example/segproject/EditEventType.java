@@ -76,6 +76,9 @@ public class EditEventType extends AppCompatActivity {
                 db.deleteEventType(eventTypeNamed.toLowerCase());
                 db.insertEventType(e);
                 Toast.makeText(EditEventType.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);
+                startActivity(intent);
+                finish();
             }
         });
 
