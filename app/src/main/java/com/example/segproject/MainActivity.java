@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,17 +66,14 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Enter Something to Search By", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                EventType type = etdb.getEventType(searched);
-                ArrayList<Club> arr = cdb.getClubsByEventType(type, etdb, edb, adb);
+                ArrayList<Club> arr = cdb.getClubsByEventType(searched, etdb, edb, adb);
 
                 ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
-
                 finder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                         String clubowner = (String) parent.getItemAtPosition(position);
                         Intent intent = new Intent(getApplicationContext(), UserRegister.class);
                         intent.putExtra("username", username.toLowerCase());
-                        intent.putExtra("eventname", searched.toLowerCase());
                         intent.putExtra("clubowner", clubowner.toLowerCase());
                         startActivity(intent);
                         finish();
@@ -94,15 +92,21 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                ArrayList<Club> arr = cdb.getClubsByEventName(searched, etdb, edb, adb);
+
+                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
+                finder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                        String clubowner = (String) parent.getItemAtPosition(position);
 
 
-                // TODO: Send clubname + eventname to Userregister  + username as an intent
-                Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                intent.putExtra("username", username.toLowerCase());
-                intent.putExtra("eventname", eventname.toLowerCase());
-                intent.putExtra("clubowner", clubowner.toLowerCase());
-                startActivity(intent);
-                finish();
+                        Intent intent = new Intent(getApplicationContext(), UserRegister.class);
+                        intent.putExtra("username", username.toLowerCase());
+                        intent.putExtra("clubowner", clubowner.toLowerCase());
+                        startActivity(intent);
+                        finish();
+                    }
+
 
             }
         });
@@ -115,13 +119,18 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Enter Something to Search By", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // TODO: Send clubname + eventname to Userregister + username  as an intent
-                Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                intent.putExtra("username", username.toLowerCase());
-                intent.putExtra("eventname", eventname.toLowerCase());
-                intent.putExtra("clubowner", clubowner.toLowerCase());
-                startActivity(intent);
-                finish();
+                    ArrayList<Club> arr = cdb.getByClubName(searched, etdb, edb, adb);
+
+                    ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
+                    finder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                            String clubowner = (String) parent.getItemAtPosition(position);
+                            Intent intent = new Intent(getApplicationContext(), UserRegister.class);
+                            intent.putExtra("username", username.toLowerCase());
+                            intent.putExtra("clubowner", clubowner.toLowerCase());
+                            startActivity(intent);
+                            finish();
+                        }
 
             }
         });
