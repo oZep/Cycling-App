@@ -119,7 +119,7 @@ public class EditEvent extends AppCompatActivity {
                 Calendar c = Calendar.getInstance();
                 c.set(y, m, d);
                 Event e = new Event(eventNamed.toLowerCase(), db.getEventType(eventTyped), event.getClub(), c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
-                edb.deleteEvent(eventNamed.toLowerCase());
+                edb.deleteEvent(eventN);
                 edb.insertEvent(e);
                 Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
             }
