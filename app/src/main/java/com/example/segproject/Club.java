@@ -15,6 +15,9 @@ public class Club {
         this.username = username;
         this.clubName = clubName;
         this.eventType = et;
+        events = new ArrayList<Event>();
+        participants = new ArrayList<Participant>();
+        reviews = new ArrayList<ClubReview>();
     }
 
     public void addEvent(Event e) {

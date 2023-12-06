@@ -19,6 +19,7 @@ public class Event {
         date = d;
         maxParticipants = max;
         club = c;
+        participants = new ArrayList<Participant>();
     }
 
     public void setName(String n) {

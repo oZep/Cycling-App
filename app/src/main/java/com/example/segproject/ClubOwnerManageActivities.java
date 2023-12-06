@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ClubOwnerManageActivities extends AppCompatActivity {
-    Button goBackButton, goBackToHomepage, goToAddEventPage, viewEvents;
+    Button goBackButton, goToAddEventPage, viewEvents;
     String clubName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +22,6 @@ public class ClubOwnerManageActivities extends AppCompatActivity {
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        goBackToHomepage.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
             }
