@@ -114,7 +114,7 @@ public class AddEventPage  extends AppCompatActivity {
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminManageActivities.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
                 intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
