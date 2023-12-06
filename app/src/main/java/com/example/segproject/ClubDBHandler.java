@@ -16,7 +16,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEventTypes TEXT, clubEvents TEXT, participants TEXT, raters TEXT)");
+        db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEventType TEXT, clubEvents TEXT, participants TEXT, raters TEXT)");
     }
 
     @Override
@@ -29,15 +29,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", u.getUsername());
         contentValues.put("clubName", u.getClubName());
-        StringBuilder eventTypes = new StringBuilder();
-        ArrayList<EventType> etArr = u.getEventTypes();
-        for (int i = 0; i < etArr.size(); i++) {
-            eventTypes.append(etArr.get(i).getName());
-            if (i < etArr.size() - 1) {
-                eventTypes.append(" ");
-            }
-        }
-        contentValues.put("clubEventTypes", eventTypes.toString());
+        contentValues.put("clubEventTypes", u.getEventType().toString());
         StringBuilder events = new StringBuilder();
         ArrayList<Event> eArr = u.getEvents();
         for (int i = 0; i < eArr.size(); i++) {
@@ -81,17 +73,13 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         if (!cursor.moveToFirst()) {
             return null;
         }
-        String[] ets = cursor.getString(2).split(" ");
-        ArrayList<EventType> types = new ArrayList<EventType>();
-        for (String i : ets) {
-            types.add(etdb.getEventType(i));
-        }
+        EventType type = etdb.getEventType(cursor.getString(2));
         String[] evnt = cursor.getString(3).split(" ");
         ArrayList<Event> events = new ArrayList<Event>();
         for (String i : evnt) {
             events.add(edb.getEvent(i, this, etdb, adb));
         }
-        Club result = new Club(cursor.getString(0), cursor.getString(1), types);
+        Club result = new Club(cursor.getString(0), cursor.getString(1), type);
         String[] ppl = cursor.getString(4).split(" ");
         for (String i : ppl) {
             result.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
@@ -108,17 +96,13 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         Cursor cursor = getData();
         while (cursor.moveToNext()) {
             if (cursor.getString(2).equals(etName)) {
-                String[] ets = cursor.getString(2).split(" ");
-                ArrayList<EventType> types = new ArrayList<EventType>();
-                for (String i : ets) {
-                    types.add(etdb.getEventType(i));
-                }
+                EventType type = etdb.getEventType(cursor.getString(2));
                 String[] evnt = cursor.getString(3).split(" ");
                 ArrayList<Event> events = new ArrayList<Event>();
                 for (String i : evnt) {
                     events.add(edb.getEvent(i, this, etdb, adb));
                 }
-                Club c = new Club(cursor.getString(0), cursor.getString(1), types);
+                Club c = new Club(cursor.getString(0), cursor.getString(1), type);
                 String[] ppl = cursor.getString(4).split(" ");
                 for (String i : ppl) {
                     c.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
@@ -138,16 +122,12 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             String[] eventNames = cursor.getString(3).split(" ");
             if (findString(eventNames, eName)) {
-                String[] ets = cursor.getString(2).split(" ");
-                ArrayList<EventType> types = new ArrayList<EventType>();
-                for (String i : ets) {
-                    types.add(etdb.getEventType(i));
-                }
+                EventType type = etdb.getEventType(cursor.getString(2));
                 ArrayList<Event> events = new ArrayList<Event>();
                 for (String i : eventNames) {
                     events.add(edb.getEvent(i, this, etdb, adb));
                 }
-                Club result = new Club(cursor.getString(0), cursor.getString(1), types);
+                Club result = new Club(cursor.getString(0), cursor.getString(1), type);
                 String[] ppl = cursor.getString(4).split(" ");
                 for (String i : ppl) {
                     result.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
@@ -168,17 +148,13 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         if (!cursor.moveToFirst()) {
             return null;
         }
-        String[] ets = cursor.getString(2).split(" ");
-        ArrayList<EventType> types = new ArrayList<EventType>();
-        for (String i : ets) {
-            types.add(etdb.getEventType(i));
-        }
+        EventType type = etdb.getEventType(cursor.getString(2));
         String[] evnt = cursor.getString(3).split(" ");
         ArrayList<Event> events = new ArrayList<Event>();
         for (String i : evnt) {
             events.add(edb.getEvent(i, this, etdb, adb));
         }
-        Club result = new Club(cursor.getString(0), cursor.getString(1), types);
+        Club result = new Club(cursor.getString(0), cursor.getString(1), type);
         String[] ppl = cursor.getString(4).split(" ");
         for (String i : ppl) {
             result.addParticipant((Participant) adb.getUser(i, this, etdb, edb));

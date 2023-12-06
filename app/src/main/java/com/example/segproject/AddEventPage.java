@@ -20,7 +20,7 @@ public class AddEventPage  extends AppCompatActivity {
     EventDBHandler edb;
     ClubDBHandler cdb;
     AccountDBHandler adb;
-    EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
+    EditText eventName, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
         if (m < 0 || m > 11 || y < 2023 || d < 1) {
@@ -54,8 +54,7 @@ public class AddEventPage  extends AppCompatActivity {
         finishEvent = findViewById(R.id.addEvent);
         viewEvent = findViewById(R.id.viewEventsButton);
         eventName = findViewById(R.id.eventName);
-        eventType = findViewById(R.id.eventTypes);
-        eventLocation = findViewById(R.id.minAge);
+        eventLocation = findViewById(R.id.locale);
         eventParticipants = findViewById(R.id.level);
         day = findViewById(R.id.day);
         month = findViewById(R.id.month);
@@ -63,17 +62,13 @@ public class AddEventPage  extends AppCompatActivity {
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
             String eventNamed = eventName.getText().toString().toLowerCase();
-            String eventTyped = eventType.getText().toString();
             String location = eventLocation.getText().toString();
             String day2 = day.getText().toString();
             String month2 = month.getText().toString();
             String year2 = year.getText().toString();
             String part = eventParticipants.getText().toString();
+            Club club = cdb.getClub(clubName, etdb, edb, adb);
             public void onClick(View view) {
-                if(TextUtils.isEmpty(eventTyped)){
-                    Toast.makeText(AddEventPage.this, "Select a Event Type", Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 if(TextUtils.isEmpty(eventNamed)){
                     Toast.makeText(AddEventPage.this, "Enter a Event Name", Toast.LENGTH_SHORT).show();
                     return;
@@ -110,16 +105,16 @@ public class AddEventPage  extends AppCompatActivity {
                 }
                 Calendar c = Calendar.getInstance();
                 c.set(y, m, d);
-                Event e = new Event(eventNamed, etdb.getEventType(eventTyped), cdb.getClub(clubName, etdb, edb, adb), c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
+                Event e = new Event(eventNamed, club.getEventType(), club, c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
                 edb.insertEvent(e);
-                Toast.makeText(AddEventPage.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddEventPage.this,"Event created successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminManageActivities.class);
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
                 intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
@@ -128,7 +123,7 @@ public class AddEventPage  extends AppCompatActivity {
 
         viewEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);
+                Intent intent = new Intent(getApplicationContext(), EventList.class);
                 intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
