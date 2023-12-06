@@ -104,7 +104,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
     }
 
     public ArrayList<Club> getClubsByEventType(EventType et, EventTypeDBHandler etdb, EventDBHandler edb, AccountDBHandler adb) {
-        ArrayList<Club> result;
+        ArrayList<Club> result = new ArrayList<Club>();
         Cursor cursor = getData();
         while (cursor.moveToNext()) {
             if (cursor.getString(2).equals(et.getName())) {
