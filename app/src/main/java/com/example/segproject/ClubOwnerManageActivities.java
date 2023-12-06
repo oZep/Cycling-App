@@ -46,7 +46,7 @@ public class ClubOwnerManageActivities extends AppCompatActivity {
         viewEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), EventAdapter.class);
+                Intent intent = new Intent(getApplicationContext(), EventList.class);
                 startActivity(intent);
                 finish();
             }

@@ -91,51 +91,30 @@ public class MainActivity extends AppCompatActivity {
         searchName.setOnClickListener(new View.OnClickListener() {
             String searched = String.valueOf(searchBar.getText()).toLowerCase();
             public void onClick(View view) {
-                if(TextUtils.isEmpty(searched)){
+                if (TextUtils.isEmpty(searched)) {
                     Toast.makeText(MainActivity.this, "Enter Something to Search By", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                ArrayList<Club> arr = cdb.getClubsByEventName(searched, etdb, edb, adb);
-
-                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
-                finder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                        String clubowner = (String) parent.getItemAtPosition(position);
-
-
-                        Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                        intent.putExtra("username", username.toLowerCase());
-                        intent.putExtra("clubowner", clubowner.toLowerCase());
-                        startActivity(intent);
-                        finish();
-                    }
-
-
-            });
                 Club c = cdb.getByEventName(searched, etdb, edb, adb);
+
                 Intent intent = new Intent(getApplicationContext(), UserRegister.class);
                 intent.putExtra("username", username.toLowerCase());
                 intent.putExtra("clubOwner", c.getUsername());
                 startActivity(intent);
-                finish();
-            }
-
+            };
         });
 
         // search by club name
         searchClub.setOnClickListener(new View.OnClickListener() {
-            String searched = String.valueOf(searchBar.getText()).toLowerCase());
+            String searched = String.valueOf(searchBar.getText()).toLowerCase();
             public void onClick(View view) {
                 if (TextUtils.isEmpty(searched)) {
                     Toast.makeText(MainActivity.this, "Enter Something to Search By", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Club c = cdb.getByClubName(searched, etdb, edb, adb);
-
-
-            });
 
                 Intent intent = new Intent(getApplicationContext(), UserRegister.class);
                 intent.putExtra("username", username.toLowerCase());
