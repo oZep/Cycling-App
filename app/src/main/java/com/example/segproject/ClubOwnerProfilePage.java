@@ -24,6 +24,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
 
     AccountDBHandler dbHandler;
     EventTypeDBHandler etdb;
+    EventDBHandler edb;
     ClubDBHandler cdb;
     ClubOwner userAccount;
     String clubOwner;
@@ -88,6 +89,10 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(clubName)){
                     Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (cdb.getByClubName(clubName, etdb, edb, dbHandler) != null) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "This Club name is already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
