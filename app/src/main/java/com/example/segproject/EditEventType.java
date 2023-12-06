@@ -29,18 +29,14 @@ public class EditEventType extends AppCompatActivity {
 
         Intent intent = getIntent();
         eventTypeN = intent.getStringExtra("eventTypeN");
-        Toast.makeText(EditEventType.this, eventTypeN, Toast.LENGTH_SHORT).show();
-
-
-
         // TODO: Fillin the info using what i did in another class, find the clubName in the database & fill out
         EventType eventType = db.getEventType(eventTypeN);
         eventTypeName.setText(eventType.getName());
-        minAge.setText(eventType.getMinAge());
-        level.setText(eventType.getLevel());
+        minAge.setText(Integer.toString(eventType.getMinAge()));
+        level.setText(Integer.toString(eventType.getLevel()));
 
         finishEventType.setOnClickListener(new View.OnClickListener() {
-            String eventTypeNamed = eventTypeName.getText().toString();
+            String eventTypeNamed = eventTypeName.getText().toString().toLowerCase();
             String sAge = minAge.getText().toString();
             String sLevel = level.getText().toString();
             public void onClick(View view) {
@@ -71,8 +67,8 @@ public class EditEventType extends AppCompatActivity {
                     Toast.makeText(EditEventType.this, "Enter a Proper Level", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                EventType e = new EventType(eventTypeNamed.toLowerCase(), age, lvl);
-                db.deleteEventType(eventTypeNamed.toLowerCase());
+                EventType e = new EventType(eventTypeNamed, age, lvl);
+                db.deleteEventType(eventTypeNamed);
                 db.insertEventType(e);
                 Toast.makeText(EditEventType.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);

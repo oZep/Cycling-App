@@ -41,7 +41,6 @@ public class EventTypePopup extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditEventType.class);
                 intent.putExtra("eventTypeN", eventTypeN);
-                Toast.makeText(EventTypePopup.this, eventTypeN, Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 finish();
             }

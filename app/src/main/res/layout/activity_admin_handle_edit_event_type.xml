@@ -97,6 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:hint="Event Name"
                         android:inputType="text" />
                 </TableRow>
 
@@ -109,6 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:hint="minimum age"
                         android:inputType="text" />
                 </TableRow>
 
@@ -121,6 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:hint="level"
                         android:inputType="text" />
 
                 </TableRow>
