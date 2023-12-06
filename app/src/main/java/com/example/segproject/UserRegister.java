@@ -17,7 +17,11 @@ public class UserRegister extends AppCompatActivity {
     TextView name, age;
 
     ClubDBHandler cdb;
-    EventTypeDBHandler db;
+
+    EventDBHandler edb;
+    EventTypeDBHandler etdb;
+
+    AccountDBHandler adb;
     String clubowner, eventname, username;
 
 
@@ -30,12 +34,17 @@ public class UserRegister extends AppCompatActivity {
         age = findViewById(R.id.age);
         register = findViewById(R.id.reg);
         Intent intent = getIntent();
-
-        db = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
+        etdb = new EventTypeDBHandler(this);
+        edb = new EventDBHandler(this);
+        adb = new AccountDBHandler(this);
         clubowner = intent.getStringExtra("clubowner"); //send from search or main activity
         eventname = intent.getStringExtra("eventname");
         username = intent.getStringExtra("username");
+
+        Club club = cdb.getClub(clubowner, etdb, edb, adb);
+
+        Participant user = (Participant) adb.getUser(username);
 
 
 
@@ -55,7 +64,7 @@ public class UserRegister extends AppCompatActivity {
 
                 sName = String.valueOf(name.getText());
                 sAge = String.valueOf(age.getText());
-                EventType q = db.getEventType(eventname);
+                EventType q = etdb.getEventType(eventname);
                 int minAge = q.getMinAge();
 
 
@@ -84,8 +93,14 @@ public class UserRegister extends AppCompatActivity {
                     return;
                 }
 
+                // register user in club
+                club.addParticipant(user);
+                adb.deleteUserData(username);
+                cdb.deleteClubData(clubowner);
+                cdb.insertUserData(club);
+                adb.insertUserData(user);
+
                 Intent intent = new Intent(getApplicationContext(), RateClub.class);
-                // TODO: pass username to rate page
                 intent.putExtra("username", username);
                 intent.putExtra("eventname", username.toLowerCase());
                 intent.putExtra("clubname", username.toLowerCase());
