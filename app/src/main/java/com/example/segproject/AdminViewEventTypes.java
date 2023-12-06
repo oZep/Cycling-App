@@ -48,9 +48,9 @@ public class AdminViewEventTypes extends AppCompatActivity {
         eventTypeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick (AdapterView < ? > parent, final View view, int position, long id){
                 String eventTypeName = (String) parent.getItemAtPosition(position);
+                Toast.makeText(AdminViewEventTypes.this, eventTypeName, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), EventTypePopup.class);
                 intent.putExtra("eventTypeN", eventTypeName);
-                Toast.makeText(AdminViewEventTypes.this, eventTypeName, Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 finish();
             }
