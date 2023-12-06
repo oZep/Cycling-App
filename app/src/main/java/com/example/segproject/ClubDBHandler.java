@@ -162,6 +162,34 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         return null;
     }
 
+    public Club getByClubName(String cName, EventTypeDBHandler etdb, EventDBHandler edb, AccountDBHandler adb) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from ClubAccounts WHERE clubName = \"" + cName + "\"", null );
+        if (!cursor.moveToFirst()) {
+            return null;
+        }
+        String[] ets = cursor.getString(2).split(" ");
+        ArrayList<EventType> types = new ArrayList<EventType>();
+        for (String i : ets) {
+            types.add(etdb.getEventType(i));
+        }
+        String[] evnt = cursor.getString(3).split(" ");
+        ArrayList<Event> events = new ArrayList<Event>();
+        for (String i : evnt) {
+            events.add(edb.getEvent(i, etdb, this, edb, adb));
+        }
+        Club result = new Club(cursor.getString(0), cursor.getString(1), types);
+        String[] ppl = cursor.getString(4).split(" ");
+        for (String i : ppl) {
+            result.addParticipant((Participant) adb.getUser(i));
+        }
+        String[] r = cursor.getString(5).split(" ");
+        for (String i : r) {
+            result.addReview(((Participant) adb.getUser(i)).findReview(result));
+        }
+        return result;
+    }
+
     public boolean deleteClubData(String username) {
         SQLiteDatabase DB = this.getWritableDatabase();
         long result = DB.delete("ClubAccounts", "username=?", new String[]{username});
