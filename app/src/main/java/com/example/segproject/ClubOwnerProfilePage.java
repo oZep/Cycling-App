@@ -112,6 +112,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 clubName = String.valueOf(clubNamed.getText());
 
                 ArrayList<String> eventTypeNames = adapter.getChecked();
+                eventTypes = new ArrayList<EventType>();
                 for (String i : eventTypeNames) {
                     eventTypes.add(etdb.getEventType(i));
                 }
