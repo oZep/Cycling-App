@@ -2,6 +2,13 @@
 
 Repo Link: https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17
 
+## Group Members and IDs
+- Isabelle Choi 300282805
+- Michelle Choi 300316843
+- Joey Issa 300219818
+- Ming Gao 300290294
+
+
 # Deliverables 1,2,3,4
 
 - ## Deliverable 4
@@ -9,14 +16,6 @@ Repo Link: https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_1
 ## Updated UML CLass Diagram
 ![Screen Shot 2023-12-06 at 6 34 46 PM](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/66e098b0-3c72-4130-8e1c-e089b180b4da)
 
-
-
-
-## Group Members and IDs
-- Isabelle Choi 300282805
-- Michelle Choi 300316843
-- Joey Issa 300219818
-- Ming Gao 300290294
 
 - ## Deliverable 3
 
