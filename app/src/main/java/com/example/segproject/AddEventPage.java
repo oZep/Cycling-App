@@ -16,7 +16,7 @@ public class AddEventPage  extends AppCompatActivity {
 
     String clubName;
     Button goBackButton, finishEvent, viewEvent;
-    EventTypeDBHandler db;
+    EventTypeDBHandler etdb;
     EventDBHandler edb;
     ClubDBHandler cdb;
     AccountDBHandler adb;
@@ -45,7 +45,7 @@ public class AddEventPage  extends AppCompatActivity {
         clubName = intent.getStringExtra("clubName");
 
 
-        db = new EventTypeDBHandler(this);
+        etdb = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
         edb = new EventDBHandler(this);
         adb = new AccountDBHandler(this);
@@ -62,7 +62,7 @@ public class AddEventPage  extends AppCompatActivity {
         year = findViewById(R.id.year);
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
-            String eventNamed = eventName.getText().toString();
+            String eventNamed = eventName.getText().toString().toLowerCase();
             String eventTyped = eventType.getText().toString();
             String location = eventLocation.getText().toString();
             String day2 = day.getText().toString();
@@ -76,6 +76,10 @@ public class AddEventPage  extends AppCompatActivity {
                 }
                 if(TextUtils.isEmpty(eventNamed)){
                     Toast.makeText(AddEventPage.this, "Enter a Event Name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (edb.getEvent(eventNamed, etdb, cdb, edb, adb) != null) {
+                    Toast.makeText(AddEventPage.this, "This event name was already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(location)){
@@ -106,7 +110,7 @@ public class AddEventPage  extends AppCompatActivity {
                 }
                 Calendar c = Calendar.getInstance();
                 c.set(y, m, d);
-                Event e = new Event(eventNamed.toLowerCase(), db.getEventType(eventTyped), cdb.getClub(clubName, db, edb, adb), c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
+                Event e = new Event(eventNamed, etdb.getEventType(eventTyped), cdb.getClub(clubName, etdb, edb, adb), c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
                 edb.insertEvent(e);
                 Toast.makeText(AddEventPage.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
             }

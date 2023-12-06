@@ -103,11 +103,11 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
-    public ArrayList<Club> getClubsByEventType(EventType et, EventTypeDBHandler etdb, EventDBHandler edb, AccountDBHandler adb) {
+    public ArrayList<Club> getClubsByEventType(String etName, EventTypeDBHandler etdb, EventDBHandler edb, AccountDBHandler adb) {
         ArrayList<Club> result = new ArrayList<Club>();
         Cursor cursor = getData();
         while (cursor.moveToNext()) {
-            if (cursor.getString(2).equals(et.getName())) {
+            if (cursor.getString(2).equals(etName)) {
                 String[] ets = cursor.getString(2).split(" ");
                 ArrayList<EventType> types = new ArrayList<EventType>();
                 for (String i : ets) {
@@ -133,9 +133,47 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
+    public Club getByEventName(String eName, EventTypeDBHandler etdb, EventDBHandler edb, AccountDBHandler adb) {
+        Cursor cursor = getData();
+        while (cursor.moveToNext()) {
+            String[] eventNames = cursor.getString(3).split(" ");
+            if (findString(eventNames, eName)) {
+                String[] ets = cursor.getString(2).split(" ");
+                ArrayList<EventType> types = new ArrayList<EventType>();
+                for (String i : ets) {
+                    types.add(etdb.getEventType(i));
+                }
+                ArrayList<Event> events = new ArrayList<Event>();
+                for (String i : eventNames) {
+                    events.add(edb.getEvent(i, etdb, this, edb, adb));
+                }
+                Club result = new Club(cursor.getString(0), cursor.getString(1), types);
+                String[] ppl = cursor.getString(4).split(" ");
+                for (String i : ppl) {
+                    result.addParticipant((Participant) adb.getUser(i));
+                }
+                String[] r = cursor.getString(5).split(" ");
+                for (String i : r) {
+                    result.addReview(((Participant) adb.getUser(i)).findReview(result));
+                }
+                return result;
+            }
+        }
+        return null;
+    }
+
     public boolean deleteClubData(String username) {
         SQLiteDatabase DB = this.getWritableDatabase();
         long result = DB.delete("ClubAccounts", "username=?", new String[]{username});
         return result != -1;
+    }
+
+    private boolean findString(String[] arr, String s) {
+        for (String i : arr) {
+            if (i.equals(s)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
