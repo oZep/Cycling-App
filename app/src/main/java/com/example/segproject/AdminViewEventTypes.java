@@ -54,5 +54,14 @@ public class AdminViewEventTypes extends AppCompatActivity {
                 finish();
             }
         });
+
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }
