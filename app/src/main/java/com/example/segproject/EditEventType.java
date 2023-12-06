@@ -20,7 +20,7 @@ public class EditEventType extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_club_owner_handle_edit_event_type);
+        setContentView(R.layout.activity_admin_handle_edit_event_type);
         db = new EventTypeDBHandler(this);
 
         goBackButton = findViewById(R.id.goBackButton);

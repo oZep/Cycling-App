@@ -28,6 +28,12 @@
             android:name=".AdminViewEventTypes"
             android:exported="false" />
         <activity
+            android:name=".EditEventType"
+            android:exported="false" />
+        <activity
+            android:name=".EventTypePopup"
+            android:exported="false" />
+        <activity
             android:name=".AdminHandleAddEventType"
             android:exported="false" />
         <activity
