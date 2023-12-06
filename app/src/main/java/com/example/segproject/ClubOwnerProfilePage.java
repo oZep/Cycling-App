@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -74,7 +75,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
         boolean[] checks = new boolean[arr.size()];
 
 
-        EventTypeAdapter adapter = new EventTypeAdapter(this, arr, checks);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
         rc.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -83,11 +84,12 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 String clubName;
                 clubName = String.valueOf(clubNamed.getText());
 
-                ArrayList<String> eventTypeNames = adapter.getChecked();
-                eventTypes = new ArrayList<EventType>();
-                for (String i : eventTypeNames) {
-                    eventTypes.add(etdb.getEventType(i));
-                }
+                // Just making it so that all the event types are added to the club
+                //ArrayList<String> eventTypeNames = adapter.getChecked();
+                //eventTypes = new ArrayList<EventType>();
+                //for (String i : eventTypeNames) {
+                //    eventTypes.add(etdb.getEventType(i));
+                //}
 
                 if(TextUtils.isEmpty(clubName)){
                     Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
@@ -116,11 +118,11 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 String clubName;
                 clubName = String.valueOf(clubNamed.getText());
 
-                ArrayList<String> eventTypeNames = adapter.getChecked();
+                /*ArrayList<String> eventTypeNames = adapter.getChecked();
                 eventTypes = new ArrayList<EventType>();
                 for (String i : eventTypeNames) {
                     eventTypes.add(etdb.getEventType(i));
-                }
+                }*/
 
                 if(TextUtils.isEmpty(clubName)){
                     Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
