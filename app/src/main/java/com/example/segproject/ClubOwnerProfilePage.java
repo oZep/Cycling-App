@@ -107,6 +107,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 cdb.insertUserData(club);
 
                 Intent intent = new Intent(getApplicationContext(), Login.class);
+                intent.putExtra("clubname", clubName);
                 startActivity(intent);
                 finish();
             }
