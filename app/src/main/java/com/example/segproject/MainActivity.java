@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
                 ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
 
-                finder.setAdapter(adapter);
                 finder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                         String clubowner = (String) parent.getItemAtPosition(position);
