@@ -70,7 +70,7 @@ public class AddEventPage  extends AppCompatActivity {
             Club club = cdb.getClub(clubName, etdb, edb, adb);
             public void onClick(View view) {
                 if(TextUtils.isEmpty(eventNamed)){
-                    Toast.makeText(AddEventPage.this, "Enter a Event Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddEventPage.this, "Enter an Event Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (edb.getEvent(eventNamed, cdb, etdb, adb) != null) {

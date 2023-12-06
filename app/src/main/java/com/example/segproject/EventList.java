@@ -32,6 +32,15 @@ public class EventList extends AppCompatActivity {
         Cursor c = db.getData();
         ArrayList<String> arr = new ArrayList<>();
 
+        goBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
+                intent.putExtra("clubName", clubName);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         if (c.getCount() == 0) {
             Toast.makeText(EventList.this, "No entries", Toast.LENGTH_SHORT).show();
             return;
@@ -42,14 +51,6 @@ public class EventList extends AppCompatActivity {
                 arr.add(c.getString(0));
             }
         }
-
-        goBack.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
