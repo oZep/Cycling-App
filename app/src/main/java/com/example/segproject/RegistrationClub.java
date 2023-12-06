@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,8 +20,9 @@ import java.util.regex.Matcher;
 
 public class RegistrationClub extends AppCompatActivity {
 
-    TextInputEditText editTextEmail, editTextPassword, editTextPhone, editTextSocialLink, editTextContact;
-    Button buttonReg_A;
+    TextInputEditText editTextEmail, editTextPassword, editTextPhone;
+    EditText editTextSocialLink, editTextContact;
+    Button buttonReg_A, goBack;
     static AccountDBHandler db;
     static ClubDBHandler cdb;
     static EventTypeDBHandler etdb;
@@ -43,8 +45,7 @@ public class RegistrationClub extends AppCompatActivity {
         editTextSocialLink = findViewById(R.id.socialLink);
         editTextContact = findViewById(R.id.contact);
         buttonReg_A = findViewById(R.id.btn_reg_a);
-        progressBar =findViewById(R.id.progressBar);
-        textView =findViewById(R.id.loginNow);
+        goBack = findViewById(R.id.goBack);
 
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -100,6 +101,14 @@ public class RegistrationClub extends AppCompatActivity {
                 Toast.makeText(RegistrationClub.this, "Club Owner Account created", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), ClubOwnerProfilePage.class);
                 intent.putExtra("clubOwner", email);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
                 finish();
             }
