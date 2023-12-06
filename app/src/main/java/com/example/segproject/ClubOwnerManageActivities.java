@@ -15,6 +15,8 @@ public class ClubOwnerManageActivities extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_owner_manage_activities);
         goBackButton = findViewById(R.id.goBackButton);
+        goToAddEventPage = findViewById(R.id.addEventType);
+        viewEvents = findViewById(R.id.viewEvents_btn);
 
         Intent intent = getIntent();
         clubName = intent.getStringExtra("clubName");
