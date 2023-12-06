@@ -61,6 +61,9 @@
             android:name=".UserRegister"
             android:exported="false" />
         <activity
+            android:name=".RateClub"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="true"
             android:label="@string/app_name"
