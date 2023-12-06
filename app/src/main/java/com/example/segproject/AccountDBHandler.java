@@ -64,7 +64,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
         if (!cursor.moveToFirst()) {
             return null;
         }
-        if (cursor.getInt(3) == 1) {
+        if (cursor.getInt(2) == 1) {
             return new ClubOwner(cursor.getString(0), cursor.getString(1), cursor.getString(3), cursor.getString(4), cursor.getString(5));
         }
         Participant result = new Participant(cursor.getString(0), cursor.getString(1));

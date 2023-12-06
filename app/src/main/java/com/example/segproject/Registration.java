@@ -39,17 +39,14 @@ public class Registration extends AppCompatActivity {
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_login);
-        progressBar =findViewById(R.id.progressBar);
-        textView =findViewById(R.id.loginNow);
+        progressBar = findViewById(R.id.progressBar);
+        textView = findViewById(R.id.loginNow);
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), com.example.segproject.Login.class);
                 startActivity(intent);
                 finish();
-
             }
-
-
         });
 
 
@@ -60,6 +57,8 @@ public class Registration extends AppCompatActivity {
                 
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
+                Toast.makeText(Registration.this, email, Toast.LENGTH_SHORT).show();
+
 
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(Registration.this, "Enter an email", Toast.LENGTH_SHORT).show();

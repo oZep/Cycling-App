@@ -8,9 +8,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +19,8 @@ import java.util.List;
 
 public class ClubOwnerProfilePage extends AppCompatActivity {
     Button goToLogin, goToMain;
-    TextView Username, Contact, Phone, Socials, clubNamed;
-
+    TextView username, contact, phone, socials;
+    EditText clubNamed;
     AccountDBHandler dbHandler;
     EventTypeDBHandler etdb;
     EventDBHandler edb;
@@ -38,10 +37,10 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
         setContentView(R.layout.activity_club_owner_profile_page);
         goToLogin = findViewById(R.id.btn_return_to_login);
         goToMain = findViewById(R.id.btn_return_to_main);
-        Username = findViewById(R.id.Username);
-        Contact = findViewById(R.id.Contact);
-        Phone = findViewById(R.id.Phone);
-        Socials = findViewById(R.id.Socials);
+        username = findViewById(R.id.username);
+        contact = findViewById(R.id.contact);
+        phone = findViewById(R.id.phone);
+        socials = findViewById(R.id.Socials);
         clubNamed = findViewById(R.id.clubName);
         Intent intent = getIntent();
         clubOwner = intent.getStringExtra("clubOwner");
@@ -51,10 +50,10 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
         userAccount = (ClubOwner) dbHandler.getUser(clubOwner, cdb, etdb, edb);
         rc = findViewById(R.id.rc);
 
-        Username.setText("Username: " + clubOwner);
-        Contact.setText("Contact: " + userAccount.getContact());
-        Phone.setText("Phone: " + userAccount.getPhoneNum());
-        Socials.setText("Socials: " + userAccount.getSocialMedia());
+        username.setText("Username: " + clubOwner);
+        contact.setText("Contact: " + userAccount.getContact());
+        phone.setText("Phone: " + userAccount.getPhoneNum());
+        socials.setText("Socials: " + userAccount.getSocialMedia());
 
 
 
