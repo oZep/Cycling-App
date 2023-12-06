@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RateClub extends AppCompatActivity {
 
-    String username, clubname;
+    String username, clubowner;
 
     ClubDBHandler cdb;
 
