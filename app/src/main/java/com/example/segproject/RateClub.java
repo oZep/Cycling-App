@@ -59,8 +59,10 @@ public class RateClub extends AppCompatActivity {
                 int rate = (int) rating;
                 Club club = cdb.getClub(clubowner, etdb, edb, adb);
                 ClubReview rev = new ClubReview(user, club, rate, comments);
+                adb.deleteUserData(username);
                 cdb.deleteClubData(clubowner);
                 cdb.insertUserData(club);
+                adb.insertUserData(user);
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
