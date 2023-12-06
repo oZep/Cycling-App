@@ -125,7 +125,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
                 }
                 String[] r = cursor.getString(5).split(" ");
                 for (String i : r) {
-                    c.addReview(((Participant) adb.getUser(i)).findReview(result));
+                    c.addReview(((Participant) adb.getUser(i)).findReview(c));
                 }
                 result.add(c);
             }
