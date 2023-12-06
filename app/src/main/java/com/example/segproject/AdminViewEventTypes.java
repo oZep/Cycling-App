@@ -50,7 +50,7 @@ public class AdminViewEventTypes extends AppCompatActivity {
                 String eventTypeName = (String) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getApplicationContext(), EventTypePopup.class);
                 intent.putExtra("eventTypeN", eventTypeName);
-                Toast.makeText(EventTypePopup.this, eventTypeN, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminViewEventTypes.this, eventTypeName, Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 finish();
             }
