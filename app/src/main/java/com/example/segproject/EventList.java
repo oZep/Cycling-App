@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class EventList extends AppCompatActivity {
 
     static EventDBHandler db;
-
+    static String clubName;
     Button goBack;
     ListView eventList;
 
@@ -31,6 +31,8 @@ public class EventList extends AppCompatActivity {
         goBack = findViewById(R.id.goBack);
         Cursor c = db.getData();
         ArrayList<String> arr = new ArrayList<>();
+        Intent intent = getIntent();
+        clubName = intent.getStringExtra("clubName");
 
         goBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
