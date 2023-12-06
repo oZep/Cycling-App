@@ -67,7 +67,5 @@ public class EventPopup extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 }

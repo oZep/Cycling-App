@@ -28,7 +28,7 @@ public class AdminViewEventTypes extends AppCompatActivity {
         db = new EventTypeDBHandler(this);
         setContentView(R.layout.activity_event_type_list);
         Cursor c = db.getData();
-        ArrayList<String> arr = new ArrayList<>();
+        ArrayList<String> arr = new ArrayList<String>();
 
         if (c.getCount() == 0) {
             Toast.makeText(AdminViewEventTypes.this, "No entries", Toast.LENGTH_SHORT).show();
