@@ -45,7 +45,7 @@ public class AdminViewEventTypes extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
         eventTypeList.setAdapter(adapter);
         eventTypeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick (AdapterView < ? > parent,final View view, int position, long id){
+            public void onItemClick (AdapterView < ? > parent, final View view, int position, long id){
                 String eventTypeName = (String) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getApplicationContext(), EventPopup.class);
                 intent.putExtra("eventTypeN", eventTypeName);
