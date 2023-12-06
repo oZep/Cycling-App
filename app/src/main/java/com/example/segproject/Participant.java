@@ -9,6 +9,7 @@ public class Participant extends UserAccount {
     public Participant(String u, String p) {
         username = u;
         password = p;
+        reviews = new HashMap<Club, ClubReview>();
     }
 
     public void addReview(Club c, ClubReview r) {

@@ -13,7 +13,6 @@ public class EventPopup extends AppCompatActivity {
     EventDBHandler db;
     EventTypeDBHandler etdb;
     ClubDBHandler cdb;
-    EventDBHandler edb;
     AccountDBHandler adb;
 
 
@@ -35,7 +34,7 @@ public class EventPopup extends AppCompatActivity {
 
         deleteEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String clubName = db.getEvent(eventN, etdb, cdb, edb, adb).getClub().getClubName();
+                String clubName = db.getEvent(eventN, cdb, etdb, adb).getClub().getClubName();
                 db.deleteEvent(eventN);
                 Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
                 intent.putExtra("clubName", clubName);

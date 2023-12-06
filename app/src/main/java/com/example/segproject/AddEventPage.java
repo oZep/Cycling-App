@@ -78,7 +78,7 @@ public class AddEventPage  extends AppCompatActivity {
                     Toast.makeText(AddEventPage.this, "Enter a Event Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (edb.getEvent(eventNamed, etdb, cdb, edb, adb) != null) {
+                if (edb.getEvent(eventNamed, cdb, etdb, adb) != null) {
                     Toast.makeText(AddEventPage.this, "This event name was already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }

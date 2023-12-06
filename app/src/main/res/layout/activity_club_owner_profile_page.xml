@@ -55,8 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:text="Enter Club Name" />
+            android:hint="Enter Club Name"
+            android:inputType="text" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <LinearLayout
@@ -94,7 +94,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/Username"
+                    android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
@@ -109,7 +109,7 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:id="@+id/Contact"
+                    android:id="@+id/contact"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_column="1"
@@ -124,7 +124,7 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:id="@+id/Phone"
+                    android:id="@+id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
@@ -149,7 +149,7 @@
 
         </TableLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <ListView
             android:id="@+id/rc"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

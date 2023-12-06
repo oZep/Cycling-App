@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class AdminManageActivities extends AppCompatActivity {
-    Button goBackButton, goBackToHomepage, goToAddEventPage, viewEvents, deleteEvent, editEvents;
+    Button goBackButton, goBackToHomepage, viewEventTypes, deleteEventType, editEventType, addEventType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,13 +16,13 @@ public class AdminManageActivities extends AppCompatActivity {
         setContentView(R.layout.activity_admin_manage_activities);
         goBackButton = findViewById(R.id.goBackButton);
         goBackToHomepage = findViewById(R.id.goToHomepageAdmin);
-        goToAddEventPage = findViewById(R.id.addevent);
-        viewEvents = findViewById(R.id.viewEvents_btn);
-        deleteEvent = findViewById(R.id.deleteEvent_btn);
+        addEventType = findViewById(R.id.addEventType);
+        viewEventTypes = findViewById(R.id.viewEvents_btn);
+        deleteEventType = findViewById(R.id.deleteEvent_btn);
+        editEventType = findViewById(R.id.editEventType);
 
 
-
-        viewEvents.setOnClickListener(new View.OnClickListener() {
+        viewEventTypes.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);
                 startActivity(intent);
@@ -30,11 +30,7 @@ public class AdminManageActivities extends AppCompatActivity {
             }
         });
 
-
-        //event adder button
-        Button  addevent = findViewById(R.id.addevent);
-
-        addevent.setOnClickListener(new View.OnClickListener() {
+        addEventType.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
@@ -58,15 +54,7 @@ public class AdminManageActivities extends AppCompatActivity {
             }
         });
 
-        goToAddEventPage.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminHandleAddEventType.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        deleteEvent.setOnClickListener(new View.OnClickListener() {
+        deleteEventType.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AdminHandleDeleteEventType.class);
                 startActivity(intent);
@@ -74,7 +62,7 @@ public class AdminManageActivities extends AppCompatActivity {
             }
         });
 
-        editEvents.setOnClickListener(new View.OnClickListener() {
+        editEventType.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditEvent.class);
                 startActivity(intent);

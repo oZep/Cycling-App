@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class AccountDBHandler extends SQLiteOpenHelper {
     public AccountDBHandler(Context context) {
         super(context, "UserAccounts.db", null, 1);
@@ -13,7 +15,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table Accounts(email TEXT primary key, password TEXT, isClubOwner INTEGER, socialMedia TEXT, contact TEXT, phoneNum TEXT)");
+        db.execSQL("create Table Accounts(email TEXT primary key, password TEXT, isClubOwner INTEGER, socialMedia TEXT, contact TEXT, phoneNum TEXT, reviews TEXT)");
     }
 
     @Override
@@ -24,7 +26,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
     public boolean insertUserData(UserAccount u) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username", u.getUsername());
+        contentValues.put("email", u.getUsername());
         contentValues.put("password", u.getPassword());
         if (u instanceof ClubOwner) {
             ClubOwner c = (ClubOwner) u;
@@ -35,26 +37,43 @@ public class AccountDBHandler extends SQLiteOpenHelper {
         }
         else {
             contentValues.put("isClubOwner", 0);
+            ArrayList<ClubReview> rArr = ((Participant) u).getReviews();
+            StringBuilder reviews = new StringBuilder();
+            for (int i = 0; i < rArr.size(); i++) {
+                ClubReview r = rArr.get(i);
+                reviews.append(String.format("%s:%d:%s", r.getRatee(), r.getRating()));
+                if (i < rArr.size() - 1) {
+                    reviews.append(" ");
+                }
+            }
+            contentValues.put("reviews", reviews.toString());
         }
         long result = db.insert("Accounts", null, contentValues);
         return result == -1;
     }
 
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from Accounts", null );
         return cursor;
     }
 
-    public UserAccount getUser(String username) {
+    public UserAccount getUser(String username, ClubDBHandler cdb, EventTypeDBHandler etdb, EventDBHandler edb) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from Accounts WHERE username = \"" + username + "\"", null );
+        Cursor cursor = db.rawQuery("Select * from Accounts WHERE email = \"" + username + "\"", null );
         if (!cursor.moveToFirst()) {
             return null;
         }
-        UserAccount result;
-        result = cursor.getInt(3) == 0 ? new Participant(cursor.getString(0), cursor.getString(1)) :
-                new ClubOwner(cursor.getString(0), cursor.getString(1), cursor.getString(3), cursor.getString(4), cursor.getString(5));
+        if (cursor.getInt(2) == 1) {
+            return new ClubOwner(cursor.getString(0), cursor.getString(1), cursor.getString(3), cursor.getString(4), cursor.getString(5));
+        }
+        Participant result = new Participant(cursor.getString(0), cursor.getString(1));
+        String[] rArr = cursor.getString(6).split(" ");
+        for (String i : rArr) {
+            String[] sArr = i.split(":");
+            Club c = cdb.getByClubName(sArr[0], etdb, edb, this);
+            result.addReview(c, new ClubReview(result, c, Integer.parseInt(sArr[1]), ""));
+        }
         return result;
     }
 
