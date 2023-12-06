@@ -13,13 +13,6 @@ public class ClubOwner extends UserAccount{
         phoneNum = pn;
     }
 
-    public ClubOwner(String u, String p, String sm, String pn) {
-        username = u;
-        password = p;
-        socialMedia = sm;
-        phoneNum = pn;
-    }
-
     public String getSocialMedia() {
         return socialMedia;
     }

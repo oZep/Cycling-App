@@ -51,7 +51,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
         return result == -1;
     }
 
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from Accounts", null );
         return cursor;

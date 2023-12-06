@@ -70,7 +70,7 @@ public class RegistrationClub extends AppCompatActivity {
                     Toast.makeText(RegistrationClub.this, "Enter an email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (email.indexOf(' ') < -1) {
+                if (email.indexOf(' ') > -1) {
                     Toast.makeText(RegistrationClub.this, "An email may not have spaces", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -94,9 +94,6 @@ public class RegistrationClub extends AppCompatActivity {
                 if (db.getUser(email, cdb, etdb, edb) != null) {
                     Toast.makeText(RegistrationClub.this, "This email was already taken", Toast.LENGTH_SHORT).show();
                     return;
-                }
-                if (contact == null) {
-                    contact = " ";
                 }
                 user = new ClubOwner(email, password, social.toLowerCase(), contact.toLowerCase(), phone);
                 db.insertUserData(user);
