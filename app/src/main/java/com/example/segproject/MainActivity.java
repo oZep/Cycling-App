@@ -108,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 
-            }
+            });
         });
 
         // search by club name
         searchClub.setOnClickListener(new View.OnClickListener() {
-            String searched = String.valueOf(searchBar.getText()).toLowerCase();
+            String searched = String.valueOf(searchBar.getText()).toLowerCase());
             public void onClick(View view) {
                 if(TextUtils.isEmpty(searched)){
                     Toast.makeText(MainActivity.this, "Enter Something to Search By", Toast.LENGTH_SHORT).show();
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                             finish();
                         }
 
-            }
+            });
         });
 
 

@@ -37,8 +37,9 @@
                 android:hint='Email'
                 android:padding="16dp"
                 android:textColor="#17202A"
-                android:textSize="20sp"
-                android:textStyle="bold">
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:visibility="visible">
 
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
@@ -56,7 +57,9 @@
                 android:padding="16dp"
                 android:textColor="#17202A"
                 android:textSize="19sp"
-                android:textStyle="bold">
+                android:textStyle="bold"
+                android:visibility="visible"
+                tools:visibility="visible">
 
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +73,8 @@
                 android:id="@+id/phoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="phone number" />
+                android:hint="phone number"
+                android:visibility="visible" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,20 +89,22 @@
                 android:id="@+id/socialLink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:hint="hint"
+                android:visibility="visible" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/contact"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="contact name" />
+                android:layout_height="45dp">
+
+            </com.google.android.material.textfield.TextInputLayout>
+
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="contact name" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
