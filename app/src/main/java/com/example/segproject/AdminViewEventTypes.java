@@ -30,6 +30,7 @@ public class AdminViewEventTypes extends AppCompatActivity {
         Cursor c = db.getData();
         ArrayList<String> arr = new ArrayList<String>();
         eventTypeList = findViewById(R.id.activity_event_type_list);
+        goBackButton = findViewById(R.id.goBackButton3);
 
         if (c.getCount() == 0) {
             Toast.makeText(AdminViewEventTypes.this, "No entries", Toast.LENGTH_SHORT).show();
