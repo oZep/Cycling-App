@@ -61,7 +61,8 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
         if (c.getCount() == 0) {
             Toast.makeText(ClubOwnerProfilePage.this, "No entries", Toast.LENGTH_SHORT).show();
             return;
-        } else {
+        }
+        else {
             while (c.moveToNext()) {
                 arr.add(c.getString(0));
             }
@@ -78,6 +79,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 clubName = String.valueOf(clubNamed.getText());
 
                 ArrayList<String> eventTypeNames = adapter.getChecked();
+                eventTypes = new ArrayList<EventType>();
                 for (String i : eventTypeNames) {
                     eventTypes.add(etdb.getEventType(i));
                 }
@@ -90,7 +92,10 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                     Toast.makeText(ClubOwnerProfilePage.this, "This Club name is already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                if (eventTypes.size() == 0) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "Choose at least one event type", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Club club = new Club(clubOwner, clubName, eventTypes);
                 cdb.insertUserData(club);
 

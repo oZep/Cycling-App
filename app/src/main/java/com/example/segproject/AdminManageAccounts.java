@@ -44,6 +44,14 @@ public class AdminManageAccounts extends AppCompatActivity {
             }
         });
 
+        goBackToAdminHomepage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         Cursor c = db.getData();
         ArrayList<String> arr = new ArrayList<>();
 
@@ -70,15 +78,6 @@ public class AdminManageAccounts extends AppCompatActivity {
                 } catch (Exception e) {
                     Toast.makeText(AdminManageAccounts.this, "Error Deleting User", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-
-        goBackToAdminHomepage.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
-                startActivity(intent);
-                finish();
             }
         });
     }

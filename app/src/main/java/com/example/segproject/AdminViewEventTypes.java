@@ -27,10 +27,19 @@ public class AdminViewEventTypes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         db = new EventTypeDBHandler(this);
         setContentView(R.layout.activity_type_list);
-        Cursor c = db.getData();
-        ArrayList<String> arr = new ArrayList<String>();
         eventTypeList = findViewById(R.id.activity_event_type_list);
         goBackButton = findViewById(R.id.goBackButton3);
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        Cursor c = db.getData();
+        ArrayList<String> arr = new ArrayList<String>();
 
         if (c.getCount() == 0) {
             Toast.makeText(AdminViewEventTypes.this, "No entries", Toast.LENGTH_SHORT).show();
@@ -50,15 +59,6 @@ public class AdminViewEventTypes extends AppCompatActivity {
                 String eventTypeName = (String) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getApplicationContext(), EventTypePopup.class);
                 intent.putExtra("eventTypeN", eventTypeName);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        goBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
                 startActivity(intent);
                 finish();
             }
