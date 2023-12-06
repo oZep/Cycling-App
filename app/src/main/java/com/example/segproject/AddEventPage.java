@@ -54,7 +54,7 @@ public class AddEventPage  extends AppCompatActivity {
         finishEvent = findViewById(R.id.addEvent);
         viewEvent = findViewById(R.id.viewEventsButton);
         eventName = findViewById(R.id.eventName);
-        eventLocation = findViewById(R.id.minAge);
+        eventLocation = findViewById(R.id.locale);
         eventParticipants = findViewById(R.id.level);
         day = findViewById(R.id.day);
         month = findViewById(R.id.month);
@@ -107,7 +107,7 @@ public class AddEventPage  extends AppCompatActivity {
                 c.set(y, m, d);
                 Event e = new Event(eventNamed, club.getEventType(), club, c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
                 edb.insertEvent(e);
-                Toast.makeText(AddEventPage.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddEventPage.this,"Event created successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -123,7 +123,7 @@ public class AddEventPage  extends AppCompatActivity {
 
         viewEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminViewEventTypes.class);
+                Intent intent = new Intent(getApplicationContext(), EventList.class);
                 intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
