@@ -32,6 +32,7 @@ public class ClubOwnerManageActivities extends AppCompatActivity {
         goToAddEventPage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddEventPage.class);
+                intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
             }
@@ -41,6 +42,7 @@ public class ClubOwnerManageActivities extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EventList.class);
+                intent.putExtra("clubName", clubName);
                 startActivity(intent);
                 finish();
             }
