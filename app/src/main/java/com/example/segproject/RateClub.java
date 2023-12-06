@@ -41,6 +41,7 @@ public class RateClub extends AppCompatActivity {
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
         clubowner = intent.getStringExtra("clubowner");
+        Participant user = (Participant) adb.getUser(username);
 
 
         goBack.setOnClickListener(new View.OnClickListener() {
@@ -57,17 +58,9 @@ public class RateClub extends AppCompatActivity {
                 float rating = score.getRating();
                 int rate = (int) rating;
                 Club club = cdb.getClub(clubowner, etdb, edb, adb);
-                
-
-               // TODO: add rating to club
-
-
-
-
-
-
-
-
+                ClubReview rev = new ClubReview(user, club, rate, comments);
+                cdb.deleteClubData(clubowner);
+                cdb.insertUserData(club);
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
