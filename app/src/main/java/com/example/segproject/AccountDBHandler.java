@@ -40,7 +40,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
         else {
             contentValues.put("isClubOwner", 0);
             ArrayList<ClubReview> rArr = ((Participant) u).getReviews();
-            StringBuilder reviews = new StringBuilder();
+            StringBuilder reviews = new StringBuilder("");
             for (int i = 0; i < rArr.size(); i++) {
                 ClubReview r = rArr.get(i);
                 reviews.append(String.format("%s:%d:%s", r.getRatee(), r.getRating()));

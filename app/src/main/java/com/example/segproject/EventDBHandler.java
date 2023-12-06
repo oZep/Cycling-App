@@ -34,7 +34,7 @@ public class EventDBHandler extends SQLiteOpenHelper {
         contentValues.put("date", e.getDate().getTime());
         contentValues.put("location", e.getLocation());
         contentValues.put("maxParticipants", e.getMaxParticipants());
-        StringBuilder participants = new StringBuilder();
+        StringBuilder participants = new StringBuilder("");
         ArrayList<Participant> pArr = e.getParticipants();
         for (int i = 0; i < pArr.size(); i++) {
             participants.append(pArr.get(i).getUsername());

@@ -40,7 +40,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
             }
         }
         contentValues.put("clubEvents", events.toString());
-        StringBuilder participants = new StringBuilder();
+        StringBuilder participants = new StringBuilder("");
         ArrayList<Participant> pArr = u.getParticipants();
         for (int i = 0; i < pArr.size(); i++) {
             participants.append(pArr.get(i).getUsername());
@@ -49,7 +49,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
             }
         }
         contentValues.put("participants", participants.toString());
-        StringBuilder raters = new StringBuilder();
+        StringBuilder raters = new StringBuilder("");
         ArrayList<ClubReview> rArr = u.getReviews();
         for (int i = 0; i < rArr.size(); i++) {
             raters.append(rArr.get(i).getRater().getUsername());
