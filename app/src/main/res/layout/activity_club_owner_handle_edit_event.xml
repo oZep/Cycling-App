@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-a
+    a
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="325dp"
@@ -117,7 +117,7 @@ a
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="text"
-                        android:text="Change Location" />
+                        android:text="Change Minimum Age" />
                 </TableRow>
 
                 <TableRow
@@ -130,7 +130,7 @@ a
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="text"
-                        android:text="Change Max Participants" />
+                        android:text="Change Level" />
 
                 </TableRow>
 
@@ -141,32 +141,7 @@ a
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/day"
-                            android:layout_width="93dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="day" />
-
-                        <EditText
-                            android:id="@+id/month"
-                            android:layout_width="87dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="month" />
-
-                        <EditText
-                            android:id="@+id/year"
-                            android:layout_width="107dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="year" />
-                    </LinearLayout>
+                        android:orientation="horizontal"/>
 
                 </TableRow>
 
