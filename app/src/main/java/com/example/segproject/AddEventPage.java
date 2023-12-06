@@ -20,7 +20,7 @@ public class AddEventPage  extends AppCompatActivity {
     EventDBHandler edb;
     ClubDBHandler cdb;
     AccountDBHandler adb;
-    EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
+    EditText eventName, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
         if (m < 0 || m > 11 || y < 2023 || d < 1) {
