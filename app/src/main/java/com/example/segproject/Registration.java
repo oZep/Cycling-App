@@ -21,6 +21,9 @@ public class Registration extends AppCompatActivity {
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
     static AccountDBHandler db;
+    static ClubDBHandler cdb;
+    static EventTypeDBHandler etdb;
+    static EventDBHandler edb;
     ProgressBar progressBar;
     TextView textView;
 
@@ -30,6 +33,9 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         db = new AccountDBHandler(this);
+        cdb = new ClubDBHandler(this);
+        edb = new EventDBHandler(this);
+        etdb = new EventTypeDBHandler(this);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_login);
@@ -68,7 +74,7 @@ public class Registration extends AppCompatActivity {
                     return;
                 }
                 UserAccount user;
-                if (db.getUser(email.toLowerCase()) != null) {
+                if (db.getUser(email.toLowerCase(), cdb, etdb, edb) != null) {
                     Toast.makeText(Registration.this, "This email was already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }

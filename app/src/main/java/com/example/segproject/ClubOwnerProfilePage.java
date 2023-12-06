@@ -48,7 +48,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
         dbHandler = new AccountDBHandler(this);
         etdb = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
-        userAccount = (ClubOwner) dbHandler.getUser(clubOwner);
+        userAccount = (ClubOwner) dbHandler.getUser(clubOwner, cdb, etdb, edb);
         rc = findViewById(R.id.rc);
 
         Username.setText("Username: " + clubOwner);

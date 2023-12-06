@@ -20,6 +20,9 @@ public class Login extends AppCompatActivity {
     Button buttonLoginAdmin;
     Button buttonLoginOwner;
     static AccountDBHandler db;
+    static ClubDBHandler cdb;
+    static EventDBHandler edb;
+    static EventTypeDBHandler etdb;
     ProgressBar progressBar;
     TextView textView;
     TextView textView_admin;
@@ -30,6 +33,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new AccountDBHandler(this);
+        cdb = new ClubDBHandler(this);
+        edb = new EventDBHandler(this);
+        etdb = new EventTypeDBHandler(this);
         setContentView(R.layout.activity_login);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
@@ -144,7 +150,7 @@ public class Login extends AppCompatActivity {
     }
 
     public static boolean login(String email, String password, boolean isClubOwner) {
-        UserAccount user = db.getUser(email.toLowerCase());
+        UserAccount user = db.getUser(email.toLowerCase(), cdb, etdb, edb);
         return user != null && user.getPassword().equals(password) && user instanceof ClubOwner == isClubOwner;
     }
 }

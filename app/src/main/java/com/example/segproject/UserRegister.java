@@ -44,7 +44,7 @@ public class UserRegister extends AppCompatActivity {
 
         Club club = cdb.getClub(clubowner, etdb, edb, adb);
 
-        Participant user = (Participant) adb.getUser(username);
+        Participant user = (Participant) adb.getUser(username, cdb, etdb, edb);
 
 
 

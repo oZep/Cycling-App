@@ -41,7 +41,7 @@ public class RateClub extends AppCompatActivity {
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
         clubowner = intent.getStringExtra("clubowner");
-        Participant user = (Participant) adb.getUser(username);
+        Participant user = (Participant) adb.getUser(username, cdb, etdb, edb);
 
 
         goBack.setOnClickListener(new View.OnClickListener() {

@@ -89,16 +89,16 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         String[] evnt = cursor.getString(3).split(" ");
         ArrayList<Event> events = new ArrayList<Event>();
         for (String i : evnt) {
-            events.add(edb.getEvent(i, etdb, this, edb, adb));
+            events.add(edb.getEvent(i, this, etdb, adb));
         }
         Club result = new Club(cursor.getString(0), cursor.getString(1), types);
         String[] ppl = cursor.getString(4).split(" ");
         for (String i : ppl) {
-            result.addParticipant((Participant) adb.getUser(i));
+            result.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
         }
         String[] r = cursor.getString(5).split(" ");
         for (String i : r) {
-            result.addReview(((Participant) adb.getUser(i)).findReview(result));
+            result.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(result));
         }
         return result;
     }
@@ -116,16 +116,16 @@ public class ClubDBHandler extends SQLiteOpenHelper {
                 String[] evnt = cursor.getString(3).split(" ");
                 ArrayList<Event> events = new ArrayList<Event>();
                 for (String i : evnt) {
-                    events.add(edb.getEvent(i, etdb, this, edb, adb));
+                    events.add(edb.getEvent(i, this, etdb, adb));
                 }
                 Club c = new Club(cursor.getString(0), cursor.getString(1), types);
                 String[] ppl = cursor.getString(4).split(" ");
                 for (String i : ppl) {
-                    c.addParticipant((Participant) adb.getUser(i));
+                    c.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
                 }
                 String[] r = cursor.getString(5).split(" ");
                 for (String i : r) {
-                    c.addReview(((Participant) adb.getUser(i)).findReview(c));
+                    c.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(c));
                 }
                 result.add(c);
             }
@@ -145,16 +145,16 @@ public class ClubDBHandler extends SQLiteOpenHelper {
                 }
                 ArrayList<Event> events = new ArrayList<Event>();
                 for (String i : eventNames) {
-                    events.add(edb.getEvent(i, etdb, this, edb, adb));
+                    events.add(edb.getEvent(i, this, etdb, adb));
                 }
                 Club result = new Club(cursor.getString(0), cursor.getString(1), types);
                 String[] ppl = cursor.getString(4).split(" ");
                 for (String i : ppl) {
-                    result.addParticipant((Participant) adb.getUser(i));
+                    result.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
                 }
                 String[] r = cursor.getString(5).split(" ");
                 for (String i : r) {
-                    result.addReview(((Participant) adb.getUser(i)).findReview(result));
+                    result.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(result));
                 }
                 return result;
             }
@@ -176,16 +176,16 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         String[] evnt = cursor.getString(3).split(" ");
         ArrayList<Event> events = new ArrayList<Event>();
         for (String i : evnt) {
-            events.add(edb.getEvent(i, etdb, this, edb, adb));
+            events.add(edb.getEvent(i, this, etdb, adb));
         }
         Club result = new Club(cursor.getString(0), cursor.getString(1), types);
         String[] ppl = cursor.getString(4).split(" ");
         for (String i : ppl) {
-            result.addParticipant((Participant) adb.getUser(i));
+            result.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
         }
         String[] r = cursor.getString(5).split(" ");
         for (String i : r) {
-            result.addReview(((Participant) adb.getUser(i)).findReview(result));
+            result.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(result));
         }
         return result;
     }

@@ -22,6 +22,9 @@ public class RegistrationClub extends AppCompatActivity {
     TextInputEditText editTextEmail, editTextPassword, editTextPhone, editTextSocialLink, editTextContact;
     Button buttonReg_A;
     static AccountDBHandler db;
+    static ClubDBHandler cdb;
+    static EventTypeDBHandler etdb;
+    static EventDBHandler edb;
     ProgressBar progressBar;
     TextView textView;
 
@@ -31,6 +34,9 @@ public class RegistrationClub extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_club);
         db = new AccountDBHandler(this);
+        cdb = new ClubDBHandler(this);
+        etdb = new EventTypeDBHandler(this);
+        edb = new EventDBHandler(this);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         editTextPhone = findViewById(R.id.phoneNumber);
@@ -53,7 +59,7 @@ public class RegistrationClub extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email, password, phone, social, contact;
-                email = String.valueOf(editTextEmail.getText());
+                email = String.valueOf(editTextEmail.getText()).toLowerCase();
                 password = String.valueOf(editTextPassword.getText());
 
                 phone = String.valueOf(editTextPhone.getText());
@@ -85,11 +91,14 @@ public class RegistrationClub extends AppCompatActivity {
                     return;
                 }
                 UserAccount user;
-                if (db.getUser(email) != null) {
+                if (db.getUser(email, cdb, etdb, edb) != null) {
                     Toast.makeText(RegistrationClub.this, "This email was already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                user = new ClubOwner(email.toLowerCase(), password, social.toLowerCase(), contact.toLowerCase(), phone);
+                if (contact == null) {
+                    contact = " ";
+                }
+                user = new ClubOwner(email, password, social.toLowerCase(), contact.toLowerCase(), phone);
                 db.insertUserData(user);
                 Toast.makeText(RegistrationClub.this, "Club Owner Account created", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), ClubOwnerProfilePage.class);

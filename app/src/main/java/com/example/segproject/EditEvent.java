@@ -66,7 +66,7 @@ public class EditEvent extends AppCompatActivity {
 
 
         // TODO: Fillin the info using what i did in another class, find the clubName in the database & fill out
-        Event event = edb.getEvent(eventN, db, cdb, edb, adb);
+        Event event = edb.getEvent(eventN, cdb, db, adb);
         eventName.setText(event.getName());
         eventType.setText(event.getEventType().getName());
         eventLocation.setText(event.getLocation());
