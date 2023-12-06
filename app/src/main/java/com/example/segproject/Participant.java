@@ -6,6 +6,8 @@ import java.util.HashMap;
 public class Participant extends UserAccount {
     private HashMap<Club, ClubReview> reviews;
 
+    public static final Participant CYCLING_ADDICT = new Participant("cyclingaddict", "cyclingIsLife!");
+
     public Participant(String u, String p) {
         username = u;
         password = p;

@@ -14,7 +14,9 @@ public class EventTypeDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase DB) {
         DB.execSQL("create Table EventTypes(name TEXT primary key, level INTEGER, age INTEGER)");
-
+        insertEventType(EventType.HILL_CLIMB);
+        insertEventType(EventType.TIME_TRIAL);
+        insertEventType(EventType.ROAD_STAGE_RACE);
     }
 
     @Override

@@ -16,6 +16,8 @@ public class AccountDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create Table Accounts(email TEXT primary key, password TEXT, isClubOwner INTEGER, socialMedia TEXT, contact TEXT, phoneNum TEXT, reviews TEXT)");
+        insertUserData(ClubOwner.GCC_ADMIN);
+        insertUserData(Participant.CYCLING_ADDICT);
     }
 
     @Override
