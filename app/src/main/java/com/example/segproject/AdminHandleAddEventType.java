@@ -32,7 +32,7 @@ public class AdminHandleAddEventType extends AppCompatActivity {
 
         addEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String nameTXT = name.getText().toString();
+                String nameTXT = name.getText().toString().toLowerCase();
 
                 if(TextUtils.isEmpty(nameTXT)){
                     Toast.makeText(AdminHandleAddEventType.this, "Enter a Event Type Name", Toast.LENGTH_SHORT).show();
