@@ -82,7 +82,7 @@ public class RegistrationClub extends AppCompatActivity {
                     Toast.makeText(RegistrationClub.this, "Enter a phone number", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (phone.length() <= 10 && !Pattern.compile("^[1-9]\\d*$").matcher(phone).find()) {
+                if (phone.length() <= 10 && !Pattern.compile("^[1-9]*$").matcher(phone).find()) {
                     Toast.makeText(RegistrationClub.this, "Enter a valid phone number", Toast.LENGTH_SHORT).show();
                     return;
                 }

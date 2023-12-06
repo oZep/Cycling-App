@@ -46,6 +46,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
                     reviews.append(" ");
                 }
             }
+            contentValues.put("reviews", reviews.toString());
         }
         long result = db.insert("Accounts", null, contentValues);
         return result == -1;
