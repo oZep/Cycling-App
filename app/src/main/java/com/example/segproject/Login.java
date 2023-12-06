@@ -98,10 +98,10 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (login(email, password, true)) {
-                    Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
-                    //Intent to open the main activity
-                    Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
+                if (email.equals("gccadmin") && password.equals("GCCROCKS!")) {
+                    Toast.makeText(Login.this, "Authentication successful for gccadmin.", Toast.LENGTH_SHORT).show();
+                    //Intent to open a specific activity for this case
+                    Intent intent = new Intent(getApplicationContext(), ClubOwnerMainPage.class);
                     startActivity(intent);
                     finish();
                 }

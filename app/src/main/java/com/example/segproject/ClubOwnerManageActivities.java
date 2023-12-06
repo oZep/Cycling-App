@@ -15,6 +15,8 @@ public class ClubOwnerManageActivities extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_owner_manage_activities);
         goBackButton = findViewById(R.id.goBackButton);
+        goToAddEventPage = findViewById(R.id.addEvent);
+        viewEvents = findViewById(R.id.viewEvents_btn);
 
         Intent intent = getIntent();
         clubName = intent.getStringExtra("clubName");
@@ -27,13 +29,6 @@ public class ClubOwnerManageActivities extends AppCompatActivity {
             }
         });
 
-        goBackToHomepage.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         goToAddEventPage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

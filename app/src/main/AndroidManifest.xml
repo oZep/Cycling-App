@@ -37,6 +37,9 @@
             android:name=".AdminManageActivities"
             android:exported="false" />
         <activity
+            android:name=".ClubOwnerMainPage"
+            android:exported="false" />
+        <activity
             android:name=".AdminManageAccounts"
             android:exported="false" />
         <activity

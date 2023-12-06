@@ -75,7 +75,7 @@
                 android:layout_marginTop="30dp"
                 android:padding="15dp"
                 android:textColor="#FFF"
-                android:id="@+id/addevent"
+                android:id="@+id/addEvent"
                 android:backgroundTint="#ff4b4b"
                 android:text="Add Event"
                 android:textSize="15sp"
