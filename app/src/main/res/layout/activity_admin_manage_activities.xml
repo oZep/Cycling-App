@@ -71,19 +71,6 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/deleteEvent_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#ff4b4b"
-                android:padding="15dp"
-                android:text="Delete Event Type"
-                android:textColor="#FFF"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <Button
                 android:id="@+id/viewEvents_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

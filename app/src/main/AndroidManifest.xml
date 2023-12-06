@@ -25,9 +25,6 @@
             android:name=".ClubOwnerProfilePage"
             android:exported="false" />
         <activity
-            android:name=".AdminHandleDeleteEventType"
-            android:exported="false" />
-        <activity
             android:name=".AdminViewEventTypes"
             android:exported="false" />
         <activity
