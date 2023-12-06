@@ -74,7 +74,7 @@ public class Registration extends AppCompatActivity {
                 }
                 user = new Participant(email.toLowerCase(), password);
                 db.insertUserData(user);
-                Toast.makeText(Registration.this, "User Account created", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Registration.this, "Participant Account created", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
                 finish();

@@ -18,7 +18,11 @@ public class UserRegister extends AppCompatActivity {
 
     ClubDBHandler cdb;
     EventTypeDBHandler db;
+<<<<<<< HEAD
     String clubowner, eventname, username;
+=======
+    String clubName, eventName, username;
+>>>>>>> 480f03cbc17d8da8fff1e4b097cef31ef777ee85
 
 
     @Override
@@ -33,8 +37,13 @@ public class UserRegister extends AppCompatActivity {
 
         db = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
+<<<<<<< HEAD
         clubowner = intent.getStringExtra("clubowner"); //send from search or main activity
         eventname = intent.getStringExtra("eventname");
+=======
+        clubName = intent.getStringExtra("clubName"); //send from search or main activity
+        eventName = intent.getStringExtra("eventName");
+>>>>>>> 480f03cbc17d8da8fff1e4b097cef31ef777ee85
         username = intent.getStringExtra("username");
 
 
@@ -55,7 +64,7 @@ public class UserRegister extends AppCompatActivity {
 
                 sName = String.valueOf(name.getText());
                 sAge = String.valueOf(age.getText());
-                EventType q = db.getEventType(eventname);
+                EventType q = db.getEventType(eventName);
                 int minAge = q.getMinAge();
 
 
