@@ -59,7 +59,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
 
     public UserAccount getUser(String username, ClubDBHandler cdb, EventTypeDBHandler etdb, EventDBHandler edb) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from Accounts WHERE username = \"" + username + "\"", null );
+        Cursor cursor = db.rawQuery("Select * from Accounts WHERE email = \"" + username + "\"", null );
         if (!cursor.moveToFirst()) {
             return null;
         }
