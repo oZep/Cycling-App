@@ -30,7 +30,7 @@ public class AdminManageActivities extends AppCompatActivity {
 
         addEventType.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AdminHandleAddEventType.class);
                 startActivity(intent);
                 finish();
             }

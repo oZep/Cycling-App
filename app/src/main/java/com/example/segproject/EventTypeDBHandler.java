@@ -27,7 +27,7 @@ public class EventTypeDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", et.getName());
-        contentValues.put("email", et.getLevel());
+        contentValues.put("level", et.getLevel());
         contentValues.put("age", et.getMinAge());
         long result = DB.insert("EventTypes", null, contentValues);
         return result != -1;
@@ -41,7 +41,7 @@ public class EventTypeDBHandler extends SQLiteOpenHelper {
 
     public EventType getEventType(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from EventTypes WHERE username = \"" + name + "\"", null );
+        Cursor cursor = db.rawQuery("Select * from EventTypes WHERE name = \"" + name + "\"", null );
         if (!cursor.moveToFirst()) {
             return null;
         }
