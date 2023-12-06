@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class Club {
 
     String username, clubName;
-    ArrayList<EventType> eventTypes;
+    EventType eventType;
     ArrayList<Event> events;
     ArrayList<Participant> participants;
     ArrayList<ClubReview> reviews;
     double rating = 0.0;
 
-    public Club(String username, String clubName, ArrayList<EventType> et) {
+    public Club(String username, String clubName, EventType et) {
         this.username = username;
         this.clubName = clubName;
-        this.eventTypes = et;
+        this.eventType = et;
     }
 
     public void addEvent(Event e) {
@@ -31,8 +31,8 @@ public class Club {
         this.username = username;
     }
 
-    public void setEventTypes(ArrayList<EventType> et) {
-        this.eventTypes = et;
+    public void setEventTypes(EventType et) {
+        this.eventType = et;
     }
 
     public void addParticipant(Participant p) {
@@ -53,8 +53,8 @@ public class Club {
     public double getRating() {
         return rating;
     }
-    public ArrayList<EventType> getEventTypes() {
-        return eventTypes;
+    public EventType getEventType() {
+        return eventType;
     }
     public ArrayList<Event> getEvents() {
         return events;

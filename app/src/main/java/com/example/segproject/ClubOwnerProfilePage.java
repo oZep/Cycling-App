@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
     String clubOwner;
     ListView rc;
     ArrayList<EventType> eventTypes;
+    EventType type;
 
 
     @Override
@@ -84,13 +86,6 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 String clubName;
                 clubName = String.valueOf(clubNamed.getText());
 
-                // Just making it so that all the event types are added to the club
-                //ArrayList<String> eventTypeNames = adapter.getChecked();
-                //eventTypes = new ArrayList<EventType>();
-                //for (String i : eventTypeNames) {
-                //    eventTypes.add(etdb.getEventType(i));
-                //}
-
                 if(TextUtils.isEmpty(clubName)){
                     Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
                     return;
@@ -99,11 +94,11 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                     Toast.makeText(ClubOwnerProfilePage.this, "This Club name is already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (eventTypes.size() == 0) {
-                    Toast.makeText(ClubOwnerProfilePage.this, "Choose at least one event type", Toast.LENGTH_SHORT).show();
+                if (type == null) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "Choose one event type", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Club club = new Club(clubOwner, clubName, eventTypes);
+                Club club = new Club(clubOwner, clubName, type);
                 cdb.insertUserData(club);
 
                 Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -118,12 +113,6 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 String clubName;
                 clubName = String.valueOf(clubNamed.getText());
 
-                /*ArrayList<String> eventTypeNames = adapter.getChecked();
-                eventTypes = new ArrayList<EventType>();
-                for (String i : eventTypeNames) {
-                    eventTypes.add(etdb.getEventType(i));
-                }*/
-
                 if(TextUtils.isEmpty(clubName)){
                     Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
                     return;
@@ -132,12 +121,12 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                     Toast.makeText(ClubOwnerProfilePage.this, "This Club name is already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (eventTypes.size() == 0) {
-                    Toast.makeText(ClubOwnerProfilePage.this, "Choose at least one event type", Toast.LENGTH_SHORT).show();
+                if (type == null) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "Choose one event type", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                Club club = new Club(clubOwner.toLowerCase(), clubName.toLowerCase(), eventTypes);
+                Club club = new Club(clubOwner.toLowerCase(), clubName.toLowerCase(), type);
                 cdb.insertUserData(club);
 
                 Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
@@ -145,6 +134,13 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
 
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        rc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick (AdapterView < ? > parent, final View view, int position, long id){
+                String eventTypeName = (String) parent.getItemAtPosition(position);
+                type = etdb.getEventType(eventTypeName);
             }
         });
     }
