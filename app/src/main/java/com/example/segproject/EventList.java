@@ -17,6 +17,7 @@ public class EventList extends AppCompatActivity {
 
     static EventDBHandler db;
 
+    Button goBack;
     ListView eventList;
 
 
@@ -25,6 +26,8 @@ public class EventList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         db = new EventDBHandler(this);
         setContentView(R.layout.activity_event_list);
+        eventList = findViewById(R.id.eventList);
+        goBack = findViewById(R.id.goBack);
         Cursor c = db.getData();
         ArrayList<String> arr = new ArrayList<>();
 
@@ -38,6 +41,14 @@ public class EventList extends AppCompatActivity {
                 arr.add(c.getString(0));
             }
         }
+
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
