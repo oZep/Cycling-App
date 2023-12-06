@@ -18,11 +18,7 @@ public class UserRegister extends AppCompatActivity {
 
     ClubDBHandler cdb;
     EventTypeDBHandler db;
-<<<<<<< HEAD
     String clubowner, eventname, username;
-=======
-    String clubName, eventName, username;
->>>>>>> 480f03cbc17d8da8fff1e4b097cef31ef777ee85
 
 
     @Override
