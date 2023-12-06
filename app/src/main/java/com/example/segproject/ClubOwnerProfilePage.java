@@ -60,7 +60,7 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
             Toast.makeText(ClubOwnerProfilePage.this, "C is Null", Toast.LENGTH_SHORT).show();
             return;
         }
-        List<String> arr = new ArrayList<>();
+        ArrayList<String> arr = new ArrayList<String>();
 
         if (c.getCount() == 0) {
             Toast.makeText(ClubOwnerProfilePage.this, "No entries", Toast.LENGTH_SHORT).show();
