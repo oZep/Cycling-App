@@ -18,7 +18,7 @@ public class UserRegister extends AppCompatActivity {
 
     ClubDBHandler cdb;
     EventTypeDBHandler db;
-    String clubname, eventname, username;
+    String clubowner, eventname, username;
 
 
     @Override
@@ -33,9 +33,10 @@ public class UserRegister extends AppCompatActivity {
 
         db = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
-        clubname = intent.getStringExtra("clubname"); //send from search or main activity
+        clubowner = intent.getStringExtra("clubowner"); //send from search or main activity
         eventname = intent.getStringExtra("eventname");
         username = intent.getStringExtra("username");
+
 
 
 
@@ -86,6 +87,8 @@ public class UserRegister extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), RateClub.class);
                 // TODO: pass username to rate page
                 intent.putExtra("username", username);
+                intent.putExtra("eventname", username.toLowerCase());
+                intent.putExtra("clubname", username.toLowerCase());
                 startActivity(intent);
                 finish();
             }

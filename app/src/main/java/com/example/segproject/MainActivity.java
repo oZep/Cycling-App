@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 // change the recycler
                 // TODO: Send clubname + eventname to Userregister  + username as an intent
                 Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                intent.putExtra("Username", username.toLowerCase());
+                intent.putExtra("username", username.toLowerCase());
+                intent.putExtra("eventname", eventname.toLowerCase());
+                intent.putExtra("clubowner", clubowner.toLowerCase());
                 startActivity(intent);
                 finish();
                 // on click of element
@@ -71,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
                 // TODO: Send clubname + eventname to Userregister  + username as an intent
                 Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                intent.putExtra("Username", username.toLowerCase());
+                intent.putExtra("username", username.toLowerCase());
+                intent.putExtra("eventname", eventname.toLowerCase());
+                intent.putExtra("clubowner", clubowner.toLowerCase());
                 startActivity(intent);
                 finish();
 
@@ -88,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // TODO: Send clubname + eventname to Userregister + username  as an intent
                 Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                intent.putExtra("Username", username.toLowerCase());
+                intent.putExtra("username", username.toLowerCase());
+                intent.putExtra("eventname", eventname.toLowerCase());
+                intent.putExtra("clubowner", clubowner.toLowerCase());
                 startActivity(intent);
                 finish();
 
