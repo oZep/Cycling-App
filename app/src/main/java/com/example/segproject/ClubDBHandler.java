@@ -120,7 +120,10 @@ public class ClubDBHandler extends SQLiteOpenHelper {
                 if (!TextUtils.isEmpty(str.trim())) {
                     String[] r = str.split(" ");
                     for (String i : r) {
-                        c.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(c));
+                        Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                        if (p != null) {
+                            c.addReview((p).findReview(c));
+                        }
                     }
                 }
                 result.add(c);
