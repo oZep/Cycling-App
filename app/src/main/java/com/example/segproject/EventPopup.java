@@ -28,6 +28,7 @@ public class EventPopup extends AppCompatActivity {
         db = new EventDBHandler(this);
         etdb = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
+        adb = new AccountDBHandler(this);
         Intent intent = getIntent();
         eventN = intent.getStringExtra("eventN");
 
