@@ -121,6 +121,10 @@ public class EditEvent extends AppCompatActivity {
                 edb.deleteEvent(eventN);
                 edb.insertEvent(e);
                 Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), EventList.class);
+                intent.putExtra("clubName", club.getUsername());
+                startActivity(intent);
+                finish();
             }
         });
 
