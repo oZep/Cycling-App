@@ -23,7 +23,7 @@ public class AddEventPage  extends AppCompatActivity {
     EditText eventName, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
-        if (m < 0 || m > 11 || y < 2023 || d < 1) {
+        if (m < 1 || m > 12 || y < 2023 || d < 1) {
             return false;
         }
         for (byte i : moreDays) {
@@ -104,7 +104,7 @@ public class AddEventPage  extends AppCompatActivity {
                     return;
                 }
                 Calendar c = Calendar.getInstance();
-                c.set(y, m, d);
+                c.set(y, m - 1, d);
                 Event e = new Event(eventNamed, club.getEventType(), club, c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
                 edb.insertEvent(e);
                 Toast.makeText(AddEventPage.this,"Event created successfully", Toast.LENGTH_SHORT).show();

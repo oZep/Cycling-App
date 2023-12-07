@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -89,9 +90,12 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         for (String i : ppl) {
             result.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
         }
-        String[] r = cursor.getString(5).split(" ");
-        for (String i : r) {
-            result.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(result));
+        String str = cursor.getString(5);
+        if (!TextUtils.isEmpty(str)) {
+            String[] r = str.split(" ");
+            for (String i : r) {
+                result.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(result));
+            }
         }
         return result;
     }
