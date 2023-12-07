@@ -38,8 +38,8 @@ public class UserRegister extends AppCompatActivity {
         etdb = new EventTypeDBHandler(this);
         edb = new EventDBHandler(this);
         adb = new AccountDBHandler(this);
-        clubowner = intent.getStringExtra("clubowner"); //send from search or main activity
-        eventname = intent.getStringExtra("eventname");
+        clubowner = intent.getStringExtra("clubOwner"); //send from search or main activity
+        eventname = intent.getStringExtra("eventName");
         username = intent.getStringExtra("username");
 
         Club club = cdb.getClub(clubowner, etdb, edb, adb);

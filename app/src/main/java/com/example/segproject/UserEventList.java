@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class UserClubList extends AppCompatActivity {
+public class UserEventList extends AppCompatActivity {
 
 
     Button goBack;
@@ -26,7 +26,7 @@ public class UserClubList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_club_list);
+        setContentView(R.layout.activity_user_event_list);
         goBack = findViewById(R.id.goBackButton3);
         clubList = findViewById(R.id.activity_club_list);
         db = new ClubDBHandler(this);
@@ -36,6 +36,9 @@ public class UserClubList extends AppCompatActivity {
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         String type = intent.getStringExtra("eventType");
+        String clubOwner = intent.getStringExtra("clubOwner");
+
+
 
 
         goBack.setOnClickListener(new View.OnClickListener() {
@@ -47,16 +50,18 @@ public class UserClubList extends AppCompatActivity {
             }
         });
 
-        ArrayList<Club> clubs = db.getClubsByEventType(type, etdb, edb, adb);
+        Club club = db.getClub(clubOwner, etdb, edb, adb);
+
+        ArrayList<Event> clubs = edb.getEvents(club, db, etdb, adb);
         ArrayList<String> arr = new ArrayList<String>();
 
-        if (clubs.size() == 0) {
-            Toast.makeText(UserClubList.this, "No entries", Toast.LENGTH_SHORT).show();
+            if (clubs.size() == 0) {
+            Toast.makeText(UserEventList.this, "No entries", Toast.LENGTH_SHORT).show();
             return;
         }
-        else {
-            for (Club i : clubs) {
-                arr.add(i.getClubName());
+            else {
+            for (Event i : clubs) {
+                arr.add(i.getName());
             }
         }
 
@@ -64,13 +69,15 @@ public class UserClubList extends AppCompatActivity {
         clubList.setAdapter(adapter);
         clubList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                String club = (String) parent.getItemAtPosition(position);
-                Intent intent = new Intent(getApplicationContext(), UserEventList.class);
+                String eventName = (String) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getApplicationContext(), UserRegister.class);
                 intent.putExtra("username", username);
-                intent.putExtra("clubOwner", db.getByClubName(club, etdb, edb, adb).getUsername());
+                intent.putExtra("clubOwner", clubOwner);
+                intent.putExtra("eventName", eventName);
                 startActivity(intent);
                 finish();
             }
         });
     }
 }
+

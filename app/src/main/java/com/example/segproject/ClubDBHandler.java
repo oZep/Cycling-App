@@ -94,7 +94,10 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         if (!TextUtils.isEmpty(str)) {
             String[] r = str.split(" ");
             for (String i : r) {
-                result.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(result));
+                Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                if (p != null) {
+                    result.addReview(p.findReview(result));
+                }
             }
         }
         return result;
@@ -116,14 +119,11 @@ public class ClubDBHandler extends SQLiteOpenHelper {
                 for (String i : ppl) {
                     c.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
                 }
-                String str = cursor.getString(5);
-                if (!TextUtils.isEmpty(str.trim())) {
-                    String[] r = str.split(" ");
-                    for (String i : r) {
-                        Participant p = (Participant) adb.getUser(i, this, etdb, edb);
-                        if (p != null) {
-                            c.addReview((p).findReview(c));
-                        }
+                String[] r = cursor.getString(5).split(" ");
+                for (String i : r) {
+                    Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                    if (p != null) {
+                        c.addReview((p).findReview(c));
                     }
                 }
                 result.add(c);
@@ -145,11 +145,16 @@ public class ClubDBHandler extends SQLiteOpenHelper {
                 Club result = new Club(cursor.getString(0), cursor.getString(1), type);
                 String[] ppl = cursor.getString(4).split(" ");
                 for (String i : ppl) {
-                    result.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
+                    Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                    if (p == null) {
+                        return result;
+                    }
+                    result.addParticipant(p);
                 }
                 String[] r = cursor.getString(5).split(" ");
                 for (String i : r) {
-                    result.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(result));
+                    Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                    result.addReview(p.findReview(result));
                 }
                 return result;
             }
@@ -176,7 +181,10 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         }
         String[] r = cursor.getString(5).split(" ");
         for (String i : r) {
-            result.addReview(((Participant) adb.getUser(i, this, etdb, edb)).findReview(result));
+            Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+            if (p != null) {
+                result.addReview(p.findReview(result));
+            }
         }
         return result;
     }

@@ -81,10 +81,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                 Club c = cdb.getByEventName(searched, etdb, edb, adb);
+                String eventName = edb.getEvent(searched, cdb, etdb, adb).getName();
 
                 Intent intent = new Intent(getApplicationContext(), UserRegister.class);
                 intent.putExtra("username", username);
                 intent.putExtra("clubOwner", c.getUsername());
+                intent.putExtra("eventName", eventName);
                 startActivity(intent);
             };
         });
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Club c = cdb.getByClubName(searched, etdb, edb, adb);
 
-                Intent intent = new Intent(getApplicationContext(), UserRegister.class);
+                Intent intent = new Intent(getApplicationContext(), UserEventList.class);
                 intent.putExtra("username", username);
                 intent.putExtra("clubOwner", c.getUsername());
                 startActivity(intent);
