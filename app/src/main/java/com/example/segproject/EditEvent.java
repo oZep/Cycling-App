@@ -23,7 +23,7 @@ public class EditEvent extends AppCompatActivity {
     AccountDBHandler adb;
 
     String eventN;
-    EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
+    EditText eventName, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
         if (m < 1 || m > 12 || y < 2023 || d < 1) {
@@ -53,8 +53,8 @@ public class EditEvent extends AppCompatActivity {
         finishEvent = findViewById(R.id.addEvent);
         viewEvent = findViewById(R.id.viewEventsButton);
         eventName = findViewById(R.id.eventName);
-        eventLocation = findViewById(R.id.minAge);
-        eventParticipants = findViewById(R.id.level);
+        eventLocation = findViewById(R.id.locale);
+        eventParticipants = findViewById(R.id.cap);
         day = findViewById(R.id.day);
         month = findViewById(R.id.month);
         year = findViewById(R.id.year);
@@ -67,7 +67,6 @@ public class EditEvent extends AppCompatActivity {
         // TODO: Fillin the info using what i did in another class, find the clubName in the database & fill out
         Event event = edb.getEvent(eventN, cdb, db, adb);
         eventName.setText(event.getName());
-        eventType.setText(event.getEventType().getName());
         eventLocation.setText(event.getLocation());
         eventParticipants.setText(event.getMaxParticipants());
 

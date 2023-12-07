@@ -25,7 +25,7 @@ public class EditEventType extends AppCompatActivity {
         finishEventType = findViewById(R.id.addEvent);
         eventTypeName = findViewById(R.id.eventName);
         minAge = findViewById(R.id.minAge);
-        level = findViewById(R.id.level);
+        level = findViewById(R.id.cap);
 
         Intent intent = getIntent();
         eventTypeN = intent.getStringExtra("eventTypeN");
