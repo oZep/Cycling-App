@@ -68,7 +68,7 @@ public class EditEvent extends AppCompatActivity {
         Event event = edb.getEvent(eventN, cdb, db, adb);
         eventName.setText(event.getName());
         eventLocation.setText(event.getLocation());
-        eventParticipants.setText(event.getMaxParticipants());
+        eventParticipants.setText(((Integer) event.getMaxParticipants()).toString());
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
             String eventNamed = eventName.getText().toString();

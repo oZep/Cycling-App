@@ -57,7 +57,6 @@ public class Registration extends AppCompatActivity {
                 
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
-                Toast.makeText(Registration.this, email, Toast.LENGTH_SHORT).show();
 
 
                 if(TextUtils.isEmpty(email)){

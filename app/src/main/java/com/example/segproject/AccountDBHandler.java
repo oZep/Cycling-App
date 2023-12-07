@@ -73,8 +73,10 @@ public class AccountDBHandler extends SQLiteOpenHelper {
         String[] rArr = cursor.getString(6).split(" ");
         for (String i : rArr) {
             String[] sArr = i.split(":");
-            Club c = cdb.getByClubName(sArr[0], etdb, edb, this);
-            result.addReview(c, new ClubReview(result, c, Integer.parseInt(sArr[1]), ""));
+            if (sArr.length > 1) {
+                Club c = cdb.getByClubName(sArr[0], etdb, edb, this);
+                result.addReview(c, new ClubReview(result, c, Integer.parseInt(sArr[1]), ""));
+            }
         }
         return result;
     }

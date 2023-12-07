@@ -3,7 +3,6 @@ package com.example.segproject;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -44,11 +43,8 @@ public class EventDBHandler extends SQLiteOpenHelper {
             }
         }
         contentValues.put("participants", participants.toString());
-        try {
-            long result = db.insert("Events", null, contentValues);
-            return result == -1;
-        } catch (SQLiteConstraintException err) {
-        }
+        long result = db.insert("Events", null, contentValues);
+        return result == -1;
     }
 
     public Cursor getData() {
