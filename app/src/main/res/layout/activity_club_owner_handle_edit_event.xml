@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/minAge"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    a
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="325dp"
@@ -72,7 +72,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Event Editor"
+                android:text="Event Adder"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -86,13 +86,7 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/eventTypes"
-                        android:layout_width="317dp"
-                        android:layout_height="match_parent" />
-                </TableRow>
+                    android:layout_height="match_parent"/>
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -103,8 +97,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="text"
-                        android:text="Change Event Name" />
+                        android:hint="Add Event Name"
+                        android:inputType="text" />
                 </TableRow>
 
                 <TableRow
@@ -112,12 +106,12 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/minAge"
+                        android:id="@+id/locale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="text"
-                        android:text="Change Minimum Age" />
+                        android:hint="Location"
+                        android:inputType="text" />
                 </TableRow>
 
                 <TableRow
@@ -129,9 +123,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="text"
-                        android:text="Change Level" />
-
+                        android:hint="Add Max Participants"
+                        android:inputType="text" />
                 </TableRow>
 
                 <TableRow
@@ -141,7 +134,32 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal"/>
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/day"
+                            android:layout_width="93dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="day"
+                            android:inputType="text" />
+
+                        <EditText
+                            android:id="@+id/month"
+                            android:layout_width="87dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="month"
+                            android:inputType="text" />
+
+                        <EditText
+                            android:id="@+id/year"
+                            android:layout_width="107dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="year"
+                            android:inputType="text" />
+                    </LinearLayout>
 
                 </TableRow>
 
@@ -177,14 +195,14 @@
 
             <Button
                 android:id="@+id/addEvent"
-                android:layout_width="100dp"
+                android:layout_width="178dp"
                 android:layout_height="67dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="#ff4b4b"
                 android:onClick="newProduct"
-                android:text="Finish Event"
+                android:text="Edit Event"
                 android:textColor="#FFF"
                 android:textStyle="bold" />
 

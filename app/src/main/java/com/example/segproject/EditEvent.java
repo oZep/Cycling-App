@@ -26,7 +26,7 @@ public class EditEvent extends AppCompatActivity {
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
-        if (m < 0 || m > 11 || y < 2023 || d < 1) {
+        if (m < 1 || m > 12 || y < 2023 || d < 1) {
             return false;
         }
         for (byte i : moreDays) {
@@ -53,7 +53,6 @@ public class EditEvent extends AppCompatActivity {
         finishEvent = findViewById(R.id.addEvent);
         viewEvent = findViewById(R.id.viewEventsButton);
         eventName = findViewById(R.id.eventName);
-        eventType = findViewById(R.id.eventTypes);
         eventLocation = findViewById(R.id.minAge);
         eventParticipants = findViewById(R.id.level);
         day = findViewById(R.id.day);
@@ -74,17 +73,13 @@ public class EditEvent extends AppCompatActivity {
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
             String eventNamed = eventName.getText().toString();
-            String eventTyped = eventType.getText().toString();
             String location = eventLocation.getText().toString();
             String day2 = day.getText().toString();
             String month2 = month.getText().toString();
             String year2 = year.getText().toString();
             String part = eventParticipants.getText().toString();
+            Club club = event.getClub();
             public void onClick(View view) {
-                if(TextUtils.isEmpty(eventTyped)){
-                    Toast.makeText(EditEvent.this, "Select a Event Type", Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 if(TextUtils.isEmpty(eventNamed)){
                     Toast.makeText(EditEvent.this, "Enter a Event Name", Toast.LENGTH_SHORT).show();
                     return;
@@ -117,8 +112,8 @@ public class EditEvent extends AppCompatActivity {
                 }
                 // TODO: add the new event and delete the old
                 Calendar c = Calendar.getInstance();
-                c.set(y, m, d);
-                Event e = new Event(eventNamed.toLowerCase(), db.getEventType(eventTyped), event.getClub(), c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
+                c.set(y, m - 1, d);
+                Event e = new Event(eventNamed.toLowerCase(), club.getEventType(), club, c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
                 edb.deleteEvent(eventN);
                 edb.insertEvent(e);
                 Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();

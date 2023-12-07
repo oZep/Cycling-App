@@ -34,7 +34,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", u.getUsername());
         contentValues.put("clubName", u.getClubName());
-        contentValues.put("clubEventType", u.getEventType().toString());
+        contentValues.put("clubEventType", u.getEventType().getName());
         StringBuilder events = new StringBuilder("");
         ArrayList<Event> eArr = u.getEvents();
 

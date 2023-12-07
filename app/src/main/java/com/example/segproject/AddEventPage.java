@@ -108,6 +108,10 @@ public class AddEventPage  extends AppCompatActivity {
                 Event e = new Event(eventNamed, club.getEventType(), club, c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
                 edb.insertEvent(e);
                 Toast.makeText(AddEventPage.this,"Event created successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
+                intent.putExtra("clubName", clubName);
+                startActivity(intent);
+                finish();
             }
         });
 
