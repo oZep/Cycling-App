@@ -69,6 +69,11 @@ public class EditEvent extends AppCompatActivity {
         eventName.setText(event.getName());
         eventLocation.setText(event.getLocation());
         eventParticipants.setText(((Integer) event.getMaxParticipants()).toString());
+        Calendar c = Calendar.getInstance();
+        c.setTime(event.getDate());
+        day.setText(((Integer) c.get(Calendar.DAY_OF_MONTH)).toString());
+        month.setText(((Integer) (c.get(Calendar.MONTH) + 1)).toString());
+        year.setText(((Integer) c.get(Calendar.YEAR)).toString());
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
             String eventNamed = eventName.getText().toString();
