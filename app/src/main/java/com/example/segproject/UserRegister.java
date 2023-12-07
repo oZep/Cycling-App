@@ -59,7 +59,8 @@ public class UserRegister extends AppCompatActivity {
 
                 sName = String.valueOf(name.getText());
                 sAge = String.valueOf(age.getText());
-                EventType q = edb.getEvent(eventName, cdb, etdb, adb).getEventType();
+                Event evt = edb.getEvent(eventName, cdb, etdb, adb);
+                EventType q = evt.getEventType();
                 int minAge = q.getMinAge();
 
                 if(TextUtils.isEmpty(sName)){
@@ -84,6 +85,10 @@ public class UserRegister extends AppCompatActivity {
                 }
                 if (iAge < 0) {
                     Toast.makeText(UserRegister.this, "Enter a valid age", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (evt.getMaxParticipants() == evt.getParticipants().size()) {
+                    Toast.makeText(UserRegister.this, "Max participants reached", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

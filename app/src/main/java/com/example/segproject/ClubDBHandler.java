@@ -83,12 +83,18 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         String[] evnt = cursor.getString(3).split(" ");
         ArrayList<Event> events = new ArrayList<Event>();
         for (String i : evnt) {
-            events.add(edb.getEvent(i, this, etdb, adb));
+            Event e = edb.getEvent(i, this, etdb, adb);
+            if (e != null) {
+                events.add(e);
+            }
         }
         Club result = new Club(cursor.getString(0), cursor.getString(1), type);
         String[] ppl = cursor.getString(4).split(" ");
         for (String i : ppl) {
-            result.addParticipant((Participant) adb.getUser(i, this, etdb, edb));
+            Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+            if (p != null) {
+                result.addParticipant(p);
+            }
         }
         String str = cursor.getString(5);
         if (!TextUtils.isEmpty(str)) {
@@ -112,7 +118,10 @@ public class ClubDBHandler extends SQLiteOpenHelper {
                 String[] evnt = cursor.getString(3).split(" ");
                 ArrayList<Event> events = new ArrayList<Event>();
                 for (String i : evnt) {
-                    events.add(edb.getEvent(i, this, etdb, adb));
+                    Event e = edb.getEvent(i, this, etdb, adb);
+                    if (e != null) {
+                        events.add(e);
+                    }
                 }
                 Club c = new Club(cursor.getString(0), cursor.getString(1), type);
                 String[] ppl = cursor.getString(4).split(" ");
@@ -143,7 +152,10 @@ public class ClubDBHandler extends SQLiteOpenHelper {
                 EventType type = etdb.getEventType(cursor.getString(2));
                 ArrayList<Event> events = new ArrayList<Event>();
                 for (String i : eventNames) {
-                    events.add(edb.getEvent(i, this, etdb, adb));
+                    Event e = edb.getEvent(i, this, etdb, adb);
+                    if (e != null) {
+                        events.add(e);
+                    }
                 }
                 Club result = new Club(cursor.getString(0), cursor.getString(1), type);
                 String[] ppl = cursor.getString(4).split(" ");
@@ -175,7 +187,10 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         String[] evnt = cursor.getString(3).split(" ");
         ArrayList<Event> events = new ArrayList<Event>();
         for (String i : evnt) {
-            events.add(edb.getEvent(i, this, etdb, adb));
+            Event e = edb.getEvent(i, this, etdb, adb);
+            if (e != null) {
+                events.add(e);
+            }
         }
         Club result = new Club(cursor.getString(0), cursor.getString(1), type);
         String[] ppl = cursor.getString(4).split(" ");
