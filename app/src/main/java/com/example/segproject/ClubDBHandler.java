@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -13,11 +15,12 @@ public class ClubDBHandler extends SQLiteOpenHelper {
     public ClubDBHandler(Context context) {
         super(context, "ClubAccounts.db", null, 1);
         insertUserData(Club.GCC_CLUB);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEventType TEXT, clubEvents TEXT, participants TEXT, raters TEXT)");
+        db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEventType TEXT, clubEvents TEXT, participants TEXT, raters TEXT);");
     }
 
     @Override
@@ -31,8 +34,9 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         contentValues.put("username", u.getUsername());
         contentValues.put("clubName", u.getClubName());
         contentValues.put("clubEventTypes", u.getEventType().toString());
-        StringBuilder events = new StringBuilder();
+        StringBuilder events = new StringBuilder("");
         ArrayList<Event> eArr = u.getEvents();
+
         for (int i = 0; i < eArr.size(); i++) {
             events.append(eArr.get(i).getName());
             if (i < eArr.size() - 1) {

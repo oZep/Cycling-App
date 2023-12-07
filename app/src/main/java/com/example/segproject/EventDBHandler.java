@@ -17,7 +17,7 @@ public class EventDBHandler extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table Events(name TEXT primary key, eventType TEXT, club TEXT, date INTEGER, location TEXT, maxParticipants INTEGER, participants TEXT)");
+        db.execSQL("create Table Events(name TEXT primary key, eventType TEXT, club TEXT, date INTEGER, location TEXT, maxParticipants INTEGER, participants TEXT);");
     }
 
     @Override

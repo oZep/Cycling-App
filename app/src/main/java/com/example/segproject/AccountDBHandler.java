@@ -17,7 +17,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table Accounts(email TEXT primary key, password TEXT, isClubOwner INTEGER, socialMedia TEXT, contact TEXT, phoneNum TEXT, reviews TEXT)");
+        db.execSQL("create Table Accounts(email TEXT primary key, password TEXT, isClubOwner INTEGER, socialMedia TEXT, contact TEXT, phoneNum TEXT, reviews TEXT);");
     }
 
     @Override
@@ -51,7 +51,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
             contentValues.put("reviews", reviews.toString());
         }
         long result = db.insert("Accounts", null, contentValues);
-        return result == -1;
+        return result != -1;
     }
 
     public Cursor getData() {
