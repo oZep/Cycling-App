@@ -135,7 +135,7 @@ public class ClubDBHandler extends SQLiteOpenHelper {
                 for (String i : r) {
                     Participant p = (Participant) adb.getUser(i, this, etdb, edb);
                     if (p != null) {
-                        c.addReview((p).findReview(c));
+                        c.addReview(p.findReview(c));
                     }
                 }
                 result.add(c);
