@@ -15,14 +15,12 @@ public class UserRegister extends AppCompatActivity {
 
     Button goBackBtn, register;
     TextView name, age;
-
     ClubDBHandler cdb;
-
     EventDBHandler edb;
     EventTypeDBHandler etdb;
 
     AccountDBHandler adb;
-    String clubowner, eventname, username;
+    String clubOwner, eventName, username;
 
 
     @Override
@@ -38,16 +36,13 @@ public class UserRegister extends AppCompatActivity {
         etdb = new EventTypeDBHandler(this);
         edb = new EventDBHandler(this);
         adb = new AccountDBHandler(this);
-        clubowner = intent.getStringExtra("clubOwner"); //send from search or main activity
-        eventname = intent.getStringExtra("eventName");
+        clubOwner = intent.getStringExtra("clubOwner"); //send from search or main activity
+        eventName = intent.getStringExtra("eventName");
         username = intent.getStringExtra("username");
 
-        Club club = cdb.getClub(clubowner, etdb, edb, adb);
+        Club club = cdb.getClub(clubOwner, etdb, edb, adb);
 
         Participant user = (Participant) adb.getUser(username, cdb, etdb, edb);
-
-
-
 
         goBackBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -64,9 +59,8 @@ public class UserRegister extends AppCompatActivity {
 
                 sName = String.valueOf(name.getText());
                 sAge = String.valueOf(age.getText());
-                EventType q = etdb.getEventType(eventname);
+                EventType q = edb.getEvent(eventName, cdb, etdb, adb).getEventType();
                 int minAge = q.getMinAge();
-
 
                 if(TextUtils.isEmpty(sName)){
                     Toast.makeText(UserRegister.this, "Enter a Name", Toast.LENGTH_SHORT).show();
@@ -96,14 +90,14 @@ public class UserRegister extends AppCompatActivity {
                 // register user in club
                 club.addParticipant(user);
                 adb.deleteUserData(username);
-                cdb.deleteClubData(clubowner);
+                cdb.deleteClubData(clubOwner);
                 cdb.insertUserData(club);
                 adb.insertUserData(user);
 
                 Intent intent = new Intent(getApplicationContext(), RateClub.class);
                 intent.putExtra("username", username);
-                intent.putExtra("eventname", username.toLowerCase());
-                intent.putExtra("clubname", username.toLowerCase());
+                intent.putExtra("eventName", username.toLowerCase());
+                intent.putExtra("clubName", username.toLowerCase());
                 startActivity(intent);
                 finish();
             }
