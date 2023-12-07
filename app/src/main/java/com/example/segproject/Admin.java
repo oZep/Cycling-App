@@ -4,7 +4,7 @@ public class Admin{
     private String username;
     private String password;
     private static Admin admin = new Admin();
-    private Admin() {
+    public Admin() {
         username = "admin";
         password = "admin";
     }

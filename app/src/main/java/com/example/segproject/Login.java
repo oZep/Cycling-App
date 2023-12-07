@@ -13,9 +13,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class Login extends AppCompatActivity {
 
-    TextInputEditText editTextEmail, editTextPassword;
+    public TextInputEditText editTextEmail;
+    public TextInputEditText editTextPassword;
     Button buttonLogin;
     Button buttonLoginAdmin;
     Button buttonLoginOwner;
@@ -143,6 +146,21 @@ public class Login extends AppCompatActivity {
 
     public static boolean login(String email, String password, boolean isClubOwner) {
         UserAccount user = db.getUser(email);
-        return user != null && user.getPassword().equals(password) && user instanceof ClubOwner == isClubOwner;
+        return user != null && Objects.equals(user.getPassword(), password) && user instanceof ClubOwner == isClubOwner;
+    }
+
+
+    public static boolean isValidPassword(String password) {
+
+        String validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+\\|[]{};:'\",<.>/?";
+
+
+        for (char ch : password.toCharArray()) {
+            if (validCharacters.indexOf(ch) == -1) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

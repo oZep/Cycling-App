@@ -22,7 +22,7 @@ public class AdminManageAccounts extends AppCompatActivity {
 
     ListView accountList;
 
-    static AccountDBHandler db;
+    public static AccountDBHandler db;
 
     Button goBackToAdminHomepage;
 

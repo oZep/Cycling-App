@@ -3,7 +3,7 @@ package com.example.segproject;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class UserAccount {
+public class UserAccount {
     protected String username;
     protected String password;
 

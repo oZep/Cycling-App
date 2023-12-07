@@ -16,10 +16,10 @@ public class EditEvent extends AppCompatActivity {
 
 
     Button goBackButton, finishEvent, viewEvent;
-    EventTypeDBHandler db;
-    EventDBHandler edb;
+    public EventTypeDBHandler db;
+    public EventDBHandler edb;
 
-    ClubDBHandler cdb;
+    public ClubDBHandler cdb;
 
     String eventN;
     EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
