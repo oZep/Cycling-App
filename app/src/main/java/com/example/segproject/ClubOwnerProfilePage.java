@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,15 +21,17 @@ import java.util.List;
 
 public class ClubOwnerProfilePage extends AppCompatActivity {
     Button goToLogin, goToMain;
-    TextView Username, Contact, Phone, Socials, clubNamed;
-
+    TextView username, contact, phone, socials;
+    EditText clubNamed;
     AccountDBHandler dbHandler;
     EventTypeDBHandler etdb;
+    EventDBHandler edb;
     ClubDBHandler cdb;
     ClubOwner userAccount;
     String clubOwner;
     ListView rc;
     ArrayList<EventType> eventTypes;
+    EventType type;
 
 
     @Override
@@ -37,35 +40,36 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
         setContentView(R.layout.activity_club_owner_profile_page);
         goToLogin = findViewById(R.id.btn_return_to_login);
         goToMain = findViewById(R.id.btn_return_to_main);
-        Username = findViewById(R.id.Username);
-        Contact = findViewById(R.id.Contact);
-        Phone = findViewById(R.id.Phone);
-        Socials = findViewById(R.id.Socials);
+        username = findViewById(R.id.username);
+        contact = findViewById(R.id.contact);
+        phone = findViewById(R.id.phone);
+        socials = findViewById(R.id.Socials);
         clubNamed = findViewById(R.id.clubName);
         Intent intent = getIntent();
         clubOwner = intent.getStringExtra("clubOwner");
         dbHandler = new AccountDBHandler(this);
         etdb = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
-        userAccount = (ClubOwner) dbHandler.getUser(clubOwner);
+        userAccount = (ClubOwner) dbHandler.getUser(clubOwner, cdb, etdb, edb);
         rc = findViewById(R.id.rc);
 
-        Username.setText("Username: " + clubOwner);
-        Contact.setText("Contact: " + userAccount.getContact());
-        Phone.setText("Phone: " + userAccount.getPhoneNum());
-        Socials.setText("Socials: " + userAccount.getSocialMedia());
-
-
-
-
+        username.setText("Username: " + clubOwner);
+        contact.setText("Contact: " + userAccount.getContact());
+        phone.setText("Phone: " + userAccount.getPhoneNum());
+        socials.setText("Socials: " + userAccount.getSocialMedia());
 
         Cursor c = etdb.getData();
-        List<String> arr = new ArrayList<>();
+        if (c == null) {
+            Toast.makeText(ClubOwnerProfilePage.this, "C is Null", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        ArrayList<String> arr = new ArrayList<String>();
 
         if (c.getCount() == 0) {
             Toast.makeText(ClubOwnerProfilePage.this, "No entries", Toast.LENGTH_SHORT).show();
             return;
-        } else {
+        }
+        else {
             while (c.moveToNext()) {
                 arr.add(c.getString(0));
             }
@@ -73,28 +77,32 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
         boolean[] checks = new boolean[arr.size()];
 
 
-        EventTypeAdapter adapter = new EventTypeAdapter(this, arr, checks);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
         rc.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         goToLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String clubName;
                 clubName = String.valueOf(clubNamed.getText());
 
-                ArrayList<String> eventTypeNames = adapter.getChecked();
-                for (String i : eventTypeNames) {
-                    eventTypes.add(etdb.getEventType(i));
-                }
-
                 if(TextUtils.isEmpty(clubName)){
                     Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                Club club = new Club(clubOwner, clubName, eventTypes);
+                if (cdb.getByClubName(clubName, etdb, edb, dbHandler) != null) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "This Club name is already taken", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (type == null) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "Choose one event type", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Club club = new Club(clubOwner, clubName, type);
                 cdb.insertUserData(club);
 
                 Intent intent = new Intent(getApplicationContext(), Login.class);
+                intent.putExtra("clubname", clubName);
                 startActivity(intent);
                 finish();
             }
@@ -106,17 +114,20 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 String clubName;
                 clubName = String.valueOf(clubNamed.getText());
 
-                ArrayList<String> eventTypeNames = adapter.getChecked();
-                for (String i : eventTypeNames) {
-                    eventTypes.add(etdb.getEventType(i));
-                }
-
                 if(TextUtils.isEmpty(clubName)){
                     Toast.makeText(ClubOwnerProfilePage.this, "Enter a Club Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (cdb.getByClubName(clubName, etdb, edb, dbHandler) != null) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "This Club name is already taken", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (type == null) {
+                    Toast.makeText(ClubOwnerProfilePage.this, "Choose one event type", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                Club club = new Club(clubOwner, clubName, eventTypes);
+                Club club = new Club(clubOwner.toLowerCase(), clubName.toLowerCase(), type);
                 cdb.insertUserData(club);
 
                 Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
@@ -126,6 +137,12 @@ public class ClubOwnerProfilePage extends AppCompatActivity {
                 finish();
             }
         });
-    }
 
+        rc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick (AdapterView < ? > parent, final View view, int position, long id){
+                String eventTypeName = (String) parent.getItemAtPosition(position);
+                type = etdb.getEventType(eventTypeName);
+            }
+        });
+    }
 }

@@ -32,7 +32,7 @@ public class AdminHandleAddEventType extends AppCompatActivity {
 
         addEvent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String nameTXT = name.getText().toString();
+                String nameTXT = name.getText().toString().toLowerCase();
 
                 if(TextUtils.isEmpty(nameTXT)){
                     Toast.makeText(AdminHandleAddEventType.this, "Enter a Event Type Name", Toast.LENGTH_SHORT).show();
@@ -68,11 +68,14 @@ public class AdminHandleAddEventType extends AppCompatActivity {
                     Toast.makeText(AdminHandleAddEventType.this, "An Event Type already has this name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                EventType et = new EventType(nameTXT, l, a);
+                EventType et = new EventType(nameTXT.toLowerCase(), l, a);
                 boolean checkInsertData = db.insertEventType(et);
                 if(checkInsertData){
                     Toast.makeText(AdminHandleAddEventType.this,"Event created successfully", Toast.LENGTH_SHORT).show();
                 }
+                Intent intent = new Intent(getApplicationContext(), AdminManageActivities.class);
+                startActivity(intent);
+                finish();
             }
         });
 

@@ -1,64 +1,65 @@
 package com.example.segproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class AdminViewEventTypes extends AppCompatActivity {
-    RecyclerView rv;
-    ArrayList<String> name;
-    ArrayList<Integer> level, age;
-    EventTypeDBHandler db;
-    MyAdapter adapter;
+    static EventTypeDBHandler db;
+
+    ListView eventTypeList;
     Button goBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_view_event_types);
         db = new EventTypeDBHandler(this);
-        name = new ArrayList<String>();
-        level = new ArrayList<Integer>();
-        age = new ArrayList<Integer>();
-        rv = findViewById(R.id.recyclerView);
-        adapter = new MyAdapter(this, name, level, age);
-        rv.setAdapter(adapter);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        displayData();
-        goBackButton = findViewById(R.id.makeChanges_btn);
-
+        setContentView(R.layout.activity_type_list);
+        eventTypeList = findViewById(R.id.activity_club_list);
+        goBackButton = findViewById(R.id.goBackButton3);
         goBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminManageActivities.class);
+                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-    }
-
-
-    private void displayData() {
         Cursor c = db.getData();
-        if(c.getCount() ==0){
+        ArrayList<String> arr = new ArrayList<String>();
+
+        if (c.getCount() == 0) {
             Toast.makeText(AdminViewEventTypes.this, "No entries", Toast.LENGTH_SHORT).show();
             return;
         }
-        else{
-            while(c.moveToNext()){
-                name.add(c.getString(0));
-                level.add(Integer.parseInt(c.getString(1)));
-                age.add(Integer.parseInt(c.getString(2)));
+        else {
+            while (c.moveToNext()) {
+                arr.add(c.getString(0));
             }
         }
+
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arr);
+        eventTypeList.setAdapter(adapter);
+        eventTypeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick (AdapterView < ? > parent, final View view, int position, long id){
+                String eventTypeName = (String) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getApplicationContext(), EventTypePopup.class);
+                intent.putExtra("eventTypeN", eventTypeName);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

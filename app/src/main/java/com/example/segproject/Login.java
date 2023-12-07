@@ -23,6 +23,9 @@ public class Login extends AppCompatActivity {
     Button buttonLoginAdmin;
     Button buttonLoginOwner;
     static AccountDBHandler db;
+    static ClubDBHandler cdb;
+    static EventDBHandler edb;
+    static EventTypeDBHandler etdb;
     ProgressBar progressBar;
     TextView textView;
     TextView textView_admin;
@@ -33,6 +36,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new AccountDBHandler(this);
+        cdb = new ClubDBHandler(this);
+        edb = new EventDBHandler(this);
+        etdb = new EventTypeDBHandler(this);
         setContentView(R.layout.activity_login);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
@@ -78,6 +84,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
                     //Intent to open the main activity
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("username", email);
                     startActivity(intent);
                     finish();
                 }
@@ -90,7 +97,7 @@ public class Login extends AppCompatActivity {
         buttonLoginOwner.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 String email, password;
-                email = String.valueOf(editTextEmail.getText());
+                email = String.valueOf(editTextEmail.getText()).toLowerCase();
                 password = String.valueOf(editTextPassword.getText());
 
                 if(TextUtils.isEmpty(email)){
@@ -101,10 +108,11 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter a password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (email.equals("gccadmin") && password.equals("GCCROCKS!")) {
-                    Toast.makeText(Login.this, "Authentication successful for gccadmin.", Toast.LENGTH_SHORT).show();
-                    //Intent to open a specific activity for this case
-                    Intent intent = new Intent(getApplicationContext(), ClubOwnerMainPage.class);
+                if (login(email.toLowerCase(), password, true)) {
+                    Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
+                    //Intent to open the main activity
+                    Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
+                    intent.putExtra("clubName", email);
                     startActivity(intent);
                     finish();
                 }
@@ -131,7 +139,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Authentication successful.", Toast.LENGTH_SHORT).show();
                     //Intent to open the main activity
                     Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
-                    intent.putExtra("Username", email);
+                    intent.putExtra("Username", email.toLowerCase());
                     startActivity(intent);
                     finish();
                 }
@@ -145,22 +153,7 @@ public class Login extends AppCompatActivity {
     }
 
     public static boolean login(String email, String password, boolean isClubOwner) {
-        UserAccount user = db.getUser(email);
-        return user != null && Objects.equals(user.getPassword(), password) && user instanceof ClubOwner == isClubOwner;
-    }
-
-
-    public static boolean isValidPassword(String password) {
-
-        String validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+\\|[]{};:'\",<.>/?";
-
-
-        for (char ch : password.toCharArray()) {
-            if (validCharacters.indexOf(ch) == -1) {
-                return false;
-            }
-        }
-
-        return true;
+        UserAccount user = db.getUser(email.toLowerCase(), cdb, etdb, edb);
+        return user != null && user.getPassword().equals(password) && user instanceof ClubOwner == isClubOwner;
     }
 }

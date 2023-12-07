@@ -20,12 +20,13 @@ public class EditEvent extends AppCompatActivity {
     public EventDBHandler edb;
 
     public ClubDBHandler cdb;
+    AccountDBHandler adb;
 
     String eventN;
-    EditText eventName, eventType, eventLocation, eventParticipants, day, month, year;
+    EditText eventName, eventLocation, eventParticipants, day, month, year;
     public static boolean validDate(int y, int m, int d) {
         byte[] moreDays = {0, 2, 4, 6, 7, 9, 11};
-        if (m < 0 || m > 11 || y < 2023 || d < 1) {
+        if (m < 1 || m > 12 || y < 2023 || d < 1) {
             return false;
         }
         for (byte i : moreDays) {
@@ -44,14 +45,16 @@ public class EditEvent extends AppCompatActivity {
         setContentView(R.layout.activity_club_owner_handle_edit_event);
         db = new EventTypeDBHandler(this);
         cdb = new ClubDBHandler(this);
+        edb = new EventDBHandler(this);
+        adb = new AccountDBHandler(this);
+
 
         goBackButton = findViewById(R.id.goBackButton);
         finishEvent = findViewById(R.id.addEvent);
         viewEvent = findViewById(R.id.viewEventsButton);
         eventName = findViewById(R.id.eventName);
-        eventType = findViewById(R.id.eventTypes);
-        eventLocation = findViewById(R.id.location);
-        eventParticipants = findViewById(R.id.numParticipants);
+        eventLocation = findViewById(R.id.locale);
+        eventParticipants = findViewById(R.id.cap);
         day = findViewById(R.id.day);
         month = findViewById(R.id.month);
         year = findViewById(R.id.year);
@@ -62,25 +65,25 @@ public class EditEvent extends AppCompatActivity {
 
 
         // TODO: Fillin the info using what i did in another class, find the clubName in the database & fill out
-        Event event = edb.getEvent(eventN,db,cdb);
+        Event event = edb.getEvent(eventN, cdb, db, adb);
         eventName.setText(event.getName());
-        eventType.setText(event.getEventType().getName());
         eventLocation.setText(event.getLocation());
-        eventParticipants.setText(event.getMaxParticipants());
+        eventParticipants.setText(((Integer) event.getMaxParticipants()).toString());
+        Calendar c = Calendar.getInstance();
+        c.setTime(event.getDate());
+        day.setText(((Integer) c.get(Calendar.DAY_OF_MONTH)).toString());
+        month.setText(((Integer) (c.get(Calendar.MONTH) + 1)).toString());
+        year.setText(((Integer) c.get(Calendar.YEAR)).toString());
 
         finishEvent.setOnClickListener(new View.OnClickListener() {
             String eventNamed = eventName.getText().toString();
-            String eventTyped = eventType.getText().toString();
             String location = eventLocation.getText().toString();
             String day2 = day.getText().toString();
             String month2 = month.getText().toString();
             String year2 = year.getText().toString();
             String part = eventParticipants.getText().toString();
+            Club club = event.getClub();
             public void onClick(View view) {
-                if(TextUtils.isEmpty(eventTyped)){
-                    Toast.makeText(EditEvent.this, "Select a Event Type", Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 if(TextUtils.isEmpty(eventNamed)){
                     Toast.makeText(EditEvent.this, "Enter a Event Name", Toast.LENGTH_SHORT).show();
                     return;
@@ -113,11 +116,15 @@ public class EditEvent extends AppCompatActivity {
                 }
                 // TODO: add the new event and delete the old
                 Calendar c = Calendar.getInstance();
-                c.set(y, m, d);
-                Event e = new Event(eventNamed, db.getEventType(eventTyped), event.getClub(), c.getTime(), location, Integer.parseInt(eventParticipants.getText().toString()));
-                edb.deleteEvent(eventNamed);
+                c.set(y, m - 1, d);
+                Event e = new Event(eventNamed.toLowerCase(), club.getEventType(), club, c.getTime(), location.toLowerCase(), Integer.parseInt(eventParticipants.getText().toString()));
+                edb.deleteEvent(eventN);
                 edb.insertEvent(e);
                 Toast.makeText(EditEvent.this,"Event Edited successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), EventList.class);
+                intent.putExtra("clubName", club.getUsername());
+                startActivity(intent);
+                finish();
             }
         });
 

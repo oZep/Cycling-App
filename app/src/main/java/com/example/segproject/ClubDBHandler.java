@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -12,11 +15,13 @@ public class ClubDBHandler extends SQLiteOpenHelper {
 
     public ClubDBHandler(Context context) {
         super(context, "ClubAccounts.db", null, 1);
+        insertUserData(Club.GCC_CLUB);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEventTypes TEXT, clubEvents TEXT)");
+        db.execSQL("create Table ClubAccounts(username TEXT primary key, clubName TEXT, clubEventType TEXT, clubEvents TEXT, participants TEXT, raters TEXT);");
     }
 
     @Override
@@ -29,23 +34,35 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", u.getUsername());
         contentValues.put("clubName", u.getClubName());
-        StringBuilder eventTypes = new StringBuilder();
-        ArrayList<EventType> etArr = u.getEventTypes();
-        for (int i = 0; i < etArr.size(); i++) {
-            eventTypes.append(etArr.get(i).getName());
-            if (i < etArr.size() - 1) {
-                eventTypes.append(" ");
-            }
-        }
-        contentValues.put("clubEventTypes", eventTypes.toString());
-        StringBuilder events = new StringBuilder();
+        contentValues.put("clubEventType", u.getEventType().getName());
+        StringBuilder events = new StringBuilder("");
         ArrayList<Event> eArr = u.getEvents();
-        for (int i =0 ; i < eArr.size(); i++) {
+
+        for (int i = 0; i < eArr.size(); i++) {
             events.append(eArr.get(i).getName());
             if (i < eArr.size() - 1) {
                 events.append(" ");
             }
         }
+        contentValues.put("clubEvents", events.toString());
+        StringBuilder participants = new StringBuilder("");
+        ArrayList<Participant> pArr = u.getParticipants();
+        for (int i = 0; i < pArr.size(); i++) {
+            participants.append(pArr.get(i).getUsername());
+            if (i < pArr.size() - 1) {
+                participants.append(" ");
+            }
+        }
+        contentValues.put("participants", participants.toString());
+        StringBuilder raters = new StringBuilder("");
+        ArrayList<ClubReview> rArr = u.getReviews();
+        for (int i = 0; i < rArr.size(); i++) {
+            raters.append(rArr.get(i).getRater().getUsername());
+            if (i < rArr.size() - 1) {
+                raters.append(" ");
+            }
+        }
+        contentValues.put("raters", raters.toString());
         long result = db.insert("ClubAccounts", null, contentValues);
         return result != -1;
     }
@@ -56,18 +73,142 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Club getClub(String username, EventTypeDBHandler ETDBHandler) {
+    public Club getClub(String username, EventTypeDBHandler etdb, EventDBHandler edb, AccountDBHandler adb) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from ClubAccounts WHERE username = \"" + username + "\"", null );
         if (!cursor.moveToFirst()) {
             return null;
         }
-        String[] ets = cursor.getString(2).split(" ");
-        ArrayList<EventType> types = new ArrayList<EventType>();
-        for (String i : ets) {
-            types.add(ETDBHandler.getEventType(i));
+        EventType type = etdb.getEventType(cursor.getString(2));
+        String[] evnt = cursor.getString(3).split(" ");
+        ArrayList<Event> events = new ArrayList<Event>();
+        for (String i : evnt) {
+            Event e = edb.getEvent(i, this, etdb, adb);
+            if (e != null) {
+                events.add(e);
+            }
         }
-        Club result = new Club(cursor.getString(0), cursor.getString(1), types);
+        Club result = new Club(cursor.getString(0), cursor.getString(1), type);
+        String[] ppl = cursor.getString(4).split(" ");
+        for (String i : ppl) {
+            Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+            if (p != null) {
+                result.addParticipant(p);
+            }
+        }
+        String str = cursor.getString(5);
+        if (!TextUtils.isEmpty(str)) {
+            String[] r = str.split(" ");
+            for (String i : r) {
+                Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                if (p != null) {
+                    result.addReview(p.findReview(result));
+                }
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Club> getClubsByEventType(String etName, EventTypeDBHandler etdb, EventDBHandler edb, AccountDBHandler adb) {
+        ArrayList<Club> result = new ArrayList<Club>();
+        Cursor cursor = getData();
+        while (cursor.moveToNext()) {
+            if (cursor.getString(2).equals(etName)) {
+                EventType type = etdb.getEventType(cursor.getString(2));
+                String[] evnt = cursor.getString(3).split(" ");
+                ArrayList<Event> events = new ArrayList<Event>();
+                for (String i : evnt) {
+                    Event e = edb.getEvent(i, this, etdb, adb);
+                    if (e != null) {
+                        events.add(e);
+                    }
+                }
+                Club c = new Club(cursor.getString(0), cursor.getString(1), type);
+                String[] ppl = cursor.getString(4).split(" ");
+                for (String i : ppl) {
+                    Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                    if (p != null) {
+                        c.addParticipant(p);
+                    }
+                }
+                String[] r = cursor.getString(5).split(" ");
+                for (String i : r) {
+                    Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                    if (p != null) {
+                        c.addReview((p).findReview(c));
+                    }
+                }
+                result.add(c);
+            }
+        }
+        return result;
+    }
+
+    public Club getByEventName(String eName, EventTypeDBHandler etdb, EventDBHandler edb, AccountDBHandler adb) {
+        Cursor cursor = getData();
+        while (cursor.moveToNext()) {
+            String[] eventNames = cursor.getString(3).split(" ");
+            if (findString(eventNames, eName)) {
+                EventType type = etdb.getEventType(cursor.getString(2));
+                ArrayList<Event> events = new ArrayList<Event>();
+                for (String i : eventNames) {
+                    Event e = edb.getEvent(i, this, etdb, adb);
+                    if (e != null) {
+                        events.add(e);
+                    }
+                }
+                Club result = new Club(cursor.getString(0), cursor.getString(1), type);
+                String[] ppl = cursor.getString(4).split(" ");
+                for (String i : ppl) {
+                    Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                    if (p == null) {
+                        return result;
+                    }
+                    result.addParticipant(p);
+                }
+                String[] r = cursor.getString(5).split(" ");
+                for (String i : r) {
+                    Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+                    result.addReview(p.findReview(result));
+                }
+                return result;
+            }
+        }
+        return null;
+    }
+
+    public Club getByClubName(String cName, EventTypeDBHandler etdb, EventDBHandler edb, AccountDBHandler adb) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from ClubAccounts WHERE clubName = \"" + cName + "\"", null );
+        if (!cursor.moveToFirst()) {
+            return null;
+        }
+        EventType type = etdb.getEventType(cursor.getString(2));
+        String[] evnt = cursor.getString(3).split(" ");
+        ArrayList<Event> events = new ArrayList<Event>();
+        for (String i : evnt) {
+            Event e = edb.getEvent(i, this, etdb, adb);
+            if (e != null) {
+                events.add(e);
+            }
+        }
+        Club result = new Club(cursor.getString(0), cursor.getString(1), type);
+        String[] ppl = cursor.getString(4).split(" ");
+        for (String i : ppl) {
+            Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+            if (p == null) {
+                return result;
+            }
+            result.addParticipant(p);
+        }
+        String[] r = cursor.getString(5).split(" ");
+        for (String i : r) {
+            Participant p = (Participant) adb.getUser(i, this, etdb, edb);
+            if (p == null) {
+                return result;
+            }
+            result.addReview(p.findReview(result));
+        }
         return result;
     }
 
@@ -75,5 +216,14 @@ public class ClubDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         long result = DB.delete("ClubAccounts", "username=?", new String[]{username});
         return result != -1;
+    }
+
+    private boolean findString(String[] arr, String s) {
+        for (String i : arr) {
+            if (i.equals(s)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
