@@ -1,14 +1,21 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/NsogzK3F)
+
 
 Repo Link: https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17
-
-# Deliverables 1,2,3
 
 ## Group Members and IDs
 - Isabelle Choi 300282805
 - Michelle Choi 300316843
 - Joey Issa 300219818
 - Ming Gao 300290294
+
+
+# Deliverables 1,2,3,4
+
+- ## Deliverable 4
+
+## Updated UML CLass Diagram
+![Screen Shot 2023-12-06 at 6 34 46 PM](https://github.com/SEG2105BC-uOttawa/seg2105f23-project-project_grp_17/assets/67203277/66e098b0-3c72-4130-8e1c-e089b180b4da)
+
 
 - ## Deliverable 3
 
