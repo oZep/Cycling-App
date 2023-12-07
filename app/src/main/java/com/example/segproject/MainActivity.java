@@ -61,29 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
         // search by event type
         searchType.setOnClickListener(new View.OnClickListener() {
-            String searched = String.valueOf(searchBar.getText()).toLowerCase();
             public void onClick(View view) {
-                if(TextUtils.isEmpty(searched)){
-                    Toast.makeText(MainActivity.this, "Enter Something to Search By", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                ArrayList<String> arr = new ArrayList<String>();
-                for (Club i : cdb.getClubsByEventType(searched, etdb, edb, adb)) {
-                    arr.add(i.getClubName());
-                }
 
-                ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, (List<String>) arr);
-                finder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                        String club = (String) parent.getItemAtPosition(position);
-                        Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                        intent.putExtra("username", username.toLowerCase());
-                        intent.putExtra("clubowner", cdb.getByClubName(club, etdb, edb, adb).getUsername());
-                        startActivity(intent);
-                        finish();
-                    }
-                });
-
+                Intent intent = new Intent(getApplicationContext(), UserEventType.class);
+                intent.putExtra("username", username);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -100,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 Club c = cdb.getByEventName(searched, etdb, edb, adb);
 
                 Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                intent.putExtra("username", username.toLowerCase());
+                intent.putExtra("username", username);
                 intent.putExtra("clubOwner", c.getUsername());
                 startActivity(intent);
             };
@@ -117,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 Club c = cdb.getByClubName(searched, etdb, edb, adb);
 
                 Intent intent = new Intent(getApplicationContext(), UserRegister.class);
-                intent.putExtra("username", username.toLowerCase());
+                intent.putExtra("username", username);
                 intent.putExtra("clubOwner", c.getUsername());
                 startActivity(intent);
                 finish();

@@ -12,49 +12,61 @@
         android:id="@+id/search"
         android:layout_width="244dp"
         android:layout_height="59dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="17dp"
         android:ems="10"
+        android:hint="Search"
         android:inputType="text"
-        android:text="Search"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="2dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/eventType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="17dp"
         android:text="eventType"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="2dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/eventname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="80dp"
         android:text="Event Name"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="65dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/clubname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="143dp"
         android:text="Club Name"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="128dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/finder"
         android:layout_width="372dp"
         android:layout_height="415dp"
-        tools:layout_editor_absoluteX="-8dp"
-        tools:layout_editor_absoluteY="191dp" />
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="206dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/goBack2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="31dp"
         android:text="Go Back To Login"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="637dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
