@@ -1,8 +1,6 @@
 package com.example.segproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -27,7 +25,7 @@ public class AdminViewEventTypes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         db = new EventTypeDBHandler(this);
         setContentView(R.layout.activity_type_list);
-        eventTypeList = findViewById(R.id.activity_event_type_list);
+        eventTypeList = findViewById(R.id.activity_club_list);
         goBackButton = findViewById(R.id.goBackButton3);
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

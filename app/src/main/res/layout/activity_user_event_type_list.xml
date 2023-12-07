@@ -16,7 +16,7 @@
         app:layout_constraintVertical_bias="0.202" />
 
     <ListView
-        android:id="@+id/activity_event_type_list"
+        android:id="@+id/activity_club_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
