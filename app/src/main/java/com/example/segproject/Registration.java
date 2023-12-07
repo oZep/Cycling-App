@@ -21,9 +21,6 @@ public class Registration extends AppCompatActivity {
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
     static AccountDBHandler db;
-    static ClubDBHandler cdb;
-    static EventTypeDBHandler etdb;
-    static EventDBHandler edb;
     ProgressBar progressBar;
     TextView textView;
 
@@ -33,20 +30,20 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         db = new AccountDBHandler(this);
-        cdb = new ClubDBHandler(this);
-        edb = new EventDBHandler(this);
-        etdb = new EventTypeDBHandler(this);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_login);
-        progressBar = findViewById(R.id.progressBar);
-        textView = findViewById(R.id.loginNow);
+        progressBar =findViewById(R.id.progressBar);
+        textView =findViewById(R.id.loginNow);
         textView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), com.example.segproject.Login.class);
                 startActivity(intent);
                 finish();
+
             }
+
+
         });
 
 
@@ -58,13 +55,8 @@ public class Registration extends AppCompatActivity {
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
 
-
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(Registration.this, "Enter an email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (email.indexOf(' ') > -1) {
-                    Toast.makeText(Registration.this, "Emails may not contain spaces", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
@@ -72,13 +64,13 @@ public class Registration extends AppCompatActivity {
                     return;
                 }
                 UserAccount user;
-                if (db.getUser(email.toLowerCase(), cdb, etdb, edb) != null) {
+                if (db.getUser(email) != null) {
                     Toast.makeText(Registration.this, "This email was already taken", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                user = new Participant(email.toLowerCase(), password);
+                user = new Participant(email, password);
                 db.insertUserData(user);
-                Toast.makeText(Registration.this, "Participant Account created", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Registration.this, "User Account created", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
                 finish();

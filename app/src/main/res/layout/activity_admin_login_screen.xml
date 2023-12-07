@@ -100,10 +100,10 @@
 
             <Button
                 android:id="@+id/goToEventEditor"
-                android:layout_width="104dp"
+                android:layout_width="wrap_content"
                 android:layout_height="71dp"
                 android:layout_gravity="center"
-                android:text="Edit Event Types"
+                android:text="Edit Events"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 

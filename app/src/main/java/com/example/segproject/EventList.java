@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,36 +16,23 @@ import java.util.ArrayList;
 public class EventList extends AppCompatActivity {
 
     static EventDBHandler db;
-    static String clubName;
-    Button goBack;
-    ListView eventList;
 
+    ListView eventList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new EventDBHandler(this);
         setContentView(R.layout.activity_event_list);
-        eventList = findViewById(R.id.eventList);
-        goBack = findViewById(R.id.goBack);
         Cursor c = db.getData();
         ArrayList<String> arr = new ArrayList<>();
-        Intent intent = getIntent();
-        clubName = intent.getStringExtra("clubName");
-
-        goBack.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ClubOwnerManageActivities.class);
-                intent.putExtra("clubName", clubName);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         if (c.getCount() == 0) {
             Toast.makeText(EventList.this, "No entries", Toast.LENGTH_SHORT).show();
             return;
-        } else {
+        } else
+
+        {
             while (c.moveToNext()) {
                 arr.add(c.getString(0));
             }

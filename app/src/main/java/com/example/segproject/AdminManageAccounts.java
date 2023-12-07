@@ -44,22 +44,13 @@ public class AdminManageAccounts extends AppCompatActivity {
             }
         });
 
-        goBackToAdminHomepage.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
         Cursor c = db.getData();
         ArrayList<String> arr = new ArrayList<>();
 
         if (c.getCount() == 0) {
             Toast.makeText(AdminManageAccounts.this, "No entries", Toast.LENGTH_SHORT).show();
             return;
-        }
-        else {
+        } else {
             while (c.moveToNext()) {
                 arr.add(c.getString(0));
             }
@@ -80,5 +71,15 @@ public class AdminManageAccounts extends AppCompatActivity {
                 }
             }
         });
+
+
+        goBackToAdminHomepage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminLoginScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }

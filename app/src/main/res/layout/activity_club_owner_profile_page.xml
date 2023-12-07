@@ -13,8 +13,12 @@
         android:layout_width="374dp"
         android:layout_height="135dp"
         android:layout_gravity="center_vertical"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="51dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085">
 
         <ImageView
             android:layout_width="150dp"
@@ -39,7 +43,6 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="213dp"
         android:layout_height="134dp"
-        android:layout_marginStart="173dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.873"
@@ -52,14 +55,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Enter Club Name"
-            android:inputType="text" />
+            android:inputType="text"
+            android:text="Enter Club Name" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <LinearLayout
         android:id="@+id/activity_main"
-        android:layout_width="357dp"
-        android:layout_height="333dp"
+        android:layout_width="361dp"
+        android:layout_height="303dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -91,7 +94,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/username"
+                    android:id="@+id/Username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
@@ -106,7 +109,7 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:id="@+id/contact"
+                    android:id="@+id/Contact"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_column="1"
@@ -121,7 +124,7 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:id="@+id/phone"
+                    android:id="@+id/Phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
@@ -146,7 +149,7 @@
 
         </TableLayout>
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

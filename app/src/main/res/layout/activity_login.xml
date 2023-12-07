@@ -151,7 +151,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text="Need to register a club owner account?"
+                android:text="Need to register an admin account?"
                 android:textSize="17sp" />
 
         </com.google.android.material.textfield.TextInputLayout>

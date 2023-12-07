@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,7 +16,7 @@ public class EventDBHandler extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table Events(name TEXT primary key, eventType TEXT, club TEXT, date INTEGER, location TEXT, maxParticipants INTEGER, participants TEXT);");
+        db.execSQL("create Table Events(name TEXT primary key, eventType TEXT, club TEXT, date INTEGER, location TEXT, maxParticipants INTEGER)");
     }
 
     @Override
@@ -34,15 +33,6 @@ public class EventDBHandler extends SQLiteOpenHelper {
         contentValues.put("date", e.getDate().getTime());
         contentValues.put("location", e.getLocation());
         contentValues.put("maxParticipants", e.getMaxParticipants());
-        StringBuilder participants = new StringBuilder("");
-        ArrayList<Participant> pArr = e.getParticipants();
-        for (int i = 0; i < pArr.size(); i++) {
-            participants.append(pArr.get(i).getUsername());
-            if (i < pArr.size() - 1) {
-                participants.append(" ");
-            }
-        }
-        contentValues.put("participants", participants.toString());
         long result = db.insert("Events", null, contentValues);
         return result == -1;
     }
@@ -53,31 +43,22 @@ public class EventDBHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Event getEvent(String name, ClubDBHandler cdb, EventTypeDBHandler etdb, AccountDBHandler adb) {
+    public Event getEvent(String name, EventTypeDBHandler ETBDHandler, ClubDBHandler CBDHandler) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from Events WHERE name = \"" + name + "\"", null );
         if (!cursor.moveToFirst()) {
             return null;
         }
-        Event result = new Event(cursor.getString(0), etdb.getEventType(cursor.getString(1)), cdb.getClub(cursor.getString(2), etdb, this, adb), new Date(cursor.getLong(3)), cursor.getString(4), cursor.getInt(5));
-        String[] ppl = cursor.getString(6).split(" ");
-        for (String i : ppl) {
-            adb.getUser(i, cdb, etdb, this);
-        }
+        Event result = new Event(cursor.getString(0), ETBDHandler.getEventType(cursor.getString(1)), CBDHandler.getClub(cursor.getString(2), ETBDHandler), new Date(cursor.getLong(3)), cursor.getString(4), cursor.getInt(5));
         return result;
     }
 
-    public ArrayList<Event> getEvents(Club club, ClubDBHandler cdb, EventTypeDBHandler etdb, AccountDBHandler adb) {
+    public ArrayList<Event> getEvents(Club club, EventTypeDBHandler ETDBHandler) {
         ArrayList<Event> result = new ArrayList<Event>();
         Cursor cursor = getData();
         while(cursor.moveToNext()){
             if (cursor.getString(2).equals(club.getClubName())) {
-                result.add(new Event(cursor.getString(0), etdb.getEventType(cursor.getString(1)), club, new Date(cursor.getLong(3)), cursor.getString(4), cursor.getInt(5)));
-                String[] ppl = cursor.getString(6).split(" ");
-                for (String i : ppl) {
-                    adb.getUser(i, cdb, etdb, this);
-                }
-                return result;
+                result.add(new Event(cursor.getString(0), ETDBHandler.getEventType(cursor.getString(1)), club, new Date(cursor.getLong(3)), cursor.getString(4), cursor.getInt(5)));
             }
         }
         return result;

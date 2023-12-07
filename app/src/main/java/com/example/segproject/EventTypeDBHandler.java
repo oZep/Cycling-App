@@ -9,14 +9,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class EventTypeDBHandler extends SQLiteOpenHelper {
     public EventTypeDBHandler(Context context) {
         super(context, "EventTypes.db", null, 1);
-        insertEventType(EventType.HILL_CLIMB);
-        insertEventType(EventType.TIME_TRIAL);
-        insertEventType(EventType.ROAD_STAGE_RACE);
     }
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table EventTypes(name TEXT primary key, level INTEGER, age INTEGER);");
+        DB.execSQL("create Table EventTypes(name TEXT primary key, level INTEGER, age INTEGER)");
+
     }
 
     @Override
@@ -29,7 +27,7 @@ public class EventTypeDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", et.getName());
-        contentValues.put("level", et.getLevel());
+        contentValues.put("email", et.getLevel());
         contentValues.put("age", et.getMinAge());
         long result = DB.insert("EventTypes", null, contentValues);
         return result != -1;
@@ -43,7 +41,7 @@ public class EventTypeDBHandler extends SQLiteOpenHelper {
 
     public EventType getEventType(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from EventTypes WHERE name = \"" + name + "\"", null );
+        Cursor cursor = db.rawQuery("Select * from EventTypes WHERE username = \"" + name + "\"", null );
         if (!cursor.moveToFirst()) {
             return null;
         }
@@ -56,6 +54,7 @@ public class EventTypeDBHandler extends SQLiteOpenHelper {
         long result = DB.delete("EventTypes", "name=?", new String[]{name});
         return result != -1;
     }
+
 }
 
 

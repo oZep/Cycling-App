@@ -25,13 +25,10 @@
             android:name=".ClubOwnerProfilePage"
             android:exported="false" />
         <activity
+            android:name=".AdminHandleDeleteEventType"
+            android:exported="false" />
+        <activity
             android:name=".AdminViewEventTypes"
-            android:exported="false" />
-        <activity
-            android:name=".EditEventType"
-            android:exported="false" />
-        <activity
-            android:name=".EventTypePopup"
             android:exported="false" />
         <activity
             android:name=".AdminHandleAddEventType"
@@ -64,21 +61,6 @@
             android:name=".RegistrationClub"
             android:exported="false" />
         <activity
-            android:name=".UserRegister"
-            android:exported="false" />
-        <activity
-            android:name=".RateClub"
-            android:exported="false" />
-        <activity
-            android:name=".UserClubList"
-            android:exported="false" />
-        <activity
-            android:name=".UserEventType"
-            android:exported="false" />
-        <activity
-            android:name=".UserEventList"
-            android:exported="false" />
-        <activity
             android:name=".Login"
             android:exported="true"
             android:label="@string/app_name"
@@ -89,9 +71,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"/>
     </application>
 
 </manifest>
