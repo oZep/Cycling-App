@@ -101,8 +101,7 @@ public class UserRegister extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), RateClub.class);
                 intent.putExtra("username", username);
-                intent.putExtra("eventName", username.toLowerCase());
-                intent.putExtra("clubName", username.toLowerCase());
+                intent.putExtra("clubOwner", username.toLowerCase());
                 startActivity(intent);
                 finish();
             }

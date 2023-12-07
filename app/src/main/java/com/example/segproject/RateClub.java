@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RateClub extends AppCompatActivity {
 
-    String username, clubowner;
+    String username, clubOwner;
 
     ClubDBHandler cdb;
 
@@ -40,7 +40,7 @@ public class RateClub extends AppCompatActivity {
 
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
-        clubowner = intent.getStringExtra("clubowner");
+        clubOwner = intent.getStringExtra("clubOwner");
         Participant user = (Participant) adb.getUser(username, cdb, etdb, edb);
 
 
@@ -57,10 +57,10 @@ public class RateClub extends AppCompatActivity {
                 String comments = String.valueOf(comment.getText());
                 float rating = score.getRating();
                 int rate = (int) rating;
-                Club club = cdb.getClub(clubowner, etdb, edb, adb);
+                Club club = cdb.getClub(clubOwner, etdb, edb, adb);
                 ClubReview rev = new ClubReview(user, club, rate, comments);
                 adb.deleteUserData(username);
-                cdb.deleteClubData(clubowner);
+                cdb.deleteClubData(clubOwner);
                 cdb.insertUserData(club);
                 adb.insertUserData(user);
 
