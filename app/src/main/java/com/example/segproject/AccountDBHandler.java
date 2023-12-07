@@ -43,7 +43,7 @@ public class AccountDBHandler extends SQLiteOpenHelper {
             StringBuilder reviews = new StringBuilder("");
             for (int i = 0; i < rArr.size(); i++) {
                 ClubReview r = rArr.get(i);
-                reviews.append(String.format("%s:%d:%s", r.getRatee(), r.getRating()));
+                reviews.append(String.format("%s:%d", r.getRatee(), r.getRating()));
                 if (i < rArr.size() - 1) {
                     reviews.append(" ");
                 }
